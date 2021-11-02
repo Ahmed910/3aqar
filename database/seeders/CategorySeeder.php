@@ -20,10 +20,10 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $features = Feature::all();
-        // $frontages = Frontage::all();
-        // $apartment_sale = Category::create(['name' => 'apartment','type'=>'sale']);
-        // $apartment_sale->features()->sync($features);
-        // $apartment_sale->frontages()->sync($frontages);
+        $frontages = Frontage::all();
+        $apartment_sale = Category::create(['name' => 'apartment','type'=>'sale']);
+        $apartment_sale->features()->sync($features);
+        $apartment_sale->frontages()->sync($frontages);
 
         $periods = Period::all();
         $population_types = PopulationType::all();
