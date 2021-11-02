@@ -25,6 +25,7 @@ return[
         'ur_wallet_lt_offer_price' => "قيمة العرض المقدم أكبر من المبلغ الموجود في محفظتك رجاء الشحن وإعادة المحاولة!",
         'client_reject_start_trip' => "تم رفض طلب بدء الرحلة من قبل العميل قم بالمحاولة مرة أخرى",
         'driver_finish_trip' => "تم انهاء الرحلة من قبل الكابتن",
+        'ad_created_successfully'=>'تم إضافة الاعلان بنجاح',
         'driver_finish_order' => "تم انهاء الطلب من قبل الكابتن",
         'client_finish_trip' => "تم انهاء الرحلة من قبل العميل",
         'client_finish_order' => "تم انهاء الطلب من قبل العميل",

@@ -34,6 +34,7 @@ return[
         'your_bank_account_deleted_successfully'=>'your bank account deleted successfully',
 
         'deleted_succussfully'=>'deleted succussfully',
+        'ad_created_successfully'=>'ad created successfully',
         'The_request_has_been_approved_before'=>'The request has been approved before',
         'The_request_has_been_approved'=>'The request has been approved',
         'start_working'=>'start working',
