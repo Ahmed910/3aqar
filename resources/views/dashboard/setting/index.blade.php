@@ -282,6 +282,25 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.ar.pledge') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::textarea('pledge_ar', setting('pledge_ar') ? setting('pledge_ar'):old('pledge_ar'), ['class'=>'form-control editor','placeholder'=>trans('dashboard.ar.pledge')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.en.pledge') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::textarea('pledge_en', setting('pledge_en') ? setting('pledge_en'):old('pledge_en'), ['class'=>'form-control editor','placeholder'=>trans('dashboard.en.pledge')]) !!}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="social-fill" role="tabpanel" aria-labelledby="social-tab-fill">
                             <div class="form-group mt-4">

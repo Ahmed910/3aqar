@@ -53,22 +53,11 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         });
     });
     // Client
-    Route::namespace('Client')->prefix('client')->group(function(){
-        Route::middleware(['auth:api','client_middleware'])->group(function(){
-            // Orders
-            Route::apiResource('orders','OrderController')->only('index','show','store');
-            Route::post('change_order_status','OrderController@changeOrderStatus');
-            Route::post('received_orders','OrderController@ClientRecieveOrder');
-            // Offers
-            Route::get('offers/{order_id}','OfferController@offers');
-            Route::get('offers/{order_id}/{offer_id}','OfferController@showOffer');
-            Route::post('offers','OfferController@acceptOffer');
-            //Store Categories
-            // Neareast Drivers
-            Route::get('nearest_drivers/{number_of_drivers?}','LocationController@nearestDrivers');
-            // Rate && Review
-            Route::post('rates','OrderController@SetRate');
-            // Route::get('rates/{consultant_id}','ConsultantController@getReviews');
+    Route::namespace('Owner')->prefix('owner')->group(function(){
+        Route::middleware(['auth:api','owner_middleware'])->group(function(){
+            Route::get('get_categories','CategoryController@getCategories');
+            Route::get('get_features_by_category/{category_id}','CategoryController@getFeaturesByCategory');
+            Route::apiResource('photos', 'AdController');
         });
         Route::apiResource('store_categories','StoreCategoryController')->only('index','show');
         Route::apiResource('product_categories','ProductCategoryController')->only('index','show');
@@ -116,6 +105,9 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         Route::get('cities/{country_id}', "CountryController@show");
         // About
         Route::get('about', 'HomeController@getAbout');
+
+          // Pledge
+        Route::get('get_pledge', 'HomeController@getPledge');
         // Policy
         Route::get('policy', 'HomeController@getPolicy');
         // Terms

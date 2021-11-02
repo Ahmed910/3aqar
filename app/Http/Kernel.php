@@ -67,7 +67,7 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
 
         'normal_user' => \App\Http\Middleware\UserMiddleware::class,
-        'client_middleware' => \App\Http\Middleware\ClientMiddleware::class,
+        'owner_middleware' => \App\Http\Middleware\OwnerMiddleware::class,
         'driver_middleware' => \App\Http\Middleware\DriverMiddleware::class,
 
         'setLocale'   => \App\Http\Middleware\setLocale::class,

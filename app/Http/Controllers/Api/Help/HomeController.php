@@ -27,6 +27,15 @@ class HomeController extends Controller
         return response()->json(['data' => $data , 'status' => 'success' , 'message' => '']);
     }
 
+    public function getPledge()
+    {
+        $pledge = app()->getLocale() == 'ar' ? 'pledge_ar' : 'pledge_en';
+        $data = [
+            'pledge' => setting($pledge) != false ? setting($pledge) : '',
+        ];
+        return response()->json(['data' => $data , 'status' => 'success' , 'message' => '']);
+    }
+
     public function getTerms()
     {
         $terms = app()->getLocale() == 'ar' ? 'terms_ar' : 'terms_en';

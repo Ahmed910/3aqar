@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class ClientMiddleware
+class OwnerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class ClientMiddleware
      */
      public function handle($request, Closure $next)
      {
-       if (auth('api')->check() && in_array(auth('api')->user()->user_type,['client']) && ! auth('api')->user()->is_user_deactive) {
+       if (auth('api')->check() && in_array(auth('api')->user()->user_type,['owner']) && ! auth('api')->user()->is_user_deactive) {
            return $next($request);
        }elseif (auth('api')->check() &&  auth('api')->user()->is_user_deactive) {
            return response()->json(['status' => 'fail','message'=> 'تم حظر حسابك رجاء التواصل مع الادارة للتفعيل','data' => null] ,403);

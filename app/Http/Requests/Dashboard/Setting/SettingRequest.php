@@ -70,6 +70,8 @@ class SettingRequest extends FormRequest
           'desc_en' => "nullable|string|between:3,100000",
           'policy_ar' => "nullable|string|between:3,100000",
           'policy_en' => "nullable|string|between:3,100000",
+          'pledge_ar' => "nullable|string|between:3,100000",
+          'pledge_en' => "nullable|string|between:3,100000",
           'terms_ar' => "nullable|string|between:3,100000",
           'terms_en' => "nullable|string|between:3,100000",
           'home_msg_ar' => "nullable|string|between:3,100000",
