@@ -26,7 +26,10 @@ class AdController extends Controller
      */
     public function store(CreateAdRequest $request)
     {
+        dd($request->all());
         $ad_rent = ['period_id','population_type_id','round_type'];
+        $ad_sale = ['north','south','east','west','disputes','mortgage_or_bond'];
+
     }
 
     /**

@@ -57,7 +57,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         Route::middleware(['auth:api','owner_middleware'])->group(function(){
             Route::get('get_categories','CategoryController@getCategories');
             Route::get('get_features_by_category/{category_id}','CategoryController@getFeaturesByCategory');
-            Route::apiResource('photos', 'AdController');
+            Route::apiResource('ads', 'AdController');
         });
         Route::apiResource('store_categories','StoreCategoryController')->only('index','show');
         Route::apiResource('product_categories','ProductCategoryController')->only('index','show');
