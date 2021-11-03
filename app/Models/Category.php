@@ -32,5 +32,10 @@ class Category extends Model
         return $this->belongsToMany(PopulationType::class,'category_population_type','category_id','population_type_id')->withTimestamps();
     }
 
+    public function residence_types()
+    {
+        return $this->belongsToMany(ResidenceType::class,'category_residence_type','category_id','residence_type_id')->withTimestamps();
+    }
+
 
 }
