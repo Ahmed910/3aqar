@@ -28,7 +28,7 @@ class UserProfileResource extends JsonResource
             'identity_number' => $this->when($this->user_type == 'driver',$this->identity_number),
             'identity_number_image' => $this->when($this->user_type == 'driver',$this->identity_number_image),
             'is_payment_showing' => setting('is_payment_showing') == 'enable' ? true : false,
-           
+
             'user_type' => (string)$this->user_type,
 
 
