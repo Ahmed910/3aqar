@@ -66,9 +66,34 @@ class Ad extends Model
         return $this->belongsToMany(Feature::class,'ad_feature','ad_id','feature_id')->withPivot('value','created_at','updated_at');
     }
 
+    public function ad_features()
+    {
+        return $this->hasMany(AdFeature::class,'ad_id');
+    }
+
     public function rent()
     {
         return $this->hasOne(AdRent::class,'ad_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function advertiser()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function residence_type()
+    {
+        return $this->belongsTo(ResidenceType::class);
+    }
+
+    public function frontage()
+    {
+        return $this->belongsTo(Frontage::class);
     }
 
     public function sale()
