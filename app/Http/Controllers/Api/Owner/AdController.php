@@ -44,7 +44,7 @@ class AdController extends Controller
 
         try {
 
-           $ad = Ad::create($ad_data);
+           $ad = Ad::create($ad_data+['user_id'=>auth('api')->id()]);
            $ad->features()->sync($arr);
            switch($request->ad_type)
            {

@@ -19,11 +19,11 @@ class FeatureSeeder extends Seeder
         Feature::create(['name' => 'halls','data_type'=>'number']);
         Feature::create(['name' => 'bathrooms','data_type'=>'number']);
         Feature::create(['name' => '3aqar age','data_type'=>'text']);
-        Feature::create(['name' => 'kitchen','data_type'=>'radio']);
-        Feature::create(['name' => 'elevator','data_type'=>'radio']);
-        Feature::create(['name' => 'special drawer','data_type'=>'radio']);
-        Feature::create(['name' => 'car entrance','data_type'=>'radio']);
-        Feature::create(['name' => 'furnished','data_type'=>'radio']);
+        Feature::create(['name' => 'kitchen','data_type'=>'switch']);
+        Feature::create(['name' => 'elevator','data_type'=>'switch']);
+        Feature::create(['name' => 'special drawer','data_type'=>'switch']);
+        Feature::create(['name' => 'car entrance','data_type'=>'switch']);
+        Feature::create(['name' => 'furnished','data_type'=>'switch']);
 
     }
 }
