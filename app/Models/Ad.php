@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ad extends Model
 {
+    protected $dates = ['created_at'];
     protected $guarded = ['created_at','updated_at'];
 
 

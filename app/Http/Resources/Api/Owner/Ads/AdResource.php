@@ -28,7 +28,7 @@ class AdResource extends JsonResource
             'lng'=>$this->lng,
             'address'=>$this->address,
             'residence_type'=>new CategoryResidenceTypeResource($this->residence_type),
-            'price'=>$this->price,
+            'price'=>(float)$this->price,
             'images'=>ImageResource::collection($this->media),
             'frontage'=> new CategoryFrontagesResource($this->frontage),
             'features'=>AdFeatureResource::collection($this->ad_features),

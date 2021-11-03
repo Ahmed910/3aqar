@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Resources\Api\Owner\Ads;
+namespace App\Http\Resources\Api\Ads;
 
+use App\Http\Resources\Api\Owner\Ads\AdFeatureResource;
 use App\Http\Resources\Api\Owner\Categories\CategoriesNameResource;
-use App\Http\Resources\Api\User\UserDataResource;
-use App\Http\Resources\Api\User\UserProfileResource;
+use App\Http\Resources\Api\Owner\Images\ImageResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdSearchResource extends JsonResource
+class AdDataResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,12 +19,11 @@ class AdSearchResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'lat'=>$this->lat,
-            'lng'=>$this->lng,
+            'category' => new CategoriesNameResource($this->category),
+            'features'=>AdFeatureResource::collection($this->ad_features),
             'address'=>$this->address,
             'price'=>(float)$this->price,
-            'category' => new CategoriesNameResource($this->category),
-            'advertiser'=>new UserDataResource($this->advertiser)
+            'images'=>ImageResource::collection($this->media)
         ];
     }
 }

@@ -52,7 +52,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::post('withdrawal_wallet','WalletController@withdrawalWallet');
         });
     });
-    // Client
+    // Owner
     Route::namespace('Owner')->prefix('owner')->group(function(){
         Route::middleware(['auth:api','owner_middleware'])->group(function(){
             Route::get('get_categories','CategoryController@getCategories');
@@ -60,6 +60,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::apiResource('ads', 'AdController');
             Route::get('search_by_type', 'SearchController@getCategoriesAndAdsByType');
             Route::get('search_by_type_and_cat', 'SearchController@getAdsByTypeAndCategory');
+            Route::get('filter_ads','SearchController@filterAds');
         });
         Route::apiResource('store_categories','StoreCategoryController')->only('index','show');
         Route::apiResource('product_categories','ProductCategoryController')->only('index','show');

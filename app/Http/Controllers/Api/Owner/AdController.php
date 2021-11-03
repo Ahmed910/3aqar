@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\Owner;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Owner\Ad\CreateAdRequest;
+use App\Http\Requests\Api\Owner\AdRequest;
+use App\Http\Resources\Api\Ads\AdDataResource;
 use App\Models\Ad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,10 +17,20 @@ class AdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AdRequest $request)
     {
-        //
+        $ads = Ad::when($request->search == 'price',function($q) use($request){
+                 $q->orderBy('price','DESC')->take(5);
+        })->when($request->search == 'area',function($q) use($request){
+            $q->whereHas('features',function($q)use($request){
+                $q->where('name','Area')->orderBy('value','DESC')->take(5);
+                // $q->orderBy('value','DESC')->take(5);
+            });
+        })->latest()->take(5)->get();
+
+        return AdDataResource::collection($ads)->additional(['status'=>'success','message'=>'']);
     }
+
 
     /**
      * Store a newly created resource in storage.
