@@ -20,9 +20,9 @@ class CategoriesResource extends JsonResource
             'name'=> $this->name,
             'type'=>$this->type,
             'category_features'=> CategoryFeaturesResource::collection($this->features),
-            'category_frontages'=> $this->when($this->frontages->count() > 0,CategoryFrontagesResource::collection($this->frontages)),
-            'category_periods' => $this->when($this->periods->count() > 0,CategoryPeriodsResource::collection($this->periods)),
-            'category_population_types'=> $this->when($this->population_types->count() > 0,CategoryPopulationTypesResource::collection($this->population_types)),
+            'category_frontages'=> CategoryFrontagesResource::collection($this->frontages),
+            'category_periods' => CategoryPeriodsResource::collection($this->periods),
+            'category_population_types'=> CategoryPopulationTypesResource::collection($this->population_types),
         ];
     }
 }
