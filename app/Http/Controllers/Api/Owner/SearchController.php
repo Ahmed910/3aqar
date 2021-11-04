@@ -55,8 +55,8 @@ class SearchController extends Controller
             $q->where(['lat' => $request->lat, 'lng' => $request->lng]);
         })->when($request->time, function ($q) use ($request) {
             switch ($request->time) {
-                case 1:
-                    $q->whereBetween('created_at', [Carbon::now()->subDays('Y-m-d')->format('Y-m-d'), Carbon::now()->format('Y-m-d')]);
+                case true:
+                    $q->whereBetween('created_at', [Carbon::now()->subDays('14')->format('Y-m-d'), Carbon::now()->format('Y-m-d')]);
                     break;
                 default:
                     break;
@@ -67,7 +67,7 @@ class SearchController extends Controller
 
                 $q->whereHas('features', function ($q) use ($feature) {
 
-                    $q->where('value', $feature['value']);
+                    $q->where('feature_id', $feature['feature_id'])->where('value', $feature['value']);
                 });
             }
 

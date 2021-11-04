@@ -102,4 +102,12 @@ class Ad extends Model
         return $this->hasOne(AdSale::class,'ad_id');
     }
 
+    // Scopes
+
+    public function scopeOwner($query)
+    {
+
+        $query->where('user_id', auth('api')->id());
+    }
+
 }

@@ -23,6 +23,7 @@ return[
         'please_register_for_interview'=>'please register for interview',
 
         'plz_complete_register'=>'plz complete register',
+        'ad_deleted_successfully'=>'ad deleted successfully',
         'plz_wait_for_interview_result'=>'plz_wait_for_interview_result',
 
         'childern_delivered_successfully'=>'childern delivered successfully and booking status changed',
@@ -35,6 +36,7 @@ return[
 
         'deleted_succussfully'=>'deleted succussfully',
         'ad_created_successfully'=>'ad created successfully',
+        'ad_updated_successfully'=>'ad updated successfully',
         'The_request_has_been_approved_before'=>'The request has been approved before',
         'The_request_has_been_approved'=>'The request has been approved',
         'start_working'=>'start working',

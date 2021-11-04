@@ -24,6 +24,17 @@ class CreateAdRequest extends ApiMasterRequest
      */
     public function rules()
     {
+
+        if(isset($this->ad) && $this->ad)
+        {
+            $image_validation = 'nullable|array';
+            $value ='nullable';
+
+        }else{
+            $image_validation = 'required|array';
+            $value ='required';
+        }
+
         return [
             'ad_type'=>'required|in:rent,sale',
             'category_id'=>'required|exists:categories,id',
@@ -35,11 +46,11 @@ class CreateAdRequest extends ApiMasterRequest
             'price' => 'required|numeric|gt:0',
             'desc'=>'nullable|between:3,150',
             'advertiser_relationship_with_aqar'=>'required|string',
-            'feature'=>'required|array',
-            'images'=>'required|array',
+            'feature'=>$image_validation,
+            'images'=>$image_validation,
             'images.*'         => 'image|mimes:png,jpg,jpeg,gif',
             'feature.*.feature_id' => 'integer|exists:features,id',
-            'feature.*.value' => 'required',
+            'feature.*.value' => $value,
             'period_id'=>'nullable|exists:periods,id',
             'population_type_id'=>'nullable|exists:population_types,id',
             'round_type'=>'nullable|in:ground,upstairs',

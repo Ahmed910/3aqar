@@ -5,6 +5,7 @@ namespace App\Http\Resources\Api\Ads;
 use App\Http\Resources\Api\Owner\Ads\AdFeatureResource;
 use App\Http\Resources\Api\Owner\Categories\CategoriesNameResource;
 use App\Http\Resources\Api\Owner\Images\ImageResource;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AdDataResource extends JsonResource
@@ -17,13 +18,15 @@ class AdDataResource extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             'id'=>$this->id,
             'category' => new CategoriesNameResource($this->category),
             'features'=>AdFeatureResource::collection($this->ad_features),
             'address'=>$this->address,
             'price'=>(float)$this->price,
-            'images'=>ImageResource::collection($this->media)
+            'images'=>ImageResource::collection($this->media),
+            'time'=>now()->diffInDays(Carbon::parse($this->created_at)),
         ];
     }
 }

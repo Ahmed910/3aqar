@@ -45,11 +45,11 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::apiResource('notifications','NotificationController')->only('index','show','destroy');
 
             // Wallet
-            Route::apiResource('wallet_transfers','WalletTransfersController')->only('index','show','store');
-            Route::get('wallet','WalletController@index');
-            Route::get('my_ibans','WalletController@getIbans');
-            Route::post('charge_wallet','WalletController@chargeWallet');
-            Route::post('withdrawal_wallet','WalletController@withdrawalWallet');
+            // Route::apiResource('wallet_transfers','WalletTransfersController')->only('index','show','store');
+            // Route::get('wallet','WalletController@index');
+            // Route::get('my_ibans','WalletController@getIbans');
+            // Route::post('charge_wallet','WalletController@chargeWallet');
+            // Route::post('withdrawal_wallet','WalletController@withdrawalWallet');
         });
     });
     // Owner
@@ -57,53 +57,56 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         Route::middleware(['auth:api','owner_middleware'])->group(function(){
             Route::get('get_categories','CategoryController@getCategories');
             Route::get('get_features_by_category/{category_id}','CategoryController@getFeaturesByCategory');
-            Route::apiResource('ads', 'AdController');
+            Route::apiResource('ad', AdsController::class);
+
+           Route::get('get_all_ads','AdsController@getAllAds');
+
             Route::get('search_by_type', 'SearchController@getCategoriesAndAdsByType');
             Route::get('search_by_type_and_cat', 'SearchController@getAdsByTypeAndCategory');
             Route::get('filter_ads','SearchController@filterAds');
         });
-        Route::apiResource('store_categories','StoreCategoryController')->only('index','show');
-        Route::apiResource('product_categories','ProductCategoryController')->only('index','show');
+        // Route::apiResource('store_categories','StoreCategoryController')->only('index','show');
+        // Route::apiResource('product_categories','ProductCategoryController')->only('index','show');
     });
     // Driver
-    Route::namespace('Driver')->prefix('driver')->group(function(){
-        Route::middleware(['auth:api','driver_middleware'])->group(function(){
-            // Order
-            Route::apiResource('orders','OrderController')->only('index','show');
-            Route::get('live_orders','OrderController@getCurrentOrder');
-            Route::apiResource('offers','OfferController')->only('index','show','store');
+    // Route::namespace('Driver')->prefix('driver')->group(function(){
+    //     Route::middleware(['auth:api','driver_middleware'])->group(function(){
+    //         // Order
+    //         Route::apiResource('orders','OrderController')->only('index','show');
+    //         Route::get('live_orders','OrderController@getCurrentOrder');
+    //         Route::apiResource('offers','OfferController')->only('index','show','store');
 
-            //
-            Route::post('reject_orders','OfferController@rejectOrder');
-            Route::post('change_order_status','OrderController@changeOrderStatus');
-            Route::post('change_account_status','DriverController@changeAccountStatus');
+    //         //
+    //         Route::post('reject_orders','OfferController@rejectOrder');
+    //         Route::post('change_order_status','OrderController@changeOrderStatus');
+    //         Route::post('change_account_status','DriverController@changeAccountStatus');
 
-            // Update Driver Location
-            Route::post('update_location','LocationController@updateLocation');
+    //         // Update Driver Location
+    //         Route::post('update_location','LocationController@updateLocation');
 
-            // Package
-            Route::apiResource('packages','PackageController')->only('store','index');
+    //         // Package
+    //         Route::apiResource('packages','PackageController')->only('store','index');
 
-            Route::post('renew_subscription_from_wallet','PackageController@renewSubscribtionFromWallet');
-            Route::get('driver_car','CarController@getCarData');
-            Route::post('update_driver_car','CarController@updateDriver');
-            Route::post('toggle_is_available','DriverController@toggleAvailable');
-            Route::post('extend_packages','PackageController@extendPackage');
-            Route::get('check_subscribtions','PackageController@checkSubscribtion');
-            // Rate && Review
-            Route::post('rates','ConsultantController@SetRate');
+    //         Route::post('renew_subscription_from_wallet','PackageController@renewSubscribtionFromWallet');
+    //         Route::get('driver_car','CarController@getCarData');
+    //         Route::post('update_driver_car','CarController@updateDriver');
+    //         Route::post('toggle_is_available','DriverController@toggleAvailable');
+    //         Route::post('extend_packages','PackageController@extendPackage');
+    //         Route::get('check_subscribtions','PackageController@checkSubscribtion');
+    //         // Rate && Review
+    //         Route::post('rates','ConsultantController@SetRate');
 
-        });
-        Route::get('min_manufacture_years','CarController@getMinManufactureYears');
-        Route::get('plate_types','CarController@getPlateTypes');
-    });
+    //     });
+    //     Route::get('min_manufacture_years','CarController@getMinManufactureYears');
+    //     Route::get('plate_types','CarController@getPlateTypes');
+    // });
     Route::namespace('Help')->group(function(){
         // Country
         Route::get('countries', "CountryController@index");
         // Cancel Reasons
-        Route::get('cancel_reasons', "HelpController@getCancelReasons")->middleware('auth:api');
+      //  Route::get('cancel_reasons', "HelpController@getCancelReasons")->middleware('auth:api');
         // App Ad
-        Route::get('app_ads', "HelpController@getAppAd")->middleware('auth:api');
+       // Route::get('app_ads', "HelpController@getAppAd")->middleware('auth:api');
         // City
         Route::get('cities/{country_id}', "CountryController@show");
         // About
@@ -129,19 +132,19 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         Route::get('search', 'HomeController@search');
 
         // Brand
-        Route::apiResource('brands','BrandController')->only('index','show');
+      //  Route::apiResource('brands','BrandController')->only('index','show');
         // Point Package
-        Route::apiResource('point_packages','PointPackageController')->only('index','show','store')->middleware('auth:api');
+      //  Route::apiResource('point_packages','PointPackageController')->only('index','show','store')->middleware('auth:api');
         // Car Types
-        Route::get('car_types','HelpController@carTypes');
+      //  Route::get('car_types','HelpController@carTypes');
         // Packages
-        Route::get('packages','HelpController@getPackages');
+        //Route::get('packages','HelpController@getPackages');
         // Slider
         Route::get('sliders','SliderController@index');
         //app offers
-        Route::get('app_offers','HelpController@appOffers')->middleware('auth:api');;
+      //  Route::get('app_offers','HelpController@appOffers')->middleware('auth:api');;
        //faqs
-        Route::get('faqs','HelpController@getFaqs');
+        //Route::get('faqs','HelpController@getFaqs');
 
     });
 });

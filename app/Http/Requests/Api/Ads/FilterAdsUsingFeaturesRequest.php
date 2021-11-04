@@ -29,7 +29,7 @@ class FilterAdsUsingFeaturesRequest extends ApiMasterRequest
             'category_id'=>'nullable|exists:categories,id',
             'lat'=>'nullable|numeric',
             'lng'=>'nullable|numeric',
-            'time'=>'required|in:on,off',
+            'time'=>'required|boolean',
             'features'=>'nullable|array',
             'features.*.feature_id'=>'nullable|exists:features,id',
             'features.*.value'=>'nullable',

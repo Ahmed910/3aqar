@@ -26,6 +26,8 @@ return[
         'client_reject_start_trip' => "تم رفض طلب بدء الرحلة من قبل العميل قم بالمحاولة مرة أخرى",
         'driver_finish_trip' => "تم انهاء الرحلة من قبل الكابتن",
         'ad_created_successfully'=>'تم إضافة الاعلان بنجاح',
+        'ad_updated_successfully'=>'تم تعديل الاعلان بنجاح',
+        'ad_deleted_successfully'=>'تم حذف الاعلان بنجاح',
         'driver_finish_order' => "تم انهاء الطلب من قبل الكابتن",
         'client_finish_trip' => "تم انهاء الرحلة من قبل العميل",
         'client_finish_order' => "تم انهاء الطلب من قبل العميل",
