@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Owner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Ads\FilterAdsUsingFeaturesRequest;
 use App\Http\Requests\Api\Owner\Categories\CategoriesAndAdsByTypeRequest;
+use App\Http\Resources\Api\Ads\AdDataResource;
 use App\Http\Resources\Api\Owner\Ads\AdResource;
 use App\Http\Resources\Api\Owner\Ads\AdSearchResource;
 use App\Http\Resources\Api\Owner\Categories\CategoriesNameResource;
@@ -38,7 +39,7 @@ class SearchController extends Controller
             $q->where('category_id', $request->category_id);
         })->get();
 
-        return AdSearchResource::collection($ads)->additional(['status' => 'success', 'message' => '']);
+        return AdDataResource::collection($ads)->additional(['status' => 'success', 'message' => '']);
     }
 
     public function filterAds(FilterAdsUsingFeaturesRequest $request)

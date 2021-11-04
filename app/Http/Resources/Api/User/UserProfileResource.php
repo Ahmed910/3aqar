@@ -19,6 +19,7 @@ class UserProfileResource extends JsonResource
             'id' => $this->id,
             'fullname' => $this->fullname,
             'phone' => (string)$this->phone,
+            'whatsapp' => (string)$this->whatsapp,
             'email' => (string)$this->email,
             'image' => (string)$this->avatar,
             'test_version' => (string)setting('test_version'),

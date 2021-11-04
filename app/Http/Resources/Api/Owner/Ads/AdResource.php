@@ -7,6 +7,7 @@ use App\Http\Resources\Api\Owner\Categories\CategoryFeaturesResource;
 use App\Http\Resources\Api\Owner\Categories\CategoryFrontagesResource;
 use App\Http\Resources\Api\Owner\Categories\CategoryResidenceTypeResource;
 use App\Http\Resources\Api\Owner\Images\ImageResource;
+use App\Http\Resources\Api\User\UserDataResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AdResource extends JsonResource
@@ -36,6 +37,7 @@ class AdResource extends JsonResource
             'ad_rent'=> $this->when($this->ad_type=='rent',new AdRentResource($this->rent)),
             'desc'=>$this->desc,
             'status'=>$this->status,
+            'advertiser'=>new UserDataResource($this->advertiser)
 
 
         ];

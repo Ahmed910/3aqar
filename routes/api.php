@@ -63,7 +63,8 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::apiResource('ad', AdsController::class);
 
            Route::get('get_all_ads','AdsController@getAllAds');
-
+           Route::get('close_ad/{id}','AdsController@closeAd');
+           Route::get('get_details_for_ad/{id}','AdsController@getDetailsForAdAndSimilars');
             Route::get('search_by_type', 'SearchController@getCategoriesAndAdsByType');
             Route::get('search_by_type_and_cat', 'SearchController@getAdsByTypeAndCategory');
             Route::get('filter_ads','SearchController@filterAds');

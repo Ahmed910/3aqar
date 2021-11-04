@@ -28,6 +28,7 @@ return[
         'ad_created_successfully'=>'تم إضافة الاعلان بنجاح',
         'ad_updated_successfully'=>'تم تعديل الاعلان بنجاح',
         'ad_deleted_successfully'=>'تم حذف الاعلان بنجاح',
+        'ad_is_closed_successfully'=>'تم إغلاق الاعلان بنجاح',
         'contract_created_successfully'=>'تم اضافة العقد ',
         'driver_finish_order' => "تم انهاء الطلب من قبل الكابتن",
         'client_finish_trip' => "تم انهاء الرحلة من قبل العميل",

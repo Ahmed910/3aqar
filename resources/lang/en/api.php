@@ -24,6 +24,7 @@ return[
 
         'plz_complete_register'=>'plz complete register',
         'ad_deleted_successfully'=>'ad deleted successfully',
+        'ad_is_closed_successfully'=>'ad is closed successfully',
         'plz_wait_for_interview_result'=>'plz_wait_for_interview_result',
          'contract_created_successfully'=>'contract created successfully',
         'childern_delivered_successfully'=>'childern delivered successfully and booking status changed',

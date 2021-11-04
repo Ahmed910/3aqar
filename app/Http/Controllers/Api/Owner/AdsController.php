@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Owner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Owner\Ad\CreateAdRequest;
 use App\Http\Requests\Api\Owner\AdRequest;
+use App\Http\Requests\Api\Owner\Categories\CategoryTypeRequest;
 use App\Http\Resources\Api\Ads\AdDataResource;
 use App\Http\Resources\Api\Owner\Ads\AdResource;
 use App\Models\Ad;
@@ -37,6 +38,23 @@ class AdsController extends Controller
     {
        $ads = Ad::owner()->latest()->paginate(50);
        return AdDataResource::collection($ads)->additional(['status'=>'success','message'=>'']);
+    }
+
+    public function getDetailsForAdAndSimilars($id)
+    {
+        $ad = Ad::findOrFail($id);
+        $data['current_ad'] = new AdResource($ad);
+        $ads =Ad::where('id','!=',$id)->where('ad_type',$ad->ad_type)->inRandomOrder()->take(2)->get();
+        $data['ads']=AdDataResource::collection($ads); 
+        return response()->json(['data'=>$data,'status'=>'success','message'=>'']);
+    }
+
+    public function closeAd($id)
+    {
+        $ad = Ad::findOrFail($id);
+        $ad->update(['is_closed'=>true]);
+        return response()->json(['data'=>null,'status'=>'success','message'=>trans('api.messages.ad_is_closed_successfully')]);
+
     }
 
 
