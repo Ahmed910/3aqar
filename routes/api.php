@@ -23,8 +23,11 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         Route::post('verify', 'AuthController@confirm');
 
         Route::post('send_code','AuthController@sendCode');
-
+        Route::get('get_mowthqs/{id?}','MowthqController@getmowthqs');
         Route::post('check_code', "AuthController@checkCode");
+        Route::prefix('contract')->group(function () {
+            Route::post('add_contract','ContractController@createContract');
+        });
 
         Route::post('reset_password', "AuthController@resetPassword");
         Route::post('update_location', "UserController@updateUserLocation");
@@ -107,8 +110,10 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
       //  Route::get('cancel_reasons', "HelpController@getCancelReasons")->middleware('auth:api');
         // App Ad
        // Route::get('app_ads', "HelpController@getAppAd")->middleware('auth:api');
-        // City
-        Route::get('cities/{country_id}', "CountryController@show");
+        // District
+        Route::get('districts', "CountryController@show");
+        Route::get('cities/{id}', "CountryController@getCities");
+
         // About
         Route::get('about', 'HomeController@getAbout');
 

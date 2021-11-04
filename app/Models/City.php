@@ -15,9 +15,9 @@ class City extends Model implements TranslatableContract
     public $translatedAttributes = ['name'];
 
 
-    public function country()
+    public function district()
     {
-    	return $this->belongsTo(Country::class);
+    	return $this->belongsTo(District::class);
     }
 
     public function users()

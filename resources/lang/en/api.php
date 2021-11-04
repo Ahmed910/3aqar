@@ -25,7 +25,7 @@ return[
         'plz_complete_register'=>'plz complete register',
         'ad_deleted_successfully'=>'ad deleted successfully',
         'plz_wait_for_interview_result'=>'plz_wait_for_interview_result',
-
+         'contract_created_successfully'=>'contract created successfully',
         'childern_delivered_successfully'=>'childern delivered successfully and booking status changed',
         'phone_is_used_before' => 'phone is used before',
         'you_must_be_accepted_from_adminstration_to_complete_register'=>'you must be accepted from adminstration to complete register',

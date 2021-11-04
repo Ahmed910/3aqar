@@ -13,10 +13,15 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
+        // Schema::create('cities', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->timestamps();
+        // });
+
         Schema::create('cities', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('country_id')->nullable();
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->uuid('district_id')->nullable();
+            $table->foreign('district_id')->references('id')->on('districts')->onDelete('cascade');
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->string('location')->nullable();
@@ -44,7 +49,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('city_translations');
         Schema::dropIfExists('cities');
     }
 }

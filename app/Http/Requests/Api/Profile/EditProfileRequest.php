@@ -31,10 +31,7 @@ class EditProfileRequest extends ApiMasterRequest
            'phone'    => 'required|numeric|digits_between:5,20|unique:users,phone,'.$user,
            'is_infected' => 'nullable|in:0,1',
            'image'    => 'nullable|image|mimes:jpg,jpeg,png',
-           'identity_number' => 'nullable|numeric|digits_between:5,25|unique:users,identity_number,'.$user,
-           'date_of_birth' => 'nullable|date|before:'.date("Y-m-d"),
-           'date_of_birth_hijri' => 'nullable|date|date_format:Y-m-d',
-           'driver_type' => 'nullable|in:delivery,ride',
+           'phone'    => 'required|numeric|digits_between:5,20|unique:users,whatsapp,'.$user,
            'country_id' => 'nullable|exists:countries,id,deleted_at,NULL',
            'city_id' => 'nullable|exists:cities,id,deleted_at,NULL',
         ];

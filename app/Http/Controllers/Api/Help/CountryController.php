@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Help;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\Help\{CountryResource , CityResource};
-use App\Models\{Country , City};
+use App\Http\Resources\Api\Help\{CountryResource , CityResource, DistrictResource};
+use App\Models\{Country , City, District};
 
 class CountryController extends Controller
 {
@@ -20,9 +20,16 @@ class CountryController extends Controller
         return CountryResource::collection($countries)->additional(['status' => 'success','message'=>'']);
     }
 
-    public function show($id)
+    public function show()
     {
-        $cities = City::where('country_id',$id)->latest()->get();
+        $country = Country::first();
+        $districts = District::where('country_id',$country->id)->latest()->get();
+        return DistrictResource::collection($districts)->additional(['status' => 'success','message'=>'']);
+    }
+
+    public function getCities($id)
+    {
+        $cities = City::where('district_id',$id)->latest()->get();
         return CityResource::collection($cities)->additional(['status' => 'success','message'=>'']);
     }
 

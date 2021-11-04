@@ -55,9 +55,11 @@ class Country extends Model implements TranslatableContract
     	return $this->morphOne(AppMedia::class,'app_mediaable');
     }
 
-    public function cities()
+  
+
+    public function districts()
     {
-    	return $this->hasMany(City::class);
+    	return $this->hasMany(District::class);
     }
 
     public function users()
