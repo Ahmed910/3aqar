@@ -23,6 +23,8 @@ class AdDataResource extends JsonResource
             'id'=>$this->id,
             'category' => new CategoriesNameResource($this->category),
             'features'=>AdFeatureResource::collection($this->ad_features),
+            'lat'=>$this->lat,
+            'lng'=>$this->lng,
             'address'=>$this->address,
             'price'=>(float)$this->price,
             'images'=>ImageResource::collection($this->media),

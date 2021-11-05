@@ -45,7 +45,7 @@ class AdsController extends Controller
         $ad = Ad::findOrFail($id);
         $data['current_ad'] = new AdResource($ad);
         $ads =Ad::where('id','!=',$id)->where('ad_type',$ad->ad_type)->inRandomOrder()->take(2)->get();
-        $data['ads']=AdDataResource::collection($ads); 
+        $data['ads']=AdDataResource::collection($ads);
         return response()->json(['data'=>$data,'status'=>'success','message'=>'']);
     }
 
@@ -144,7 +144,7 @@ class AdsController extends Controller
         try {
 
            $ad = Ad::findOrFail($ad_id);
-           $ad->update($ad_data+['user_id'=>auth('api')->id()]);
+           $ad->update($ad_data+['user_id'=>auth('api')->id(),'last_updated_at'=>now()]);
            $ad->features()->sync($arr);
            switch($request->ad_type)
            {

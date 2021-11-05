@@ -48,6 +48,8 @@ class CreateAdRequest extends ApiMasterRequest
             'advertiser_relationship_with_aqar'=>'required|string',
             'feature'=>$image_validation,
             'images'=>$image_validation,
+            'district_id'=>'nullable|exists:districts,id',
+            'city_id'=>'nullable|exists:cities,id',
             'images.*'         => 'image|mimes:png,jpg,jpeg,gif',
             'feature.*.feature_id' => 'integer|exists:features,id',
             'feature.*.value' => $value,

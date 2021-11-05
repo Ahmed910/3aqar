@@ -102,6 +102,16 @@ class Ad extends Model
         return $this->hasOne(AdSale::class,'ad_id');
     }
 
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+
     // Scopes
 
     public function scopeOwner($query)
