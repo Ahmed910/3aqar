@@ -25,7 +25,7 @@
                     <tr class="{{ $ad->id }} text-center">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $ad->type }}</td>
-                        <td>{{ @$ad->scopeOwner->fullname}}</td>
+                        <td>{{ @$ad->user->fullname}}</td>
                         <td>{{ @$ad->category->name_ar}}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $ad->created_at->format("Y-m-d") }}</div>
