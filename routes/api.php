@@ -61,6 +61,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::get('get_categories','CategoryController@getCategories');
             Route::get('get_features_by_category/{category_id}','CategoryController@getFeaturesByCategory');
             Route::apiResource('ad', AdsController::class);
+            Route::get('get_ad_by_city/{city_id}','AdsController@getAdByCity');
 
            Route::get('get_all_ads','AdsController@getAllAds');
            Route::get('close_ad/{id}','AdsController@closeAd');
