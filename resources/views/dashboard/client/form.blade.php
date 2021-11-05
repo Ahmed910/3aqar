@@ -73,6 +73,12 @@
             {!! Form::email('email', null, ['class' => 'form-control' ,"id" => "email-id-column", 'placeholder' => trans('dashboard.general.email')]) !!}
         </div>
     </div>
+       <div class="col-12">
+        <div class="form-group">
+            <label for="email-id-column">{{ trans('dashboard.general.whatsapp') }}</label>
+            {!! Form::number('whatsapp', null, ['class' => 'form-control' ,"id" => "whatsapp-id-column", 'placeholder' => trans('dashboard.general.whatsapp')]) !!}
+        </div>
+    </div>
 
     <div class="form-group col-12">
         <label class="form-label" for="modern-active_state">

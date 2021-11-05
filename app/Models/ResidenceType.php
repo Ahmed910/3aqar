@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ResidenceType extends Model
 {
     use HasFactory;
+    protected $guarded = ['created_at','updated_at'];
 }
