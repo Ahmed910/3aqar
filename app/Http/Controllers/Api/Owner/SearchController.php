@@ -79,7 +79,13 @@ class SearchController extends Controller
             });
         })->when(($request->lowest_price && $request->highest_price), function ($q) use ($request) {
             $q->whereBetween('price', [$request->lowest_price, $request->highest_price]);
-        })->when($request->frontage_id, function ($q) use ($request) {
+        })->when($request->district_id, function ($q) use ($request) {
+                $q->where('district_id',$request->district_id);
+        })
+        ->when($request->city_id, function ($q) use ($request) {
+            $q->where('city_id',$request->city_id);
+          })
+        ->when($request->frontage_id, function ($q) use ($request) {
             $q->where('frontage_id', $request->frontage_id);
         })->when($request->residence_type_id, function ($q) use ($request) {
             $q->where('residence_type_id', $request->residence_type_id);

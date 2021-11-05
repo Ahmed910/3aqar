@@ -41,6 +41,8 @@ class FilterAdsUsingFeaturesRequest extends ApiMasterRequest
             'residence_type_id'=>'nullable|exists:residence_types,id',
             'population_type_id'=>'nullable|exists:population_types,id',
             'period_id'=>'nullable|exists:periods,id',
+            'district_id'=>'nullable|exists:districts,id',
+            'city_id'=>'nullable|exists:cities,id',
             'round_type'=>'nullable|in:ground,upstairs',
         ];
     }
