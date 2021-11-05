@@ -229,6 +229,124 @@
             </li>
             @endif
 
+               {{-- feature --}}
+            @if (auth()->user()->hasPermissions('feature'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='package'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.feature.features') !!}">
+                        {!! trans('dashboard.feature.feature') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.feature.index' || request()->route()->getName() == 'dashboard.feature.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.feature.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.feature.feature') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @if (auth()->user()->hasPermissions('feature','store'))
+                    <li class="{{ request()->route()->getName() == 'dashboard.feature.create' || request()->route()->getName() == 'dashboard.feature.edit' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.feature.create') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.feature.add_feature') !!}">
+                                {!! trans('dashboard.general.add_new') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
+
+                 {{-- frontage --}}
+            @if (auth()->user()->hasPermissions('frontage'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='package'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.frontage.frontages') !!}">
+                        {!! trans('dashboard.frontage.frontage') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.frontage.index' || request()->route()->getName() == 'dashboard.frontage.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.frontage.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.frontage.frontage') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @if (auth()->user()->hasPermissions('frontage','store'))
+                    <li class="{{ request()->route()->getName() == 'dashboard.frontage.create' || request()->route()->getName() == 'dashboard.frontage.edit' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.frontage.create') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.frontage.add_frontage') !!}">
+                                {!! trans('dashboard.general.add_new') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
+                {{-- category --}}
+              @if (auth()->user()->hasPermissions('category'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='package'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.category.categories') !!}">
+                        {!! trans('dashboard.category.category') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.category.index' || request()->route()->getName() == 'dashboard.category.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.category.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.category.category') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @if (auth()->user()->hasPermissions('category','store'))
+                    <li class="{{ request()->route()->getName() == 'dashboard.category.create' || request()->route()->getName() == 'dashboard.category.edit' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.category.create') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.category.add_category') !!}">
+                                {!! trans('dashboard.general.add_new') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
+
+
+      {{-- ad --}}
+              @if (auth()->user()->hasPermissions('ad'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='package'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.ad.ads') !!}">
+                        {!! trans('dashboard.ad.ad') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.ad.index' || request()->route()->getName() == 'dashboard.ad.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.ad.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.ad.ad') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+           
+                </ul>
+            </li>
+            @endif
 
         </ul>
     </div>

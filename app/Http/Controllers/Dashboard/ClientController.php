@@ -105,13 +105,7 @@ class ClientController extends Controller
          if (!request()->ajax()) {
              $client = User::where('user_type','client')->findOrFail($id);
              $data['client'] = $client;
-             $data['orders'] = $client->clientOrders()->latest()->paginate(30);
-             $data['points'] = $client->userPoints()->latest()->paginate(30);
 
-             $data['other_clients'] = User::where('user_type','client')->where('id',"<>",$client->id)->inRandomOrder()->take(5)->get();
-             $data['wallet_transfers'] = MoneyTransfer::where('transfer_to_id',$client->id)->orWhere('transfer_from_id',$client->id)->latest()->paginate(30);
-             $data['wallet_transactions'] = WalletTransaction::where('user_id',$client->id)->orWhere('added_by_id',$client->id)->latest()->paginate(30);
-             $data['total_clients'] = User::where('user_type','client')->count();
              return view('dashboard.client.show',$data);
          }
      }

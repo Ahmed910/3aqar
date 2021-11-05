@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PopulationType extends Model
 {
     use HasFactory;
+    protected $guarded = ['created_at','updated_at'];
 }

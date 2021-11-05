@@ -32,7 +32,7 @@ class ClientRequest extends FormRequest
 
         return [
             'fullname' => 'required|string|between:2,100',
-            'email' => 'required|email|unique:users,email,' . $client,
+            'email' => 'nullable|email|unique:users,email,' . $client,
             'phone' => 'required|numeric|digits_between:5,20|starts_with:9665,05|unique:users,phone,' . $client,
             'whatsapp' => 'nullable|numeric|digits_between:5,20|unique:users,whatsapp,' . $client,
             // 'identity_number' => 'required|numeric|unique:users,identity_number,' . $client,

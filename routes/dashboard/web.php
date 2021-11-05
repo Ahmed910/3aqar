@@ -29,6 +29,14 @@ Route::group(
             Route::resource('country','CountryController');
             // City
             Route::resource('city','CityController');
+            // feture
+            Route::resource('feature','FeatureController');
+            // feture
+            Route::resource('frontage','FrontageController');
+            // category
+            Route::resource('category','CategoryController');
+             // ad
+             Route::resource('ad','AdController')->only('index','show','destroy');
             // ======================Setting====================================
             // Notification
             Route::resource('notification','NotificationController')->only('index','show','store');
