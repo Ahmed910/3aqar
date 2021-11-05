@@ -16,6 +16,8 @@ class AdFeatureResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'=>$this->feature->id,
+            'data_type'=>$this->feature->data_type,
             'name'=>$this->feature->name,
             'value'=>$this->value
         ];

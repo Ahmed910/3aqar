@@ -19,6 +19,8 @@ class DistrictSeeder extends Seeder
         $country = Country::first();
         $district= District::create([
             'country_id'=>$country->id,
+            'lat'=>'30.33',
+            'lng'=>'30.34'
          ]);
 
          DistrictTranslation::create(['name'=>'المنطقة الشمالية','district_id'=>$district->id,'locale'=>'ar']);
@@ -26,6 +28,8 @@ class DistrictSeeder extends Seeder
 
          $district1= District::create([
             'country_id'=>$country->id,
+            'lat'=>'32.33',
+            'lng'=>'32.35'
          ]);
 
          DistrictTranslation::create(['name'=>'المنطقة الجنوبية','district_id'=>$district1->id,'locale'=>'ar']);
@@ -34,6 +38,8 @@ class DistrictSeeder extends Seeder
 
          $district2= District::create([
             'country_id'=>$country->id,
+            'lat'=>'34.33',
+            'lng'=>'34.35'
          ]);
 
          DistrictTranslation::create(['name'=>'المنطقة الشمالية الجنوبية','district_id'=>$district2->id,'locale'=>'ar']);
