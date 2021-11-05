@@ -34,9 +34,7 @@
                             <a onclick="deleteItem('{{ $ad->id }}' , '{{ route('dashboard.ad.destroy',$ad->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
                                 <i data-feather='trash-2' class="font-medium-3"></i>
                             </a>
-                            <a href="{!! route('dashboard.ad.edit',$ad->id) !!}" class="text-primary mr-2" title="{!! trans('dashboard.general.edit') !!}">
-                                <i data-feather='edit' class="font-medium-3"></i>
-                            </a>
+                            
                         </td>
                     </tr>
                     @endforeach
