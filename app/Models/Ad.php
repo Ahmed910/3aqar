@@ -57,6 +57,11 @@ class Ad extends Model
 
 
     // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class , 'user_id');
+    }
+
     public function media()
     {
     	return $this->morphMany(AppMedia::class,'app_mediaable');
