@@ -93,6 +93,17 @@
                                     </div>
                                 </div>
                             </div>
+                               <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.contract') !!}</label>
+                                    <div class="col-lg-9">
+                                        <div class="custom-file">
+                                            <input type="file" name="video_url" class="custom-file-input" >
+                                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
                         </div>
                         <div class="tab-pane" id="mail-fill" role="tabpanel" aria-labelledby="mail-tab-fill">
                             <div class="form-group mt-4">
