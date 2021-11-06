@@ -33,7 +33,7 @@
                         <td>{{ $country->name }}</td>
                         <td>{{ $country->nationality }}</td>
                         <td>{{ $country->phonecode }}</td>
-                        <td>{{ $country->cities->count() }}</td>
+                        <td>{{ @$country->cities->count() }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $country->created_at->format("Y-m-d") }}</div>
                         </td>
