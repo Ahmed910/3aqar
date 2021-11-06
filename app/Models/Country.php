@@ -16,6 +16,7 @@ class Country extends Model implements TranslatableContract
 
     protected static function boot()
     {
+        parent::boot();
         static::saved(function ($data) {
             if (request()->hasFile('image')) {
                 if ($data->media()->exists()) {
