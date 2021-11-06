@@ -162,7 +162,7 @@
         }
     })
 
-      var ClientChart = function() {
+ var ClientChart = function() {
         var _componentEcharts = function() {
             if (typeof echarts == 'undefined') {
                 console.warn('Warning - echarts.min.js is not loaded.');
@@ -405,5 +405,7 @@
             }
         }
     }();
+
 </script>
+
 @endsection
