@@ -23,6 +23,7 @@ class HomeController extends Controller
         $about = app()->getLocale() == 'ar' ? 'meta_ar' : 'meta_en';
         $data = [
             'about' => setting($about) != false ? setting($about) : '',
+            'video_url'=> setting('video_url') != false ? setting('video_url') :''
         ];
         return response()->json(['data' => $data , 'status' => 'success' , 'message' => '']);
     }

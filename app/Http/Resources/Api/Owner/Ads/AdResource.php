@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\Api\Owner\Ads;
 
+use App\Http\Resources\Api\Help\CityResource;
+use App\Http\Resources\Api\Help\DistrictResource;
 use App\Http\Resources\Api\Owner\Categories\CategoriesNameResource;
 use App\Http\Resources\Api\Owner\Categories\CategoryFeaturesResource;
 use App\Http\Resources\Api\Owner\Categories\CategoryFrontagesResource;
@@ -38,8 +40,9 @@ class AdResource extends JsonResource
             'desc'=>$this->desc,
             'status'=>$this->status,
             'last_updated_at'=>now()->diffInDays($this->last_updated_at),
-            'advertiser'=>new UserDataResource($this->advertiser)
-
+            'advertiser'=>new UserDataResource($this->advertiser),
+             'city'=> new CityResource($this->city),
+             'district'=>new DistrictResource($this->district)
 
         ];
     }
