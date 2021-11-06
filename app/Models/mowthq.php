@@ -11,6 +11,7 @@ class mowthq extends Model
     
     protected static function boot()
     {
+        parent::boot();
         static::saved(function ($data) {
             if (request()->hasFile('image')) {
                 if ($data->media()->exists()) {
