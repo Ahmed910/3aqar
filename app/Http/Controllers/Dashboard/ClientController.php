@@ -17,7 +17,7 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $query = User::where('user_type' , 'client')->when($request->status,function ($q) use($request) {
+        $query = User::when($request->status,function ($q) use($request) {
             switch ($request->status) {
                 case 'deactive':
                     $q->where('is_active',0);
