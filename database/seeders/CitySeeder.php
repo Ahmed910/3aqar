@@ -21,6 +21,8 @@ class CitySeeder extends Seeder
 
             $city= City::create([
                 'district_id'=>$district1->id,
+                'lat'=>'34.33',
+                'lng'=>'34.35'
              ]);
 
             CityTranslation::create(['name'=>'جدة','city_id'=>$city->id,'locale'=>'ar']);
@@ -28,6 +30,8 @@ class CitySeeder extends Seeder
 
             $city1= City::create([
                 'district_id'=>$district1->id,
+                'lat'=>'35.36',
+                'lng'=>'35.334'
              ]);
 
             CityTranslation::create(['name'=>'الرياض','city_id'=>$city1->id,'locale'=>'ar']);
@@ -35,6 +39,8 @@ class CitySeeder extends Seeder
 
             $city2= City::create([
                 'district_id'=>$district2->id,
+                'lat'=>'45.838',
+                'lng'=>'45.949'
              ]);
 
             CityTranslation::create(['name'=>'الدمام','city_id'=>$city2->id,'locale'=>'ar']);

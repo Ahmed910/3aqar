@@ -17,6 +17,8 @@ class CityResource extends JsonResource
         return [
             'id' => (string)$this->id,
             'name' => $this->name,
+            'lat'=>$this->lat,
+            'lng'=>$this->lng,
             'district'=>new DistrictResource($this->district)
         ];
     }
