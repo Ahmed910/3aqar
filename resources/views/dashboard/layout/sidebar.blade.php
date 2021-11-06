@@ -167,6 +167,37 @@
                 </ul>
             </li>
             @endif
+            {{-- district --}}
+           @if (auth()->user()->hasPermissions('district'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='flag'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.district.districts') !!}">
+                        {!! trans('dashboard.district.districts') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.district.index' || request()->route()->getName() == 'dashboard.district.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.district.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.district.districts') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @if (auth()->user()->hasPermissions('district','store'))
+                    <li class="{{ request()->route()->getName() == 'dashboard.district.create' || request()->route()->getName() == 'dashboard.district.edit' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.district.create') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.district.add_district') !!}">
+                                {!! trans('dashboard.general.add_new') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
             {{-- City --}}
             @if (auth()->user()->hasPermissions('city'))
             <li class=" nav-item">
