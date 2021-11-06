@@ -68,7 +68,7 @@
                 },
                 {
                     class: 'text-center',
-                    data: "whatsapp"
+                    data: "email"
                 },
                 {
                     class: 'text-center',
