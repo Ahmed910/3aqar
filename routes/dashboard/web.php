@@ -35,6 +35,8 @@ Route::group(
             Route::resource('frontage','FrontageController');
             // category
             Route::resource('category','CategoryController');
+            // mowthq
+            Route::resource('mowthq','MowthqController');
              // ad
              Route::resource('ad','AdController')->only('index','show','destroy');
             // ======================Setting====================================

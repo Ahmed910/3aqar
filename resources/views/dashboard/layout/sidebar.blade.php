@@ -348,6 +348,38 @@
             </li>
             @endif
 
+            {{-- mowthq --}}
+        @if (auth()->user()->hasPermissions('mowthq'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='package'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.mowthq.mowthqs') !!}">
+                        {!! trans('dashboard.mowthq.mowthq') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.mowthq.index' || request()->route()->getName() == 'dashboard.mowthq.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.mowthq.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.mowthq.mowthq') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @if (auth()->user()->hasPermissions('mowthq','store'))
+                    <li class="{{ request()->route()->getName() == 'dashboard.mowthq.create' || request()->route()->getName() == 'dashboard.mowthq.edit' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.mowthq.create') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.mowthq.add_mowthq') !!}">
+                                {!! trans('dashboard.general.add_new') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
+
         </ul>
     </div>
 </div>

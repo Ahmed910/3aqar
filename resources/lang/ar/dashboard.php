@@ -912,6 +912,18 @@ return [
     'edit_frontage' => 'تعديل بيانات الوجهات',
 
   ],
+  'mowthq' => [
+    'mowthq' => 'المواثقين',
+    'mowthqs' => 'المواثقين',
+    'fullname' => 'الاسم ',
+    'city' => 'الدوله',
+    'phone' => 'رقم الجوال',
+    'add_mowthq' => 'إضافة مواثق',
+    'edit_mowthq' => 'تعديل بيانات مواثق',
+    'image' => 'الصوره',
+    'name' => 'الاسم',
+
+  ],
   'category' => [
     'category' => 'الاقسام',
     'categories' => 'الاقسام',
