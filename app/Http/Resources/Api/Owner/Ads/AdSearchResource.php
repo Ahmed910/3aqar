@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources\Api\Owner\Ads;
 
+use App\Http\Resources\Api\Help\CityResource;
+use App\Http\Resources\Api\Help\DistrictResource;
 use App\Http\Resources\Api\Owner\Categories\CategoriesNameResource;
 use App\Http\Resources\Api\User\UserDataResource;
 use App\Http\Resources\Api\User\UserProfileResource;
