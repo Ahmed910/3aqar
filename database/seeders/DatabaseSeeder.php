@@ -30,13 +30,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            PeriodSeeder::class,
-            FrontageSeeder::class,
-            ResidenceTypeSeeder::class,
-            FeatureSeeder::class,
-            PopulationTypeSeeder::class,
-            CategorySeeder::class,
-
+            // PeriodSeeder::class,
+            // FrontageSeeder::class,
+            // ResidenceTypeSeeder::class,
+            // FeatureSeeder::class,
+            // PopulationTypeSeeder::class,
+            // CategorySeeder::class,
+            BankAccountSeeder::class,
         ]);
     }
 }
