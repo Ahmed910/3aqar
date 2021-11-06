@@ -380,6 +380,29 @@
             </li>
             @endif
 
+        {{-- contract --}}
+        @if (auth()->user()->hasPermissions('contract'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='package'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.contract.contracts') !!}">
+                        {!! trans('dashboard.contract.contract') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.contract.index' || request()->route()->getName() == 'dashboard.contract.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.contract.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.contract.contract') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+           
+                </ul>
+            </li>
+            @endif
+
         </ul>
     </div>
 </div>

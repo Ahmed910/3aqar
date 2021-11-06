@@ -924,6 +924,17 @@ return [
     'name' => 'الاسم',
 
   ],
+  'contract' => [
+    'contract' => 'العقود',
+    'contracts' => 'العقود',
+    'phone_for_citizen' => 'رقم المواطن ',
+    'phone_for_owner' => 'رقم المالك',
+    'iban_num' => 'رقم الاى بان',
+    'aqar_number' => 'رقم العقار',
+    'aqar_address' => 'عنوان العقار',
+ 
+
+  ],
   'category' => [
     'category' => 'الاقسام',
     'categories' => 'الاقسام',

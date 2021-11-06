@@ -68,17 +68,11 @@
                 },
                 {
                     class: 'text-center',
-                    data: "email"
+                    data: "whatsapp"
                 },
                 {
                     class: 'text-center',
                     data: "phone"
-                },
-                {
-                    class: 'text-center',
-                    data: function(info) {
-                        return `<div class="badge badge-success font-medium-1 badge-md mr-1 mb-1">${info.finished_order_count}</div>`;
-                    }
                 },
                 {
                     class: 'text-center',

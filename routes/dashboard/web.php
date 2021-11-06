@@ -39,6 +39,8 @@ Route::group(
             Route::resource('mowthq','MowthqController');
              // ad
              Route::resource('ad','AdController')->only('index','show','destroy');
+             // contract
+             Route::resource('contract','ContractController')->only('index','show','destroy');
             // ======================Setting====================================
             // Notification
             Route::resource('notification','NotificationController')->only('index','show','store');
