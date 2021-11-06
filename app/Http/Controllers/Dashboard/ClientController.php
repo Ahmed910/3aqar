@@ -17,7 +17,7 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $query = User::where('user_type' , 'client')->when($request->status,function ($q) use($request) {
+        $query = User::where('user_type' , 'owner')->when($request->status,function ($q) use($request) {
             switch ($request->status) {
                 case 'deactive':
                     $q->where('is_active',0);
@@ -80,7 +80,7 @@ class ClientController extends Controller
         if (!request()->ajax()) {
             \DB::beginTransaction();
             try {
-                $client= User::create(array_except($request->validated(),['country_id','city_id'])+['user_type' => 'client' , 'verified_code' => ($request->is_active ? null : 1111) , 'referral_code' => generate_unique_code(8,'\\App\\Models\\User','referral_code','alpha_numbers','lower')]);
+                $client= User::create(array_except($request->validated(),['country_id','city_id'])+['user_type' => 'owner' , 'verified_code' => ($request->is_active ? null : 1111) , 'referral_code' => generate_unique_code(8,'\\App\\Models\\User','referral_code','alpha_numbers','lower')]);
                 $client->profile()->create(array_only($request->validated(),['country_id','city_id'])+['added_by_id' => auth()->id()]);
                 \DB::commit();
                 if ($client->is_active) {

@@ -833,6 +833,7 @@ return [
     'write_your_location_address' => 'الموقع',
   ],
   'messages' => [
+    'welcome_text' => 'اهلا وسهلا بك اخى الكريم',
       'success_add' => 'تمت الاضافة بنجاح',
       'success_send' => 'تم الارسال بنجاح',
       'success_update' => 'تم التعديل بنجاح',
@@ -912,6 +913,29 @@ return [
     'edit_frontage' => 'تعديل بيانات الوجهات',
 
   ],
+  'mowthq' => [
+    'mowthq' => 'المواثقين',
+    'mowthqs' => 'المواثقين',
+    'fullname' => 'الاسم ',
+    'city' => 'الدوله',
+    'phone' => 'رقم الجوال',
+    'add_mowthq' => 'إضافة مواثق',
+    'edit_mowthq' => 'تعديل بيانات مواثق',
+    'image' => 'الصوره',
+    'name' => 'الاسم',
+
+  ],
+  'contract' => [
+    'contract' => 'العقود',
+    'contracts' => 'العقود',
+    'phone_for_citizen' => 'رقم المواطن ',
+    'phone_for_owner' => 'رقم المالك',
+    'iban_num' => 'رقم الاى بان',
+    'aqar_number' => 'رقم العقار',
+    'aqar_address' => 'عنوان العقار',
+ 
+
+  ],
   'category' => [
     'category' => 'الاقسام',
     'categories' => 'الاقسام',
@@ -936,6 +960,8 @@ return [
     'ads' => 'اعلانات',
     'name_en' => 'الاسم باللفه الانجليزيه',
     'name_ar' => 'الاسم باللغه العربيه',
+    'ad_sale' => 'اعلانات البيع',
+    'ad_rent' => 'اعلانات الايجار',
     
     'user'=>'الغنيل',
     'category'=>'القسم',

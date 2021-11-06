@@ -70,37 +70,7 @@
                 </ul>
             </li>
             @endif
-            {{-- Drivers --}}
-            @if (auth()->user()->hasPermissions('driver'))
-            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
-                    <i data-feather='users'></i>
-                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.driver.drivers') !!}">
-                        {!! trans('dashboard.driver.drivers') !!}
-                    </span>
-                </a>
-                <ul class="menu-content">
-                    <li class="{{ request()->route()->getName() == 'dashboard.driver.index' || request()->route()->getName() == 'dashboard.driver.show' ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href="{!! route('dashboard.driver.index') !!}">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item" data-i18n="{!! trans('dashboard.driver.drivers') !!}">
-                                {!! trans('dashboard.general.show_all') !!}
-                            </span>
-                        </a>
-                    </li>
-                    @if (auth()->user()->hasPermissions('driver','store'))
-                    <li class="{{ request()->route()->getName() == 'dashboard.driver.create' || request()->route()->getName() == 'dashboard.driver.edit' ? 'active' : '' }}">
-                        <a class="d-flex align-items-center" href="{!! route('dashboard.driver.create') !!}">
-                            <i data-feather="circle"></i>
-                            <span class="menu-item" data-i18n="{!! trans('dashboard.driver.add_driver') !!}">
-                                {!! trans('dashboard.general.add_new') !!}
-                            </span>
-                        </a>
-                    </li>
-                    @endif
-                </ul>
-            </li>
-            @endif
+       
             {{-- Admins --}}
             @if (auth()->user()->hasPermissions('manager'))
             <li class=" nav-item">
@@ -170,7 +140,7 @@
             @if (auth()->user()->hasPermissions('country'))
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather='package'></i>
+                    <i data-feather='flag'></i>
                     <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.country.countries') !!}">
                         {!! trans('dashboard.country.countries') !!}
                     </span>
@@ -201,7 +171,7 @@
             @if (auth()->user()->hasPermissions('city'))
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather='package'></i>
+                    <i data-feather='flag'></i>
                     <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.city.cities') !!}">
                         {!! trans('dashboard.city.cities') !!}
                     </span>
@@ -233,7 +203,7 @@
             @if (auth()->user()->hasPermissions('feature'))
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather='package'></i>
+                    <i data-feather='menu'></i>
                     <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.feature.features') !!}">
                         {!! trans('dashboard.feature.feature') !!}
                     </span>
@@ -265,7 +235,7 @@
             @if (auth()->user()->hasPermissions('frontage'))
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather='package'></i>
+                    <i data-feather='grid'></i>
                     <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.frontage.frontages') !!}">
                         {!! trans('dashboard.frontage.frontage') !!}
                     </span>
@@ -296,7 +266,7 @@
               @if (auth()->user()->hasPermissions('category'))
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather='package'></i>
+                    <i data-feather='file-text'></i>
                     <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.category.categories') !!}">
                         {!! trans('dashboard.category.category') !!}
                     </span>
@@ -326,10 +296,10 @@
 
 
       {{-- ad --}}
-              @if (auth()->user()->hasPermissions('ad'))
+         @if (auth()->user()->hasPermissions('ad'))
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather='package'></i>
+                   <i data-feather='activity'></i>
                     <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.ad.ads') !!}">
                         {!! trans('dashboard.ad.ad') !!}
                     </span>
@@ -339,6 +309,61 @@
                         <a class="d-flex align-items-center" href="{!! route('dashboard.ad.index') !!}">
                             <i data-feather="circle"></i>
                             <span class="menu-item" data-i18n="{!! trans('dashboard.ad.ad') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+           
+                </ul>
+            </li>
+            @endif
+
+            {{-- mowthq --}}
+        @if (auth()->user()->hasPermissions('mowthq'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                    <i data-feather='users'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.mowthq.mowthqs') !!}">
+                        {!! trans('dashboard.mowthq.mowthq') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.mowthq.index' || request()->route()->getName() == 'dashboard.mowthq.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.mowthq.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.mowthq.mowthq') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @if (auth()->user()->hasPermissions('mowthq','store'))
+                    <li class="{{ request()->route()->getName() == 'dashboard.mowthq.create' || request()->route()->getName() == 'dashboard.mowthq.edit' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.mowthq.create') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.mowthq.add_mowthq') !!}">
+                                {!! trans('dashboard.general.add_new') !!}
+                            </span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
+            </li>
+            @endif
+
+        {{-- contract --}}
+        @if (auth()->user()->hasPermissions('contract'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                   <i data-feather='file-minus'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.contract.contracts') !!}">
+                        {!! trans('dashboard.contract.contract') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.contract.index' || request()->route()->getName() == 'dashboard.contract.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.contract.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.contract.contract') !!}">
                                 {!! trans('dashboard.general.show_all') !!}
                             </span>
                         </a>

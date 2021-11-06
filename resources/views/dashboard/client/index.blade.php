@@ -22,9 +22,8 @@
                                 </th>
                                 <th>{!! trans('dashboard.general.image') !!}</th>
                                 <th>{!! trans('dashboard.general.name') !!}</th>
-                                <th>{!! trans('dashboard.general.email') !!}</th>
+                                <th>{!! trans('dashboard.general.whatsapp') !!}</th>
                                 <th>{!! trans('dashboard.general.phone') !!}</th>
-                                <th>{!! trans('dashboard.order.finished_order_count') !!}</th>
                                 <th>{!! trans('dashboard.general.added_date') !!}</th>
                                 <th><i data-feather='list'></i></th>
                             </tr>

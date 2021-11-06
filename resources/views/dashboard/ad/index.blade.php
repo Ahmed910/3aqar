@@ -24,9 +24,10 @@
                     @foreach ($ads as $ad)
                     <tr class="{{ $ad->id }} text-center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $ad->type }}</td>
+                        <td>{{ $ad->ad_type }}</td>
                         <td>{{ @$ad->user->fullname}}</td>
-                        <td>{{ @$ad->category->name_ar}}</td>
+                        <td>{{ @$ad->category->name_ar?$ad->category->name_ar:$ad->category->name}}</td>
+                        <td>{{ $ad->price }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $ad->created_at->format("Y-m-d") }}</div>
                         </td>
