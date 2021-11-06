@@ -41,6 +41,8 @@ Route::group(
              Route::resource('ad','AdController')->only('index','show','destroy');
              // contract
              Route::resource('contract','ContractController')->only('index','show','destroy');
+            // bank
+            Route::resource('bank','BankController');
             // ======================Setting====================================
             // Notification
             Route::resource('notification','NotificationController')->only('index','show','store');

@@ -345,7 +345,7 @@
                             </span>
                         </a>
                     </li>
-                    @endif
+            @endif
                 </ul>
             </li>
             @endif
@@ -371,7 +371,30 @@
            
                 </ul>
             </li>
-            @endif
+        @endif
+
+         {{-- bank --}}
+        @if (auth()->user()->hasPermissions('bank'))
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="#">
+                   <i data-feather='file-minus'></i>
+                    <span class="menu-title text-truncate" data-i18n="{!! trans('dashboard.bank.bank') !!}">
+                        {!! trans('dashboard.bank.bank') !!}
+                    </span>
+                </a>
+                <ul class="menu-content">
+                    <li class="{{ request()->route()->getName() == 'dashboard.bank.index' || request()->route()->getName() == 'dashboard.bank.show' ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{!! route('dashboard.bank.index') !!}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item" data-i18n="{!! trans('dashboard.bank.bank') !!}">
+                                {!! trans('dashboard.general.show_all') !!}
+                            </span>
+                        </a>
+                    </li>
+           
+                </ul>
+            </li>
+        @endif
 
         </ul>
     </div>

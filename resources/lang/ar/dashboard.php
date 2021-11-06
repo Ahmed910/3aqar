@@ -925,6 +925,19 @@ return [
     'name' => 'الاسم',
 
   ],
+
+  'bank' => [
+    'bank' => 'البنوك',
+    'banks' => 'البنوك',
+    'iban_number' => 'رقم الاى بان ',
+    'account_number' => 'رقم الحساب',
+    'bank_name' => 'اسم البنك',
+    'add_bank' => 'إضافة بنك',
+    'edit_bank' => 'تعديل بيانات البنك',
+    'image' => 'الصوره',
+    'account_holder_name' => 'المستفيد',
+
+  ],
   'contract' => [
     'contract' => 'العقود',
     'contracts' => 'العقود',
