@@ -35,7 +35,7 @@
                     <div class="avatar bg-light-success p-50 m-0">
                         <div class="avatar-content">
                             <a href="{{ route('dashboard.client.index') }}">
-                                <i class="fa fa-user text-success font-medium-5"></i>
+                                 <i data-feather='users'></i>
                             </a>
                         </div>
                     </div>
@@ -50,13 +50,13 @@
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-warning p-50 m-0">
                         <div class="avatar-content">
-                            <a href="">
-                                <i class="fa fa-car text-success text-warning font-medium-5"></i>
+                            <a href="{{ route('dashboard.ad.index') }}">
+                                <i data-feather='activity'></i>
                             </a>
                         </div>
                     </div>
-                    <h2 class="fw-bolder mt-1">0</h2>
-                    <p class="card-text">{{ trans('dashboard.driver.drivers') }}</p>
+                    <h2 class="fw-bolder mt-1">{{ $ads_count }}</h2>
+                    <p class="card-text">{{ trans('dashboard.ad.ad') }}</p>
                 </div>
                 <div id="line-area-chart-6"></div>
             </div>
@@ -69,13 +69,13 @@
                     <div class="card">
                         <div class="card-header rounded rounded d-flex align-items-start pb-0">
                             <div>
-                                <h2 class="text-bold-700 mb-0">0</h2>
-                                <p>{{ trans('dashboard.provider.providers') }}</p>
+                                <h2 class="text-bold-700 mb-0">{{ $managers_count }}</h2>
+                                <p>{{ trans('dashboard.manager.manager') }}</p>
                             </div>
                             <div class="avatar bg-rgba-success p-50 m-0">
                                 <div class="avatar-content">
                                     <a href="">
-                                        <i class="fas fa-briefcase text-success font-medium-5"></i>
+                                        <i data-feather='users'></i>
                                     </a>
                                 </div>
                             </div>
@@ -86,13 +86,13 @@
                     <div class="card">
                         <div class="card-header rounded rounded d-flex align-items-start pb-0">
                             <div>
-                                <h2 class="text-bold-700 mb-0">0</h2>
-                                <p>{{trans('dashboard.branch.branch_count')}}</p>
+                                <h2 class="text-bold-700 mb-0">{{ $countries_count }}</h2>
+                                <p>{{trans('dashboard.country.country')}}</p>
                             </div>
                             <div class="avatar bg-rgba-warning p-50 m-0">
                                 <div class="avatar-content">
                                     <a href="">
-                                        <i class="fas fa-store text-warning font-medium-5"></i>
+                                         <i data-feather='flag'></i>
                                     </a>
                                 </div>
                             </div>
@@ -103,13 +103,13 @@
                     <div class="card">
                         <div class="card-header rounded rounded d-flex align-items-start pb-0">
                             <div>
-                                <h2 class="text-bold-700 mb-0">{{ $clients_is_active_count }}</h2>
-                                <p>{{ trans('dashboard.general.active_client') }}</p>
+                                <h2 class="text-bold-700 mb-0">{{ $cities_count }}</h2>
+                                <p>{{ trans('dashboard.city.city') }}</p>
                             </div>
                             <div class="avatar bg-rgba-primary p-50 m-0">
                                 <div class="avatar-content">
-                                    <a href="{{ route('dashboard.client.index') }}?status=deactive">
-                                        <i class="fas fa-check-circle text-primary font-medium-5" ></i>
+                                    <a href="{{ route('dashboard.city.index') }}">
+                                         <i data-feather='flag'></i>
                                     </a>
                                 </div>
                             </div>
@@ -120,13 +120,13 @@
                     <div class="card">
                         <div class="card-header rounded rounded d-flex align-items-start pb-0">
                             <div>
-                                <h2 class="text-bold-700 mb-0">{{ $clients_is_inactive_count }}</h2>
-                                <p>{{ trans('dashboard.client.deacive_clients') }}</p>
+                                <h2 class="text-bold-700 mb-0">{{ $features_count }}</h2>
+                                <p>{{ trans('dashboard.feature.feature') }}</p>
                             </div>
                             <div class="avatar bg-rgba-danger p-45 m-0">
                                 <div class="avatar-content">
-                                    <a href="{{ route('dashboard.client.index') }}?status=deactive">
-                                        <i class="fas fa-exclamation-circle text-danger font-medium-5"></i>
+                                    <a href="{{ route('dashboard.feature.index') }}">
+                                        <i data-feather='menu'></i>
                                     </a>
                                 </div>
                             </div>
@@ -137,13 +137,13 @@
                     <div class="card">
                         <div class="card-header rounded rounded d-flex align-items-start pb-0">
                             <div>
-                                <h2 class="text-bold-700 mb-0">{{ $clients_is_ban_count }}</h2>
-                                <p>{{ trans('dashboard.client.banned_clients') }}</p>
+                                <h2 class="text-bold-700 mb-0">{{ $categories_count }}</h2>
+                                <p>{{ trans('dashboard.category.category') }}</p>
                             </div>
                             <div class="avatar bg-rgba-danger p-45 m-0">
                                 <div class="avatar-content">
-                                    <a href="{{ route('dashboard.client.index') }}?status=ban">
-                                        <i class="fas fa-exclamation-circle text-danger font-medium-5"></i>
+                                    <a href="{{ route('dashboard.category.index') }}">
+                                       <i data-feather='file-text'></i>
                                     </a>
                                 </div>
                             </div>
@@ -154,13 +154,13 @@
                     <div class="card">
                         <div class="card-header rounded rounded d-flex align-items-start pb-0">
                             <div>
-                                <h2 class="text-bold-700 mb-0">0</h2>
-                                <p>{{ trans('dashboard.driver.deacive_drivers') }}</p>
+                                <h2 class="text-bold-700 mb-0">{{ $ads_count }}</h2>
+                                <p>{{ trans('dashboard.ad.ad') }}</p>
                             </div>
                             <div class="avatar bg-rgba-danger p-45 m-0">
                                 <div class="avatar-content">
-                                    <a href="">
-                                        <i class="fas fa-exclamation-circle text-danger font-medium-5"></i>
+                                    <a href="{{ route('dashboard.ad.index') }}">
+                                        <i data-feather='activity'></i>
                                     </a>
                                 </div>
                             </div>
@@ -204,127 +204,10 @@
     </div>
     <!--/ Stats Vertical Card -->
     <!-- Line Chart Card -->
-    <div class="row">
-        <div class="col-lg-4 col-sm-6 col-12">
-            <div class="card">
-                <div class="card-header align-items-start pb-0">
-                    <div>
-                        <h2 class="fw-bolder">5</h2>
-                        <p class="card-text">{{trans('dashboard.order.completed')}}</p>
-                    </div>
-                    <div class="avatar bg-light-success p-50">
-                        <div class="avatar-content">
-                            <i class="fa fa-check font-medium-5"></i>
-                        </div>
-                    </div>
-                </div>
-                <div id="line-area-chart-5"></div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-12">
-            <div class="card">
-                <div class="card-header align-items-start pb-0">
-                    <div>
-                        <h2 class="fw-bolder">36</h2>
-                        <p class="card-text">{{trans('dashboard.order.pending')}}</p>
-                    </div>
-                    <div class="avatar bg-light-success p-50">
-                        <div class="avatar-content">
-                            <i class="fa fa-chevron-circle-down font-medium-5"></i>
-                        </div>
-                    </div>
-                </div>
-                <div id="line-area-chart-6"></div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 col-12">
-            <div class="card">
-                <div class="card-header align-items-start pb-0">
-                    <div>
-                        <h2 class="fw-bolder">35</h2>
-                        <p class="card-text">{{trans('dashboard.order.cancelled')}}</p>
-                    </div>
-                    <div class="avatar bg-light-danger p-50">
-                        <div class="avatar-content">
-                            <i class="fa fa-minus-circle font-medium-5"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     <!--/ Line Chart Card -->
     <!-- Stats Horizontal Card -->
-    <div class="row">
-        <div class="col-lg-3 col-sm-6 col-12 animate__animated animate__fadeInUp">
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h2 class="fw-bolder mb-0">12</h2>
-                        <p class="card-text">{{ trans('dashboard.branch_category.branch_categories') }}</p>
-                    </div>
-                    <div class="avatar bg-light-info p-50 m-0">
-                        <div class="avatar-content">
-                            <a href="">
-                                <i class="fas fa-clipboard-list text-info font-medium-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-12 animate__animated animate__fadeInUp">
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h2 class="fw-bolder mb-0">17</h2>
-                        <p class="card-text">{{ trans('dashboard.product_category.product_categories') }}</p>
-                    </div>
-                    <div class="avatar bg-light-success p-50 m-0">
-                        <div class="avatar-content">
-                            <a href="">
-                                <i class="fas fa-list-ul text-success font-medium-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-12 animate__animated animate__fadeInUp">
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h2 class="fw-bolder mb-0">04</h2>
-                        <p class="card-text">{{ trans('dashboard.car_model.car_models') }}</p>
-                    </div>
-                    <div class="avatar bg-light-danger p-50 m-0">
-                        <div class="avatar-content">
-                            <a href="">
-                                <i class="fas fa-car-side text-warning font-medium-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-12 animate__animated animate__fadeInUp">
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h2 class="fw-bolder mb-0">789</h2>
-                        <p class="card-text">{{ trans('dashboard.manager.managers') }}</p>
-                    </div>
-                    <div class="avatar bg-light-primary p-50 m-0">
-                        <div class="avatar-content">
-                            <a href="">
-                                <i class="fas fa-users text-primary font-medium-5"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!--/ Stats Horizontal Card -->
 
     <!-- Line Area Chart Card -->
@@ -334,13 +217,13 @@
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-primary p-50 m-0">
                         <div class="avatar-content">
-                            <a href="">
-                                <i class="fas fa-shopping-cart text-primary font-medium-5"></i>
+                            <a href="{{ route('dashboard.ad.index') }}">
+                                <i data-feather='activity'></i>
                             </a>
                         </div>
                     </div>
-                    <h2 class="fw-bolder mt-1">1235</h2>
-                    <p class="card-text">{{ trans('dashboard.order.orders') }}</p>
+                    <h2 class="fw-bolder mt-1">{{ $ads_rent_count }}</h2>
+                    <p class="card-text">{{ trans('dashboard.ad.ad_rent') }}</p>
                 </div>
                 <div id="line-area-chart-3"></div>
             </div>
@@ -350,11 +233,11 @@
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-warning p-50 m-0">
                         <div class="avatar-content">
-                            <i class="fas fa-store text-warning font-medium-5"></i>
+                           <i data-feather='activity'></i>
                         </div>
                     </div>
-                    <h2 class="fw-bolder mt-1">000</h2>
-                    <p class="card-text">{{trans('dashboard.branch.branch_count')}}</p>
+                    <h2 class="fw-bolder mt-1">{{ $ads_sale_count }}</h2>
+                    <p class="card-text">{{trans('dashboard.ad.ad_sale')}}</p>
                 </div>
                 <div id="line-area-chart-4"></div>
             </div>
@@ -364,13 +247,13 @@
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-warning p-50 m-0">
                         <div class="avatar-content">
-                            <a href="">
-                                <i class="fas fa-globe-africa text-warning font-medium-5"></i>
+                            <a href="{{ route('dashboard.ad.index') }}">
+                                <i data-feather='user'></i>
                             </a>
                         </div>
                     </div>
-                    <h2 class="fw-bolder mt-1">458</h2>
-                    <p class="card-text">{{ trans('dashboard.country.countries') }}</p>
+                    <h2 class="fw-bolder mt-1">{{ $mowthqs_count }}</h2>
+                    <p class="card-text">{{ trans('dashboard.mowthq.mowthq') }}</p>
                 </div>
                 <div id="line-area-chart-1"></div>
             </div>
@@ -380,13 +263,13 @@
                 <div class="card-header flex-column align-items-start pb-0">
                     <div class="avatar bg-light-success p-50 m-0">
                         <div class="avatar-content">
-                            <a href="{{ route('dashboard.city.index') }}">
-                                <i class="fas fa-flag text-success font-medium-5"></i>
+                            <a href="{{ route('dashboard.contract.index') }}">
+                               <i data-feather='file-minus'></i>
                             </a>
                         </div>
                     </div>
-                    <h2 class="fw-bolder mt-1">{{ $cities_count }}</h2>
-                    <p class="card-text">{{ trans('dashboard.city.cities') }}</p>
+                    <h2 class="fw-bolder mt-1">{{ $contracts_count }}</h2>
+                    <p class="card-text">{{ trans('dashboard.contract.contract') }}</p>
                 </div>
                 <div id="line-area-chart-2"></div>
             </div>

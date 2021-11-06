@@ -833,6 +833,7 @@ return [
     'write_your_location_address' => 'الموقع',
   ],
   'messages' => [
+    'welcome_text' => 'اهلا وسهلا بك اخى الكريم',
       'success_add' => 'تمت الاضافة بنجاح',
       'success_send' => 'تم الارسال بنجاح',
       'success_update' => 'تم التعديل بنجاح',
@@ -959,6 +960,8 @@ return [
     'ads' => 'اعلانات',
     'name_en' => 'الاسم باللفه الانجليزيه',
     'name_ar' => 'الاسم باللغه العربيه',
+    'ad_sale' => 'اعلانات البيع',
+    'ad_rent' => 'اعلانات الايجار',
     
     'user'=>'الغنيل',
     'category'=>'القسم',

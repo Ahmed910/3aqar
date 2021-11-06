@@ -33,14 +33,30 @@ class HomeController extends Controller
 
             $cities = \DB::table('cities')->get();
             $data['cities_count'] = $cities->count();
+
+            $countries = \DB::table('countries')->get();
+            $data['countries_count'] = $cities->count();
            
+
+            $categories = \DB::table('categories')->get();
+            $data['categories_count'] = $cities->count();
          
 
             $ads_query = Ad::latest()->get();
             $data['ads'] = $ads_query;
             $data['ads_count'] = $ads_query->count();
 
+            $ads_rent= Ad::where('ad_type','rent')->latest()->get();
+            $data['ads_rent_count'] = $ads_rent->count();
 
+            $ads_rent= Ad::where('ad_type','sale')->latest()->get();
+            $data['ads_sale_count'] = $ads_rent->count();
+            
+            $mowthqs = \DB::table('mowthqs')->get();
+            $data['mowthqs_count'] = $mowthqs->count();
+
+            $contracts = \DB::table('contracts')->get();
+            $data['contracts_count'] = $contracts->count();
 
             $data['managers_count'] = User::where('user_type' , 'admin')->latest()->count();
 
