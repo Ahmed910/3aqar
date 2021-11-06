@@ -89,7 +89,8 @@ class SettingRequest extends FormRequest
           'twitter' => "nullable|url",
           'youtube' => "nullable|url",
           'instagram' => "nullable|url",
-
+            'meta_ar' => 'nullable',
+            'meta_en' => 'nullable',
           'sms_message' => "nullable||string|max:250",
           'address' => "nullable|string|max:250",
           'g_play_app' => "nullable|url",

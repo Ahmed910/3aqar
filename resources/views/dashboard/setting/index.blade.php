@@ -277,11 +277,12 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="font-medium-1 col-md-2">{!! trans('dashboard.ar.meta') !!}</label>
                                     <div class="col-md-10">
-                                        {!! Form::textarea('meta_ar', setting('meta_ar') ? setting('meta_ar'):old('meta_ar'), ['class'=>'form-control editor','placeholder'=>trans('dashboard.ar.meta')]) !!}
+                                        {!! Form::textarea('meta_ar', setting('meta_ar') ? setting('meta_ar'):old('meta_ar'), ['class'=>'form-control editor','placeholder'=>trans('dashboard.ar.meta_ar')]) !!}
                                     </div>
                                 </div>
                             </div>
@@ -289,10 +290,11 @@
                                 <div class="row">
                                     <label class="font-medium-1 col-md-2">{!! trans('dashboard.en.meta') !!}</label>
                                     <div class="col-md-10">
-                                        {!! Form::textarea('meta_en', setting('meta_en') ? setting('meta_en'):old('meta_en'), ['class'=>'form-control editor','placeholder'=>trans('dashboard.en.meta')]) !!}
+                                        {!! Form::textarea('meta_en', setting('meta_en') ? setting('meta_en'):old('meta_en'), ['class'=>'form-control editor','placeholder'=>trans('dashboard.en.meta_en')]) !!}
                                     </div>
                                 </div>
                             </div>
+                  
 
 
                             <div class="form-group">
