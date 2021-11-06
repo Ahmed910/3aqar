@@ -9,6 +9,7 @@ use App\Http\Requests\Api\Owner\Categories\CategoryTypeRequest;
 use App\Http\Resources\Api\Ads\AdDataResource;
 use App\Http\Resources\Api\Owner\Ads\AdResource;
 use App\Models\Ad;
+use App\Models\AppMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -169,6 +170,21 @@ class AdsController extends Controller
             DB::rollback();
             return response()->json(['data' => null, 'status' => 'fail', 'message' => trans('api.messages.there_is_an_error_try_again')],400);
         }
+    }
+
+    public function deleteImageForAd($ad_id,$image_id)
+    {
+        $ad = Ad::findOrFail($ad_id);
+        if ($ad->media()->findOrFail($image_id)){
+            $image = AppMedia::where(['app_mediaable_type' => 'App\Models\Ad','app_mediaable_id' => $ad->id ,'media_type' => 'image'])->findOrFail($image_id);
+            $image->delete();
+            if (file_exists(storage_path('app/public/images/ad/'.$image->media))){
+                \File::delete(storage_path('app/public/images/ad/'.$image->media));
+                $image->delete();
+            }
+            return response()->json(['data'=>null,'status'=>'success','message'=>trans('api.messages.image_deleted')]);
+        }
+
     }
 
     /**
