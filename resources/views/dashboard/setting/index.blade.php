@@ -95,7 +95,7 @@
                             </div>
                                <div class="form-group">
                                 <div class="row">
-                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.contract') !!}</label>
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.video_url') !!}</label>
                                     <div class="col-lg-9">
                                         <div class="custom-file">
                                             <input type="file" name="video_url" class="custom-file-input" >

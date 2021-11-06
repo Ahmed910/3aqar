@@ -775,6 +775,7 @@ return [
     'images' => 'الصور',
     'sure' => 'تأكيد',
     'warning' => 'تحذير !',
+    'video_url' => 'اضافه الفديو',
     'file' => 'الملف',
     'upload_file' => 'رفع ملف',
     'upload_image' => 'رفع صورة',
