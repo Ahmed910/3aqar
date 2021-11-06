@@ -29,6 +29,10 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::post('add_contract','ContractController@createContract');
         });
 
+        Route::prefix('bank_accounts')->group(function () {
+            Route::apiResource('bank_account','BankAccountController');
+        });
+
         Route::post('reset_password', "AuthController@resetPassword");
         Route::post('update_location', "UserController@updateUserLocation");
 
