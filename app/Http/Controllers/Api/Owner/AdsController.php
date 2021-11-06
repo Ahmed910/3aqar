@@ -103,6 +103,12 @@ class AdsController extends Controller
         }
     }
 
+    public function getAdByCity($city_id)
+    {
+      $ads = Ad::where('city_id',$city_id)->get();
+      return AdResource::collection($ads)->additional(['status'=>'success','message'=>'']);
+    }
+
     /**
      * Display the specified resource.
      *
