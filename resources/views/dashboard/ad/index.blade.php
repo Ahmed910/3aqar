@@ -36,7 +36,7 @@
                                     <i data-feather='trash-2' class="font-medium-3"></i>
                                 </a>
                                 <a href="{!! route('dashboard.ad.show',$ad->id) !!}" class="text-info mr-1">
-                                    <i class="feather icon-monitor" title="{!! trans('dashboard.general.show') !!}"></i>
+                                    <i data-feather="monitor" title="{!! trans('dashboard.general.show') !!}"></i>
                                 </a>                            
                         </td>
                     </tr>
