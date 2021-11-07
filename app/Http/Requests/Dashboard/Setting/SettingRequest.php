@@ -91,6 +91,8 @@ class SettingRequest extends FormRequest
           'instagram' => "nullable|url",
             'meta_ar' => 'nullable',
             'meta_en' => 'nullable',
+            'rent_price' => 'nullable',
+            'sale_price' => 'nullable',
           'sms_message' => "nullable||string|max:250",
           'address' => "nullable|string|max:250",
           'g_play_app' => "nullable|url",
