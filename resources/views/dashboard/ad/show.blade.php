@@ -233,9 +233,6 @@
     </div>
 
 </div>
-@include('dashboard.layout.notify_modal')
-{{-- @includeWhen(@$driver->driver->subscribed_package_id,'dashboard.driver.extend_package_modal') --}}
-@include('dashboard.driver.change_package_modal')
 @endsection
 
 @section('vendor_styles')
