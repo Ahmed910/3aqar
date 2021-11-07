@@ -16,6 +16,7 @@ class Country extends Model implements TranslatableContract
 
     protected static function boot()
     {
+        parent::boot();
         static::saved(function ($data) {
             if (request()->hasFile('image')) {
                 if ($data->media()->exists()) {
@@ -55,8 +56,6 @@ class Country extends Model implements TranslatableContract
     	return $this->morphOne(AppMedia::class,'app_mediaable');
     }
 
-  
-
     public function districts()
     {
     	return $this->hasMany(District::class);
@@ -65,6 +64,11 @@ class Country extends Model implements TranslatableContract
     public function users()
     {
     	return $this->hasManyThrough(User::class,Profile::class);
+    }
+
+    public function cities()
+    {
+    	return $this->hasMany(City::class);
     }
 
 }

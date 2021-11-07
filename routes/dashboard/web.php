@@ -27,6 +27,8 @@ Route::group(
             // =====================Location====================================
             // Country
             Route::resource('country','CountryController');
+            // district
+            Route::resource('district','DistrictController');
             // City
             Route::resource('city','CityController');
             // feture

@@ -23,7 +23,7 @@
                     <tr class="{{ $city->id }}">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $city->name }}</td>
-                        <td>{{ $city->country->name }}</td>
+                        <td>{{ @$city->country->name }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $city->created_at->format("Y-m-d") }}</div>
                         </td>

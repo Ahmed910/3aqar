@@ -34,6 +34,16 @@ class SettingController extends Controller
                       $inputs['logo']=$image = uploadImg($request->logo,'setting');
                   }
 
+                  if ($request->hasFile('video_url')) {
+                    $setting=Setting::where('key','video_url')->first();
+                    if ($setting) {
+                        if (file_exists(storage_path('app/public/uploads/setting/'. $setting->value))) {
+                            \File::delete(storage_path('app/public/uploads/setting/'. $setting->value));
+                        }
+                    }
+                    $inputs['video_url']=$image = uploadFile($request->video_url,'app/public/uploads/setting');
+                }
+
                   if ($request->phones && count($request->phones)) {
                       $inputs['phones'] = json_encode($request->phones);
                   }

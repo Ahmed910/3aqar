@@ -5,14 +5,8 @@
       <ul class="nav navbar-nav d-xl-none">
         <li class="nav-item"><a class="nav-link menu-toggle" href="javascript:void(0);"><i class="ficon" data-feather="menu"></i></a></li>
       </ul>
-      <ul class="nav navbar-nav bookmark-icons">
-        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-email.html" data-toggle="tooltip" data-placement="top" title="Email"><i class="ficon" data-feather="mail"></i></a></li>
-        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-chat.html" data-toggle="tooltip" data-placement="top" title="Chat"><i class="ficon" data-feather="message-square"></i></a></li>
-        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-calendar.html" data-toggle="tooltip" data-placement="top" title="Calendar"><i class="ficon" data-feather="calendar"></i></a></li>
-        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-todo.html" data-toggle="tooltip" data-placement="top" title="Todo"><i class="ficon" data-feather="check-square"></i></a></li>
-      </ul>
+
       <ul class="nav navbar-nav">
-        <li class="nav-item d-none d-lg-block"><a class="nav-link bookmark-star"><i class="ficon text-warning" data-feather="star"></i></a>
           <div class="bookmark-input search-input">
             <div class="bookmark-input-icon"><i data-feather="search"></i></div>
             <input class="form-control input" type="text" placeholder="Bookmark" tabindex="0" data-search="search">
@@ -36,8 +30,6 @@
 
             @endforeach
         </li>
-      <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="sun"></i></a></li>
-      <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon" data-feather="search"></i></a>
           <form method="get" action="{!! LaravelLocalization::localizeUrl('dashboard/search') !!}">
           <div class="search-input">
               <div class="search-input-icon"><i data-feather="search"></i></div>
@@ -48,83 +40,7 @@
           </form>
       </li>
 
-      <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up notify_count">{{ auth()->user()->unreadnotifications()->count() }}</span></a>
-          <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-              <li class="dropdown-menu-header">
-                  <div class="dropdown-header d-flex">
-                      <h4 class="notification-title mb-0 mr-auto">{!! trans('dashboard.notification.notifications') !!}</h4>
-                      <div class="badge badge-pill badge-light-primary notify_count" id="notify_counter">{{ auth()->user()->unreadnotifications()->count() }}</div>
-                  </div>
-              </li>
-              <li class="scrollable-container media-list notification_list">
-                  @forelse ($notifications as $notification)
-                          @php
-                          $title = "";
-                          if (isset($notification->data['title'])) {
-                              if (!is_array($notification->data['title'])) {
-                                  $title = trans($notification->data['title']);
-                              }elseif (isset($notification->data['title'][1])) {
-                                  $title = trans($notification->data['title'][0],$notification->data['title'][1]);
-                              }elseif (!isset($notification->data['title'][1])) {
-                                  $title = trans($notification->data['title'][0]);
-                              }else{
-                                  $title = "";
-                              }
-                          }
-                          $body = "";
-                          if (isset($notification->data['body'])) {
-                              if (!is_array($notification->data['body'])) {
-                                  $body = trans($notification->data['body']);
-                              }elseif (isset($notification->data['body'][1])) {
-                                  $body = trans($notification->data['body'][0],$notification->data['body'][1]);
-                              }elseif (!isset($notification->data['body'][1])) {
-                                  $body = trans($notification->data['body'][0]);
-                              }else{
-                                  $body = "";
-                              }
-                          }
-                          $route = '#';
-                          if (isset($notification->data['notify_type'])) {
-                              switch ($notification->data['notify_type']) {
-                                  case 'order':
-                                      $route = route('dashboard.order.show',$notification->data['order_id']);
-                                      break;
-                                  case 'contact':
-                                      $route = route('dashboard.contact.show',$notification->data['contact_id']);
-                                      break;
-                              }
-                          }
-                          if (isset($notification->data['route'])) {
-                              $route = $notification->data['route'];
-                          }
-                          @endphp
-                      <a class="d-flex" href="{{ $route }}">
-                          <div class="media d-flex align-items-start">
-                              <div class="media-left">
-                                  {{-- <div class="avatar"><img src="../../../app-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" width="32" height="32"></div> --}}
-                                  @isset($notification->data['order_id'])
-                                      <i class="feather icon-shopping-cart font-medium-5 primary"></i>
-                                  @else
-                                      <i class="feather icon-message-square font-medium-5 primary"></i>
-                                  @endisset
-                              </div>
-                              <div class="media-body">
-                                  <p class="media-heading"><span class="font-weight-bolder">{{ $title }}</p>
-                                      <small class="notification-text"> {{ str_limit($body,100,'...') }}</small>
-                              </div>
-                          </div>
-                      </a>
-                  @empty
-                  <a class="d-flex justify-content-center no_notifications pt-2 pb-2">
-                      <i class="feather icon-bell align-middle font-medium-3 text-white text-bold-700"></i>
-                      <span class="align-middle text-bold-700 font-medium-3 ">{!! trans('dashboard.notification.no_notifications') !!}</span>
-                  </a>
-                  {{-- <li class="empty-cart d-none p-2 no_notifications">{!! trans('dashboard.notification.no_notifications') !!}.</li> --}}
-              @endforelse
-              </li>
-              <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block" href="{!! route('dashboard.notification.index') !!}">{!! trans('dashboard.general.show_all') !!}</a></li>
-          </ul>
-      </li>
+ 
 
       <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="user-nav d-sm-flex d-none">

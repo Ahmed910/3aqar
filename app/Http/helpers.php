@@ -33,6 +33,10 @@ function setting($attr)
     if ($attr == 'logo') {
       return ! empty($setting) ? asset('storage/images/setting')."/".$setting->value : asset('dashboardAssets/images/icons/logo_sm.png');
     }
+    if ($attr == 'video_url') {
+        return ! empty($setting) ? asset('storage/files/app/public/uploads/setting')."/".$setting->value : asset('dashboardAssets/images/icons/logo_sm.png');
+
+    }
     if ($phone == 'phone') {
       return ! empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
       }elseif ($phone == 'phones') {
