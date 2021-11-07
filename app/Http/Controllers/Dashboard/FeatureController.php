@@ -11,7 +11,7 @@ class FeatureController extends Controller
 {
     public function index()
     {
-          $features = \DB::table('features')->latest()->paginate(100);
+          $features = Feature::latest()->paginate(100);
           return view('dashboard.feature.index',compact('features'));
         
     }
