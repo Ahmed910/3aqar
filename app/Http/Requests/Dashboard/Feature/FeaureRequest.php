@@ -28,6 +28,8 @@ class FeaureRequest extends FormRequest
             'name_ar' => 'required',
             'images' => 'nullable',
             'data_type' => 'required',
+            'min' => 'nullable',
+            'max' => 'nullable',
         ];
     }
 }

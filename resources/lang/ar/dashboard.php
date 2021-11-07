@@ -914,11 +914,13 @@ return [
     'data_type' => 'توع الخاصيه',
     'add_feature' => 'إضافة خاصيه',
     'edit_feature' => 'تعديل بيانات الخاصيه',
-    'types' => [
+    
       'text' => 'نص',
       'number' => 'رقم',
       'switch' => 'نعم ام لا',
-    ],
+      'min' =>'من',
+      'max' =>'الى',
+ 
   ],
   'frontage' => [
     'frontage' => 'الوجهات',
@@ -976,7 +978,7 @@ return [
       'rent'=>'ايجار',
     ],
     'sale'=>'بيع',
-      'rent'=>'ايجار',
+    'rent'=>'ايجار',
     'add_category' => 'إضافة قسم',
     'edit_category' => 'تعديل بيانات القسم',
     'type' => 'النوع',

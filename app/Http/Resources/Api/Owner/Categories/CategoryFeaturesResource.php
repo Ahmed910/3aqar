@@ -17,7 +17,9 @@ class CategoryFeaturesResource extends JsonResource
         return [
             'id'=>$this->id,
             'name'=>$this->name,
-            'data_type'=>$this->data_type
+            'data_type'=>$this->data_type,
+            'min'=>$this->min,
+            'max' => $this->max,
         ];
     }
 }
