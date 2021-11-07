@@ -35,8 +35,11 @@
                         </td>
                         <td class="justify-content-center">
                             <a onclick="deleteItem('{{ $contract->id }}' , '{{ route('dashboard.contract.destroy',$contract->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
-                                <i data-feather='trash-2' class="font-medium-3"></i>
+                                <i class="icofont-ui-delete"></i>
                             </a>
+                             <a href="{!! route('dashboard.contract.show',$contract->id) !!}" class="text-info mr-1">
+                                    <i class="icofont-monitor" title="{!! trans('dashboard.general.show') !!}"></i>
+                                </a>    
                             
                         </td>
                     </tr>

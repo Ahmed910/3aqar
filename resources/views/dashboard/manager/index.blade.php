@@ -38,10 +38,10 @@
                             <td><div class="badge badge-primary badge-md mr-1 mb-1">{{ $manager->created_at->format("Y-m-d") }}</div> </td>
                             <td class="justify-content-center">
                                 <a onclick="deleteItem('{{ $manager->id }}','{{ route('dashboard.manager.destroy',$manager->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
-                                    <i data-feather='trash-2' class="font-medium-3"></i>
+                                    <i class="icofont-ui-delete"></i>
                                 </a>
                                 <a href="{!! route('dashboard.manager.edit',$manager->id) !!}" class="text-primary mr-2" title="{!! trans('dashboard.general.edit') !!}">
-                                    <i data-feather='edit' class="font-medium-3"></i>
+                                    <i class="icofont-ui-edit"></i>
                                 </a>
                             </td>
                         </tr>

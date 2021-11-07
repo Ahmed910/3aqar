@@ -33,10 +33,10 @@
                         </td>
                         <td class="justify-content-center">
                                 <a onclick="deleteItem('{{ $ad->id }}' , '{{ route('dashboard.ad.destroy',$ad->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
-                                    <i data-feather='trash-2' class="font-medium-3"></i>
+                                    <i class="icofont-ui-delete" class="font-medium-3"></i>
                                 </a>
                                 <a href="{!! route('dashboard.ad.show',$ad->id) !!}" class="text-info mr-1">
-                                    <i data-feather="monitor" title="{!! trans('dashboard.general.show') !!}"></i>
+                                    <i class="icofont-monitor" title="{!! trans('dashboard.general.show') !!}"></i>
                                 </a>                            
                         </td>
                     </tr>
