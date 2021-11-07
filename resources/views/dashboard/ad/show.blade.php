@@ -1,6 +1,32 @@
 @extends('dashboard.layout.layout')
 
 @section('content')
+<style>
+.features{
+    text-align: center;
+    position: relative;
+}
+
+.features::after{
+    position: absolute;
+    content: "";
+    background-color: #00cfe8;
+    left:0;
+    width:46%;
+    height: 1px;
+        top:12px
+}
+
+.features::before{
+    position: absolute;
+    content: "";
+    background-color: #00cfe8;
+    right:0;
+    width:46%;
+    height: 1px;
+    top:12px
+}
+</style>
 
 <div class="content-body">
     <div id="user-profile">
@@ -13,15 +39,15 @@
                         <div class="profile-img-container d-flex align-items-center">
                             <div class="avatar">
                                 <div class="profile-img">
-                                    <a href="" data-fancybox="gallery">
-                                        <img src="" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
+                                    <a href="{{ @$ad->user->avatar }}" data-fancybox="gallery">
+                                        <img src="{{ @$ad->user->avatar }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
                                     </a>
                                 </div>
                                 <span class="avatar-status-busy avatar-status-md" id="online_1"></span>
                             </div>
                             <div class="profile-title ml-3">
-                                <h2 class="text-white"></h2>
-                                <p class="text-white"></p>
+                               :المعلن <h2 class="text-white">{{ @$ad->user->fullname }}</h2>
+                               رقم الهاتف <p class="text-white">{{ @$ad->user->phone }}</p>
                             </div>
                         </div>
                     </div>
@@ -84,25 +110,17 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
-                                            <label class="col-form-label col-md-4">{{ trans('dashboard.user.fullname') }}</label>
+                                            <label class="col-form-label col-md-4">{{ trans('dashboard.ad.type') }}</label>
                                             <div class="input-group mb-2 col-md-8">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon-fullname">
-                                                        <i data-feather="user"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control" value="" aria-describedby="basic-addon-fullname" />
+                                                <input type="text" class="form-control" value="{{ trans('dashboard.ad.'.$ad->ad_type) }}" aria-describedby="basic-addon-fullname" />
                                             </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <label class="col-form-label col-md-4">{{ trans('dashboard.general.phone') }}</label>
+                                                <label class="col-form-label col-md-4">{{ trans('dashboard.category.category') }}</label>
                                                 <div class="input-group mb-2 col-md-8">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon-phone"><i data-feather="phone"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" value="" aria-describedby="basic-addon-phone" />
+                                                    <input type="text" class="form-control" value="{{ @$ad->category->name }}" aria-describedby="basic-addon-phone" />
                                                 </div>
                                             </div>
                                         </div>
@@ -111,25 +129,17 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
-                                            <label class="col-form-label col-md-4">{{ trans('dashboard.general.email') }}</label>
+                                            <label class="col-form-label col-md-4">{{ trans('dashboard.ad.price') }}</label>
                                             <div class="input-group mb-2 col-md-8">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon-email">
-                                                        <i data-feather="mail"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control" value="" aria-describedby="basic-addon-email" />
+                                                <input type="text" class="form-control" value="{{ $ad->price }}" aria-describedby="basic-addon-email" />
                                             </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <label class="col-form-label col-md-4">{{ trans('dashboard.user.wallet') }}</label>
+                                                <label class="col-form-label col-md-4">{{ trans('dashboard.city.city') }}</label>
                                                 <div class="input-group mb-2 col-md-8">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon-wallet"><i data-feather="dollar-sign"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" value="" aria-describedby="basic-addon-wallet" />
+                                                    <input type="text" class="form-control" value="{{ @$ad->city->name }}" aria-describedby="basic-addon-wallet" />
                                                 </div>
                                             </div>
                                         </div>
@@ -140,12 +150,7 @@
                                             <div class="row">
                                             <label class="col-form-label col-md-4">{{ trans('dashboard.general.added_date') }}</label>
                                             <div class="input-group mb-2 col-md-8">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon-calendar">
-                                                        <i data-feather="calendar"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control" value="" aria-describedby="basic-addon-calendar" />
+                                                <input type="text" class="form-control" value="{{ $ad->created_at->format('d-m-Y') }}" aria-describedby="basic-addon-calendar" />
                                             </div>
                                             </div>
                                         </div>
@@ -156,7 +161,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon-clock"><i data-feather="clock"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" value="" aria-describedby="basic-addon-clock" />
+                                                    <input type="text" class="form-control" value="{{ $ad->created_at->format('h:i') }}" aria-describedby="basic-addon-clock" />
                                                 </div>
                                             </div>
                                         </div>
@@ -165,62 +170,42 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
-                                            <label class="col-form-label col-md-4">{{ trans('dashboard.country.country') }}</label>
+                                            <label class="col-form-label col-md-4">{{ trans('dashboard.ad.relationship') }}</label>
                                             <div class="input-group mb-2 col-md-8">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon-country">
-                                                        <i data-feather="flag"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control" value="" aria-describedby="basic-addon-country" />
+                                                <input type="text" class="form-control" value="{{ trans('dashboard.ad.'.$ad->advertiser_relationship_with_aqar) }}" aria-describedby="basic-addon-country" />
                                             </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <label class="col-form-label col-md-4">{{ trans('dashboard.city.city') }}</label>
-                                                <div class="input-group mb-2 col-md-8">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon-city"><i data-feather="flag"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" value="" aria-describedby="basic-addon-city" />
-                                                </div>
-                                            </div>
-                                        </div>
+                                    
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                            <label class="col-form-label col-md-4">{!! trans('dashboard.user.active_state') !!}</label>
-                                            <div class="input-group mb-2 col-md-8">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon-active">
-                                                        <i data-feather="log-in"></i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" class="form-control" value="" aria-describedby="basic-addon-active" />
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <label class="col-form-label col-md-4">{!! trans('dashboard.user.ban_state') !!}</label>
-                                                <div class="input-group mb-2 col-md-8">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon-ban"><i data-feather="lock"></i></span>
-                                                    </div>
-                                                    <input type="text" class="form-control" value="" aria-describedby="basic-addon-ban" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                               
 
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2">{!! trans('dashboard.user.ban_reason') !!}</label>
                                         <div class="col-md-10">
-                                            {!! Form::textarea("", null, ['class' => 'form-control','readonly']) !!}
+                                            {!! Form::textarea("", $ad->desc, ['class' => 'form-control','readonly']) !!}
                                         </div>
+                                    </div>
+                                  <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="features">
+                                                <p>{{ trans('dashboard.feature.feature') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @foreach (@$ad->ad_features as $feature)
+                                         <div class="col-md-6">
+                                            <div class="row">
+                                            <label class="col-form-label col-md-4">{{ $feature->feature->name_ar }}</label>
+                                            <div class="input-group mb-2 col-md-8">
+                                                <input type="text" class="form-control" value="{{ $feature->value }} " aria-describedby="basic-addon-email" />
+                                            </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                     </div>
                                 </div>
                             </div>
