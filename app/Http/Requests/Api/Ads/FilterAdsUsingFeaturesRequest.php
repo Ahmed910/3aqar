@@ -25,7 +25,7 @@ class FilterAdsUsingFeaturesRequest extends ApiMasterRequest
     public function rules()
     {
         return [
-            'type'=>'required|in:rent,sale',
+            'type'=>'nullable|in:rent,sale',
             'category_id'=>'nullable|exists:categories,id',
             'lat'=>'nullable|numeric',
             'lng'=>'nullable|numeric',
