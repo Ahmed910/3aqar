@@ -26,6 +26,7 @@ class FrontageRequest extends FormRequest
         return [
             'name' => 'required',
             'name_ar' => 'required',
+            'ordering'=>'required|numeric'
         ];
     }
 }

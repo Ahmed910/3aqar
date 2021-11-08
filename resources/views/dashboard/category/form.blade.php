@@ -34,6 +34,16 @@
 	    </div>
     @endisset
 
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="ordering-column">{{ trans('dashboard.category.ordering') }} <span
+                        class="text-danger">*</span></label>
+                {!! Form::number('ordering', null, ['class' => 'form-control', 'id' => 'ordering-column', 'placeholder' => trans('dashboard.frontage.ordering')]) !!}
+            </div>
+        </div>
+    </div>
+
     <div class="form-group">
         <div class="row">
             <label class="font-medium-1 col-md-2">{{ trans('dashboard.feature.feature') }} <span
@@ -54,7 +64,7 @@
         </div>
     </div>
 
-    
+
     <div class="form-group">
         <div class="row">
             <label class="font-medium-1 col-md-2">{{ trans('dashboard.category.periods') }} <span

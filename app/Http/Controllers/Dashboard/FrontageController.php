@@ -11,9 +11,9 @@ class FrontageController extends Controller
 {
     public function index()
     {
-          $frontages = Frontage::latest()->paginate(100);
+          $frontages = Frontage::orderBy('ordering','asc')->paginate(100);
           return view('dashboard.frontage.index',compact('frontages'));
-        
+
     }
     public function create()
     {

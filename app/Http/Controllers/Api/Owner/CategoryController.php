@@ -14,8 +14,8 @@ class CategoryController extends Controller
     public function getCategories(CategoryTypeRequest $request)
     {
 
-        $categories = Category::where('type',$request->type)->get();
-
+        $categories = Category::where('type',$request->type)->orderBy('ordering','asc')->get();
+      
         return CategoriesNameResource::collection($categories)->additional(['status'=>'success','message'=>'']);
     }
 

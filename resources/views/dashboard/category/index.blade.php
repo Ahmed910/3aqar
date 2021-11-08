@@ -15,6 +15,7 @@
                         <th>{!! trans('dashboard.category.name_ar') !!}</th>
                         <th>{!! trans('dashboard.category.name_en') !!}</th>
                         <th>{!! trans('dashboard.category.type') !!}</th>
+                        <th>{!! trans('dashboard.category.ordering') !!}</th>
                         <th>{!! trans('dashboard.general.added_date') !!}</th>
                         <th>{!! trans('dashboard.general.control') !!}</th>
                     </tr>
@@ -26,6 +27,7 @@
                         <td>{{ $category->name_ar }}</td>
                         <td>{{ $category->name }}</td>
                         <td>{{ trans('dashboard.category.data_type.'.$category->type)}}</td>
+                        <td>{{ $category->ordering }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $category->created_at->format("Y-m-d") }}</div>
                         </td>

@@ -14,7 +14,9 @@
                         <th>#</th>
                         <th>{!! trans('dashboard.feature.name') !!}</th>
                         <th>{!! trans('dashboard.en.name') !!}</th>
+
                         <th>{!! trans('dashboard.feature.data_type') !!}</th>
+                        <th>{!! trans('dashboard.feature.ordering') !!}</th>
                         <th>{!! trans('dashboard.general.added_date') !!}</th>
                         <th>{!! trans('dashboard.general.control') !!}</th>
                     </tr>
@@ -26,6 +28,7 @@
                         <td>{{ $feature->name_ar }}</td>
                         <td>{{ $feature->name }}</td>
                         <td>{{ trans('dashboard.feature.'.$feature->data_type) }}</td>
+                        <td>{{ $feature->ordering }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $feature->created_at }}</div>
                         </td>

@@ -11,9 +11,9 @@ class FeatureController extends Controller
 {
     public function index()
     {
-          $features = Feature::latest()->paginate(100);
+          $features = Feature::orderBy('ordering','asc')->paginate(100);
           return view('dashboard.feature.index',compact('features'));
-        
+
     }
     public function create()
     {

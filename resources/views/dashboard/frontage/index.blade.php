@@ -14,6 +14,7 @@
                         <th>#</th>
                         <th>{!! trans('dashboard.frontage.name_ar') !!}</th>
                         <th>{!! trans('dashboard.frontage.name_en') !!}</th>
+                        <th>{!! trans('dashboard.frontage.ordering') !!}</th>
                         <th>{!! trans('dashboard.general.added_date') !!}</th>
                         <th>{!! trans('dashboard.general.control') !!}</th>
                     </tr>
@@ -24,6 +25,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $frontage->name_ar }}</td>
                         <td>{{ $frontage->name }}</td>
+                        <td>{{ $frontage->ordering }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $frontage->created_at->format("Y-m-d") }}</div>
                         </td>

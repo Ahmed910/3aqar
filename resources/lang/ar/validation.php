@@ -26,6 +26,7 @@ $attributes = [
     'south'=>'حقل الجنوب',
     'east'=>'حقل الشرق',
     'west'=>'حقل الغرب',
+
     'mortgage_or_bond'=>'حقل العقار عليه قيد او عقار',
     'disputes'=>'يوجد نزاعات على العقار',
     'advertiser_relationship_with_aqar'=>'حقل علاقة المعلن بالعقار',

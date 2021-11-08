@@ -25,6 +25,7 @@ class StoreCategoryRequest extends FormRequest
     {
         $rules=[
             'image' => 'nullable|image|mimes:png,jpg,jpeg',
+           
         ];
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.name'] = 'required|string|between:2,250';
