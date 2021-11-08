@@ -27,6 +27,8 @@ class SettingRequest extends FormRequest
           'email' => "required|email",
           'phones.*' => "nullable|numeric",
           'whatsapps.*' => "nullable|numeric",
+          'phones_tawkeel.*' => "nullable|numeric",
+          'whatsapps_tawkeel.*' => "nullable|numeric",
           'driver_notify_count_to_refuse' => "nullable|integer|between:1,5",
           'waiting_time_for_driver_response' => "nullable|numeric|gte:1",
           'test_version' => "nullable",
@@ -110,6 +112,14 @@ class SettingRequest extends FormRequest
 
         if (isset($data['whatsapps']) && $data['whatsapps'] != null) {
             $data['whatsapps'] = array_map('trim',explode(",",$data['whatsapps']));
+        }
+
+        if (isset($data['phones_tawkeel']) && $data['phones_tawkeel'] != null) {
+            $data['phones_tawkeel'] = array_map('trim',explode(",",$data['phones_tawkeel']));
+        }
+
+        if (isset($data['whatsapps_tawkeel']) && $data['whatsapps_tawkeel'] != null) {
+            $data['whatsapps_tawkeel'] = array_map('trim',explode(",",$data['whatsapps_tawkeel']));
         }
 
         if (isset($data['min_limit_withdrawal']) && $data['min_limit_withdrawal'] != null) {

@@ -66,6 +66,25 @@
                                 </div>
                             </div>
 
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.phones_tawkeel') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::text('phones_tawkeel', setting('phones_tawkeel') ? setting('phones_tawkeel'):old('phones_tawkeel'), ['class'=>'form-control tagsinput-custom-tag-class','placeholder'=>trans('dashboard.setting.phones')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.whatsapps_tawkeel') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::text('whatsapps_tawkeel', setting('whatsapps_tawkeel') ? setting('whatsapps_tawkeel'):old('whatsapps_tawkeel'), ['class'=>'form-control tagsinput-custom-tag-class','placeholder'=>trans('dashboard.setting.whatsapps')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="font-medium-1 col-md-2">{!! trans('dashboard.setting.map_api') !!}</label>
@@ -92,7 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.logo') !!}</label>
@@ -313,7 +332,7 @@
                                     </div>
                                 </div>
                             </div>
-                  
+
 
 
                             <div class="form-group">

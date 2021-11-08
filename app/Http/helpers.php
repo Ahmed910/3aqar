@@ -8,8 +8,8 @@ use LaravelFCM\Facades\FCM as FCM;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
-use App\Models\{Device, Setting,User , Driver , PointOffer};
-use App\Jobs\{SendOrderRequestToDriver , SendFCMNotification};
+use App\Models\{Device, Setting, User, Driver, PointOffer};
+use App\Jobs\{SendOrderRequestToDriver, SendFCMNotification};
 use App\Notifications\General\{FCMNotification};
 use App\Services\SMSService;
 use GuzzleHttp\Client;
@@ -17,44 +17,61 @@ use App\Jobs\{UpdateTempWallet};
 //return Settings
 function setting($attr)
 {
-  if (\Schema::hasTable('settings')) {
-      $phone = $attr;
-      $whatsapp = $attr;
-      if ($attr == 'phone') {
-          $attr = 'phones';
-      }
-      if ($attr == 'whatsapp') {
-        $attr = 'whatsapps';
-    }
-    $setting=Setting::where('key',$attr)->first() ??[];
-    if ($attr == 'project_name') {
-      return ! empty($setting) ? $setting->value : 'Alamyia';
-    }
-    if ($attr == 'logo') {
-      return ! empty($setting) ? asset('storage/images/setting')."/".$setting->value : asset('dashboardAssets/images/icons/logo_sm.png');
-    }
-    if ($attr == 'video_url') {
-        return ! empty($setting) ? asset('storage/files/app/public/uploads/setting')."/".$setting->value : asset('dashboardAssets/images/icons/logo_sm.png');
-
-    }
-    if ($phone == 'phone') {
-      return ! empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
-      }elseif ($phone == 'phones') {
-          return ! empty($setting) && $setting->value ? implode(",",json_decode($setting->value)) : null;
-      }
-
-      if ($whatsapp == 'whatsapp') {
-        return ! empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
-        }elseif ($whatsapp == 'whatsapps') {
-            return ! empty($setting) && $setting->value ? implode(",",json_decode($setting->value)) : null;
+    if (\Schema::hasTable('settings')) {
+        $phone = $attr;
+        $whatsapp = $attr;
+        $phone_tawkeel = $attr;
+        $whatsapp_tawkeel = $attr;
+        if ($attr == 'phone') {
+            $attr = 'phones';
         }
-    if (! empty($setting)) {
-      return $setting->value;
+        if ($attr == 'whatsapp') {
+            $attr = 'whatsapps';
+        }
+        if ($attr == 'phone_tawkeel') {
+            $attr = 'phones_tawkeel';
+        }
+        if ($attr == 'whatsapp_tawkeel') {
+            $attr = 'whatsapps_tawkeel';
+        }
+        $setting = Setting::where('key', $attr)->first() ?? [];
+        if ($attr == 'project_name') {
+            return !empty($setting) ? $setting->value : 'Alamyia';
+        }
+        if ($attr == 'logo') {
+            return !empty($setting) ? asset('storage/images/setting') . "/" . $setting->value : asset('dashboardAssets/images/icons/logo_sm.png');
+        }
+        if ($attr == 'video_url') {
+            return !empty($setting) ? asset('storage/files/app/public/uploads/setting') . "/" . $setting->value : asset('dashboardAssets/images/icons/logo_sm.png');
+        }
+        if ($phone == 'phone') {
+            return !empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
+        } elseif ($phone == 'phones') {
+            return !empty($setting) && $setting->value ? implode(",", json_decode($setting->value)) : null;
+        }
 
+        if ($whatsapp == 'whatsapp') {
+            return !empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
+        } elseif ($whatsapp == 'whatsapps') {
+            return !empty($setting) && $setting->value ? implode(",", json_decode($setting->value)) : null;
+        }
+
+        if ($phone_tawkeel == 'phone_tawkeel') {
+            return !empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
+        } elseif ($whatsapp == 'phones_tawkeel') {
+            return !empty($setting) && $setting->value ? implode(",", json_decode($setting->value)) : null;
+        }
+        if ($phone_tawkeel == 'whatsapp_tawkeel') {
+            return !empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
+        } elseif ($whatsapp == 'whatsapps_tawkeel') {
+            return !empty($setting) && $setting->value ? implode(",", json_decode($setting->value)) : null;
+        }
+        if (!empty($setting)) {
+            return $setting->value;
+        }
+        return false;
     }
     return false;
-  }
-  return false;
 }
 
 // Get Distance
@@ -85,11 +102,11 @@ function distance($startLat, $startLng, $endLat, $endLng, $unit = "K")
     }
 }
 
-function generate_unique_code($length, $model, $col = 'code', $type = 'numbers' , $letter_type = 'all')
+function generate_unique_code($length, $model, $col = 'code', $type = 'numbers', $letter_type = 'all')
 {
-    if($type == 'numbers'){
+    if ($type == 'numbers') {
         $characters = '0123456789';
-    }else{
+    } else {
         switch ($letter_type) {
             case 'all':
                 $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -111,35 +128,35 @@ function generate_unique_code($length, $model, $col = 'code', $type = 'numbers' 
     for ($i = 0; $i < $length; $i++) {
         $generate_random_code .= $characters[rand(0, $charactersLength - 1)];
     }
-    if($model::where($col, $generate_random_code)->exists()){
-        generate_unique_code($length,$model,$col,$type);
+    if ($model::where($col, $generate_random_code)->exists()) {
+        generate_unique_code($length, $model, $col, $type);
     }
     return $generate_random_code;
 }
 
 
 // Get Drivers
-function getOtherDrivers($order , $notified_drivers , $number_of_drivers = 0)
+function getOtherDrivers($order, $notified_drivers, $number_of_drivers = 0)
 {
     $number_of_drivers = $number_of_drivers + (int)convertArabicNumber(setting('number_drivers_to_notify'));
 
 
-    $drivers = Driver::whereHas('user',function ($q) use($order){
-        $q->available()->whereHas('profile',function ($q) {
+    $drivers = Driver::whereHas('user', function ($q) use ($order) {
+        $q->available()->whereHas('profile', function ($q) {
             $q->whereNotNull('profiles.last_login_at');
         })->whereHas('devices')/*->withCount(['driverOrders','driverOrders as driver_orders_count' => function ($q) {
             $q->whereNotNull('orders.finished_at');
         }])*/
-        // ->whereIn('users.id',online_users()->pluck('id'))
-        /*->whereHas('car',function ($q) use($order) {
+            // ->whereIn('users.id',online_users()->pluck('id'))
+            /*->whereHas('car',function ($q) use($order) {
             $q->where('cars.car_type_id',$order->car_type_id);
-        })*/->whereHas('car')->whereDoesntHave('driverOffers',function ($q) use($order) {
-            $q->where('order_offers.order_id',$order->id);
-        });
-    })->whereIn('driver_type',[$order->order_type,'both'])->where(function ($q) {
+        })*/->whereHas('car')->whereDoesntHave('driverOffers', function ($q) use ($order) {
+                $q->where('order_offers.order_id', $order->id);
+            });
+    })->whereIn('driver_type', [$order->order_type, 'both'])->where(function ($q) {
         $q->where(function ($q) {
-            $q->where('is_on_default_package',false)->whereHas('subscribedPackage',function ($q) {
-                $q->whereDate('end_at',">=",date("Y-m-d"))->where('is_paid',1);
+            $q->where('is_on_default_package', false)->whereHas('subscribedPackage', function ($q) {
+                $q->whereDate('end_at', ">=", date("Y-m-d"))->where('is_paid', 1);
             });
         })/*->orWhere(function ($q) {
             $q->where(function ($q) {
@@ -149,149 +166,150 @@ function getOtherDrivers($order , $notified_drivers , $number_of_drivers = 0)
                    });
                });
             });
-        })*/->orWhereHas('user',function ($q) {
-            $q->where('is_with_special_needs',true);
+        })*/->orWhereHas('user', function ($q) {
+            $q->where('is_with_special_needs', true);
         });
-    })->when($order->start_lat && $order->start_lng,function ($q) use($order) {
-        $q->nearest($order->start_lat ,$order->start_lng);
-    })->when($number_of_drivers > 0,function ($q) use($number_of_drivers){
+    })->when($order->start_lat && $order->start_lng, function ($q) use ($order) {
+        $q->nearest($order->start_lat, $order->start_lng);
+    })->when($number_of_drivers > 0, function ($q) use ($number_of_drivers) {
         $q->take($number_of_drivers);
     })->get();
 
     if ($drivers) {
         $drivers_ids_array = $drivers->pluck('user_id')->toArray();
-        $db_drivers = User::whereIn('id',$drivers_ids_array)->get();
-        $notified_drivers = $db_drivers->mapWithKeys(function ($item) use($order) {
-            $count = @optional($item->orderNotifiedDrivers()->firstWhere('driver_order.order_id',$order->id))->pivot->notify_number ?? 0;
+        $db_drivers = User::whereIn('id', $drivers_ids_array)->get();
+        $notified_drivers = $db_drivers->mapWithKeys(function ($item) use ($order) {
+            $count = @optional($item->orderNotifiedDrivers()->firstWhere('driver_order.order_id', $order->id))->pivot->notify_number ?? 0;
             // dump($count);
             $total_drivers = [];
             if ($count >= ((int)convertArabicNumber(setting('driver_notify_count_to_refuse')) ?? 2)) {
                 $total_drivers[$item['id']] = ['status' => 'refuse_reply', 'notify_number' => $count];
-            }else{
+            } else {
                 $total_drivers[$item['id']] = ['status' => 'notify', 'notify_number' => $count];
             }
             return $total_drivers;
-         })->toArray();
+        })->toArray();
 
         $order->driverNotifiedOrders()->syncWithoutDetaching($notified_drivers);
-        $new_drivers = $order->driverNotifiedOrders()->where('driver_order.status','notify')->pluck('users.id')->toArray();
-        $db_drivers = User::whereIn('id',$new_drivers)->get();
+        $new_drivers = $order->driverNotifiedOrders()->where('driver_order.status', 'notify')->pluck('users.id')->toArray();
+        $db_drivers = User::whereIn('id', $new_drivers)->get();
         $minutes = ((int)convertArabicNumber(setting('waiting_time_for_driver_response'))) ? ((int)convertArabicNumber(setting('waiting_time_for_driver_response'))) : 1;
         $fcm_data = [
             'title' => trans('dashboard.fcm.new_order_title'),
-            'body' => trans('dashboard.fcm.new_order_body',['client' => $order->fullname,'order_type' => trans('dashboard.order.order_types.'.$order->order_type)]),
+            'body' => trans('dashboard.fcm.new_order_body', ['client' => $order->fullname, 'order_type' => trans('dashboard.order.order_types.' . $order->order_type)]),
             'notify_type' => 'new_order',
             'order_id' => $order->id,
             'order_type' => $order->order_type,
         ];
         // pushFcmNotes($fcm_data,$drivers_ids_array,'\\App\\Models\\Driver');
-        SendFCMNotification::dispatch($fcm_data , $new_drivers)->onQueue('wallet');
-        Notification::send($db_drivers,new FCMNotification($fcm_data,['database']));
-        SendOrderRequestToDriver::dispatch($order, array_merge($new_drivers,$notified_drivers) ,  $number_of_drivers)->delay(now()->addMinutes($minutes));
+        SendFCMNotification::dispatch($fcm_data, $new_drivers)->onQueue('wallet');
+        Notification::send($db_drivers, new FCMNotification($fcm_data, ['database']));
+        SendOrderRequestToDriver::dispatch($order, array_merge($new_drivers, $notified_drivers),  $number_of_drivers)->delay(now()->addMinutes($minutes));
     }
 }
 
 
 function sendNotify($user)
 {
-  try {
-    if ($user->roles()->exists()) {
-      $user->notify(new RegisterUser($user));
-    } else {
-      $user->notify(new VerifyApiMail($user));
+    try {
+        if ($user->roles()->exists()) {
+            $user->notify(new RegisterUser($user));
+        } else {
+            $user->notify(new VerifyApiMail($user));
+        }
+        $msg = [trans('dashboard.messages.success_add_send'), 1];
+    } catch (\Exception $e) {
+        $msg = [trans('dashboard.messages.success_add_not_send'), 0];
     }
-    $msg = [trans('dashboard.messages.success_add_send'), 1];
-  } catch (\Exception $e) {
-    $msg = [trans('dashboard.messages.success_add_not_send'), 0];
-  }
-  return $msg;
+    return $msg;
 }
 
 
 function uploadImg($files, $url = 'images', $key = 'image', $width = null, $height = null)
 {
     $dist = storage_path('app/public/' . $url . "/");
-    if ($url != 'images' && !File::isDirectory(storage_path('app/public/images/' . $url . "/"))){
-        File::makeDirectory(storage_path('app/public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.$url.DIRECTORY_SEPARATOR), 0777, true);
-        $dist = storage_path('app/public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.$url.DIRECTORY_SEPARATOR);
-    }elseif (File::isDirectory(storage_path('app/public/images/' . $url . "/"))) {
+    if ($url != 'images' && !File::isDirectory(storage_path('app/public/images/' . $url . "/"))) {
+        File::makeDirectory(storage_path('app/public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $url . DIRECTORY_SEPARATOR), 0777, true);
+        $dist = storage_path('app/public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $url . DIRECTORY_SEPARATOR);
+    } elseif (File::isDirectory(storage_path('app/public/images/' . $url . "/"))) {
         $dist = storage_path('app/public/images/' . $url . "/");
     }
-    $image ="";
+    $image = "";
     if (!is_array($files)) {
-      $dim = getimagesize($files);
-      $width = $width ?? $dim[0];
-      $height = $height ?? $dim[1];
+        $dim = getimagesize($files);
+        $width = $width ?? $dim[0];
+        $height = $height ?? $dim[1];
     }
 
-  if (gettype($files) == 'array') {
-    $image = [];
-    foreach ($files as $img) {
-      $dim = getimagesize($img);
-      $width = $width ?? $dim[0];
-      $height = $height ?? $dim[1];
+    if (gettype($files) == 'array') {
+        $image = [];
+        foreach ($files as $img) {
+            $dim = getimagesize($img);
+            $width = $width ?? $dim[0];
+            $height = $height ?? $dim[1];
 
-      if ($img && $dim['mime'] != "image/gif") {
-        Image::make($img)->resize($width, $height, function ($cons) {
-          $cons->aspectRatio();
-        })->save($dist . $img->hashName());
-        $image[][$key] = $img->hashName();
-     }elseif ($img && $dim['mime'] == "image/gif") {
-        $image = uploadGIFImg($img,$dist);
-      }
+            if ($img && $dim['mime'] != "image/gif") {
+                Image::make($img)->resize($width, $height, function ($cons) {
+                    $cons->aspectRatio();
+                })->save($dist . $img->hashName());
+                $image[][$key] = $img->hashName();
+            } elseif ($img && $dim['mime'] == "image/gif") {
+                $image = uploadGIFImg($img, $dist);
+            }
+        }
+    } elseif ($dim && $dim['mime'] == "image/gif") {
+        $image = uploadGIFImg($files, $dist);
+    } else {
+        Image::make($files)->resize($width, $height, function ($cons) {
+            $cons->aspectRatio();
+        })->save($dist . $files->hashName());
+        $image = $files->hashName();
     }
-   }elseif ($dim && $dim['mime'] == "image/gif") {
-     $image = uploadGIFImg($files,$dist);
-   } else {
-    Image::make($files)->resize($width, $height, function ($cons) {
-      $cons->aspectRatio();
-    })->save($dist . $files->hashName());
-    $image = $files->hashName();
-  }
-  return $image;
+    return $image;
 }
 
-function uploadGIFImg($gif_image,$dist) {
-    $file_name = Str::uuid() ."___". $gif_image->getClientOriginalName();
+function uploadGIFImg($gif_image, $dist)
+{
+    $file_name = Str::uuid() . "___" . $gif_image->getClientOriginalName();
     if ($gif_image->move($dist, $file_name)) {
-      return $file_name;
+        return $file_name;
     }
 }
 
 function uploadFile($files, $url = 'files', $key = 'file', $model = null)
 {
-  $dist = storage_path('app/public/' . $url);
-  if ($url != 'images' && !File::isDirectory(storage_path('app/public/files/' . $url . "/"))){
-      File::makeDirectory(storage_path('app/public'.DIRECTORY_SEPARATOR.'files'.DIRECTORY_SEPARATOR.$url.DIRECTORY_SEPARATOR), 0777, true);
-      $dist = storage_path('app/public'.DIRECTORY_SEPARATOR.'files'.DIRECTORY_SEPARATOR.$url.DIRECTORY_SEPARATOR);
-  }elseif (File::isDirectory(storage_path('app/public/files/' . $url . "/"))) {
-      $dist = storage_path('app/public/files/' . $url . "/");
-  }
-  $file = '';
-
-  if (gettype($files) == 'array') {
-    $file = [];
-    foreach ($files as $new_file) {
-      $file_name = time() . "___file_" . $new_file->getClientOriginalName();
-      if ($new_file->move($dist, $file_name)) {
-        $file[][$key] = $file_name;
-      }
+    $dist = storage_path('app/public/' . $url);
+    if ($url != 'images' && !File::isDirectory(storage_path('app/public/files/' . $url . "/"))) {
+        File::makeDirectory(storage_path('app/public' . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $url . DIRECTORY_SEPARATOR), 0777, true);
+        $dist = storage_path('app/public' . DIRECTORY_SEPARATOR . 'files' . DIRECTORY_SEPARATOR . $url . DIRECTORY_SEPARATOR);
+    } elseif (File::isDirectory(storage_path('app/public/files/' . $url . "/"))) {
+        $dist = storage_path('app/public/files/' . $url . "/");
     }
-  } else {
-    $file = $files;
-    $file_name = time() . "___file_" . $file->getClientOriginalName();
-    if ($file->move($dist, $file_name)) {
-      $file =  $file_name;
-    }
-  }
+    $file = '';
 
-  return $file;
+    if (gettype($files) == 'array') {
+        $file = [];
+        foreach ($files as $new_file) {
+            $file_name = time() . "___file_" . $new_file->getClientOriginalName();
+            if ($new_file->move($dist, $file_name)) {
+                $file[][$key] = $file_name;
+            }
+        }
+    } else {
+        $file = $files;
+        $file_name = time() . "___file_" . $file->getClientOriginalName();
+        if ($file->move($dist, $file_name)) {
+            $file =  $file_name;
+        }
+    }
+
+    return $file;
 }
 
 function convertArabicNumber($number)
 {
     $arabic_array = ['۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4', '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9', '٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9'];
-    return strtr($number,$arabic_array);
+    return strtr($number, $arabic_array);
 }
 
 function filter_mobile_number($mob_num)
@@ -315,7 +333,7 @@ function filter_mobile_number($mob_num)
     } elseif ($first_4_val == "9660") {
         $val = "966";
         $mob_number = substr($mob_num, 4);
-    }elseif ($first_3_val == "966") {
+    } elseif ($first_3_val == "966") {
         $val = null;
         $mob_number = $mob_num;
     } elseif ($first_val == "5") {
@@ -343,55 +361,55 @@ function filter_mobile_number($mob_num)
  * @param  array $fcmData
  * @param  array $userIds
  */
-function pushFcmNotes($fcmData, $userIds,$model = '\\App\\Models\\Device')
+function pushFcmNotes($fcmData, $userIds, $model = '\\App\\Models\\Device')
 {
-  $send_process = [];
-  $fail_process = [];
+    $send_process = [];
+    $fail_process = [];
 
-  if (is_array($userIds) && !empty($userIds)) {
-      $number_of_drivers = null;
-    if ($model == '\\App\\Models\\Driver') {
-         $model = '\\App\\Models\\Device';
-         // $number_of_drivers = 1;
+    if (is_array($userIds) && !empty($userIds)) {
+        $number_of_drivers = null;
+        if ($model == '\\App\\Models\\Driver') {
+            $model = '\\App\\Models\\Device';
+            // $number_of_drivers = 1;
+        }
+        $devices = $model::whereIn('user_id', $userIds)/*->distinct('device_token')*/->latest()->when($number_of_drivers, function ($q) use ($number_of_drivers) {
+            $q->take($number_of_drivers);
+        })->get();
+        $ios_devices = array_filter($devices->where('type', 'ios')->pluck('device_token')->toArray());
+        $android_devices = array_filter($devices->where('type', 'android')->pluck('device_token')->toArray());
+
+        $optionBuilder = new OptionsBuilder();
+        $optionBuilder->setTimeToLive(60 * 20);
+
+        $notificationBuilder = new PayloadNotificationBuilder($fcmData['title']);
+        $notificationBuilder->setBody($fcmData['body'])
+            ->setSound('default');
+
+        $dataBuilder = new PayloadDataBuilder();
+        $dataBuilder->addData($fcmData);
+
+        $option       = $optionBuilder->build();
+        $data         = $dataBuilder->build();
+        if (count($ios_devices)) {
+            $notification = $notificationBuilder->build();
+            // You must change it to get your tokens
+            $downstreamResponse = FCM::sendTo($ios_devices, $option, $notification, $data);
+            Device::whereIn('device_token', $downstreamResponse->tokensToDelete() + array_keys($downstreamResponse->tokensWithError()))->delete();
+            // return $downstreamResponse;
+            $send_process[] = $downstreamResponse->numberSuccess();
+        }
+        if (count($android_devices)) {
+            $notification = null;
+            // You must change it to get your tokens
+            $downstreamResponse = FCM::sendTo($android_devices, $option, $notification, $data);
+            Device::whereIn('device_token', $downstreamResponse->tokensToDelete() + array_keys($downstreamResponse->tokensWithError()))->delete();
+            // return $downstreamResponse;
+            $send_process[] = $downstreamResponse->numberSuccess();
+            // code...
+        }
+        return count($send_process);
     }
-    $devices = $model::whereIn('user_id',$userIds)/*->distinct('device_token')*/->latest()->when($number_of_drivers,function ($q) use($number_of_drivers) {
-        $q->take($number_of_drivers);
-    })->get();
-    $ios_devices =array_filter($devices->where('type','ios')->pluck('device_token')->toArray());
-    $android_devices = array_filter($devices->where('type','android')->pluck('device_token')->toArray());
-
-    $optionBuilder = new OptionsBuilder();
-    $optionBuilder->setTimeToLive(60*20);
-
-    $notificationBuilder = new PayloadNotificationBuilder($fcmData['title']);
-    $notificationBuilder->setBody($fcmData['body'])
-    ->setSound('default');
-
-    $dataBuilder = new PayloadDataBuilder();
-    $dataBuilder->addData($fcmData);
-
-    $option       = $optionBuilder->build();
-    $data         = $dataBuilder->build();
-    if (count($ios_devices)) {
-        $notification = $notificationBuilder->build();
-        // You must change it to get your tokens
-        $downstreamResponse = FCM::sendTo($ios_devices, $option, $notification, $data);
-        Device::whereIn('device_token',$downstreamResponse->tokensToDelete()+array_keys($downstreamResponse->tokensWithError()))->delete();
-        // return $downstreamResponse;
-        $send_process[] = $downstreamResponse->numberSuccess();
-     }
-     if (count($android_devices)) {
-         $notification = null;
-         // You must change it to get your tokens
-         $downstreamResponse = FCM::sendTo($android_devices, $option, $notification, $data);
-         Device::whereIn('device_token',$downstreamResponse->tokensToDelete()+array_keys($downstreamResponse->tokensWithError()))->delete();
-         // return $downstreamResponse;
-         $send_process[] = $downstreamResponse->numberSuccess();
-         // code...
-     }
-     return count($send_process);
-  }
-  return "No Users";
+    return "No Users";
 }
 
 // HISMS
@@ -412,7 +430,7 @@ function send_sms($mobile, $msg)
         'date' => date('Y-m-d'),
         'time' => date("H:i")
     ];
-    return SMSService::send($sender_data , $send_data , $date_time , setting('sms_provider'));
+    return SMSService::send($sender_data, $send_data, $date_time, setting('sms_provider'));
 }
 
 
@@ -447,18 +465,19 @@ function channel_users($channel_name)
 }
 
 
-function wallet_transaction($user , $amount , $transaction_type , $morph = null , $reason = null) {
+function wallet_transaction($user, $amount, $transaction_type, $morph = null, $reason = null)
+{
     if ($transaction_type == 'withdrawal') {
         $new_wallet = $user->wallet - $amount;
-    }else{
+    } else {
         $new_wallet = $user->wallet + $amount;
     }
     $added_by = auth('api')->check() ? auth('api')->id() : (auth()->check() ? auth()->id() : null);
 
     $before_wallet_charge = [
-        'wallet_before' => $user->wallet , 'wallet_after' => $new_wallet,
-        'transaction_type' => $transaction_type , 'added_by_id' => $added_by,
-        'amount' => $amount ,
+        'wallet_before' => $user->wallet, 'wallet_after' => $new_wallet,
+        'transaction_type' => $transaction_type, 'added_by_id' => $added_by,
+        'amount' => $amount,
         'transfer_status' => 'transfered',
         'reason' => $reason
     ];
@@ -466,7 +485,7 @@ function wallet_transaction($user , $amount , $transaction_type , $morph = null 
         $morph_type = get_class($morph);
         $morph_id = $morph->id;
         $before_wallet_charge += [
-            'app_typeable_type' => $morph_type ,
+            'app_typeable_type' => $morph_type,
             'app_typeable_id' => $morph_id
         ];
     }
@@ -477,7 +496,8 @@ function wallet_transaction($user , $amount , $transaction_type , $morph = null 
     return $new_wallet;
 }
 
-function use_point_offer($client , $driver) {
+function use_point_offer($client, $driver)
+{
     // Point Offers
     $point_offers = PointOffer::active()->live()->get();
 
@@ -487,17 +507,17 @@ function use_point_offer($client , $driver) {
         foreach ($point_offers as $point_offer) {
             $finished_client_count = 0;
             $finished_driver_count = 0;
-            if (in_array($point_offer->user_type,['client','client_and_driver'])) {
-                $finished_client_query = $client->clientOrders()->whereIn('order_status',['client_finish','driver_finish','admin_finish'])->whereBetween('created_at',[$point_offer->start_at,$point_offer->end_at]);
+            if (in_array($point_offer->user_type, ['client', 'client_and_driver'])) {
+                $finished_client_query = $client->clientOrders()->whereIn('order_status', ['client_finish', 'driver_finish', 'admin_finish'])->whereBetween('created_at', [$point_offer->start_at, $point_offer->end_at]);
                 $finished_client_count = $finished_client_query->count();
             }
 
-            if (in_array($point_offer->user_type,['driver','client_and_driver'])) {
-                $finished_driver_query = $driver->driverOrders()->whereIn('order_status',['client_finish','driver_finish','admin_finish'])->whereBetween('created_at',[$point_offer->start_at,$point_offer->end_at]);
+            if (in_array($point_offer->user_type, ['driver', 'client_and_driver'])) {
+                $finished_driver_query = $driver->driverOrders()->whereIn('order_status', ['client_finish', 'driver_finish', 'admin_finish'])->whereBetween('created_at', [$point_offer->start_at, $point_offer->end_at]);
                 $finished_driver_count = $finished_driver_query->count();
             }
 
-            if ($finished_client_count >= $point_offer->number_of_orders && !$client_use_offer && in_array($point_offer->user_type,['client','client_and_driver'])) {
+            if ($finished_client_count >= $point_offer->number_of_orders && !$client_use_offer && in_array($point_offer->user_type, ['client', 'client_and_driver'])) {
                 $client->userPoints()->create([
                     'points' => $point_offer->points,
                     'is_used' => false,
@@ -514,7 +534,7 @@ function use_point_offer($client , $driver) {
                 $client_use_offer = true;
             }
 
-            if ($finished_driver_count >= $point_offer->number_of_orders && !$driver_use_offer && in_array($point_offer->user_type,['driver','client_and_driver'])) {
+            if ($finished_driver_count >= $point_offer->number_of_orders && !$driver_use_offer && in_array($point_offer->user_type, ['driver', 'client_and_driver'])) {
 
                 $driver->userPoints()->create([
                     'points' => $point_offer->points,
