@@ -13,9 +13,10 @@ class Contract extends Model
 
     protected static function boot()
     {
-        // parent::boot();
+      
         // static::booted();
         static::saved(function ($data) {
+             
             if (request()->hasFile('identity_number_image_for_owner')) {
                 if ($data->media()->where('option','identity_number_image_for_owner')->exists()) {
                     $image = AppMedia::where(['app_mediaable_type' => 'App\Models\Contract','app_mediaable_id' => $data->id ,'media_type' => 'image','option' => 'identity_number_image_for_owner'])->first();
@@ -143,19 +144,26 @@ class Contract extends Model
 
     public function getIdentityNumberImageForOwnerAttribute()
     {
-        $image = isset($this->attributes['identity_number_image_for_owner']) && $this->attributes['identity_number_image_for_owner'] ? 'storage/images/contract/'.$this->attributes['identity_number_image_for_owner'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+       
+        $image = $this->media()->where(['option' => 'identity_number_image_for_owner'])->exists() ? 'storage/images/contract/'.$this->media()->where(['option' => 'identity_number_image_for_owner'])->first()->media : 'dashboardAssets/images/backgrounds/avatar.jpg';
         return asset($image);
     }
+
+  
+
 
     public function getPropertyDocumentAttribute()
     {
-        $image = isset($this->attributes['property_document']) && $this->attributes['property_document'] ? 'storage/images/contract/'.$this->attributes['property_document'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+       
+        $image = $this->media()->where(['option' => 'property_document'])->exists() ? 'storage/images/contract/'.$this->media()->where(['option' => 'property_document'])->first()->media : 'dashboardAssets/images/backgrounds/avatar.jpg';
         return asset($image);
     }
 
+
+
     public function getAddressImageAttribute()
-    {
-        $image = isset($this->attributes['address_image']) && $this->attributes['address_image'] ? 'storage/images/contract/'.$this->attributes['address_image'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+    {    
+        $image = $this->media()->where(['option' => 'address_image'])->exists() ? 'storage/images/contract/'.$this->media()->where(['option' => 'address_image'])->first()->media : 'dashboardAssets/images/backgrounds/avatar.jpg';
         return asset($image);
     }
 
@@ -167,9 +175,12 @@ class Contract extends Model
         return asset($image);
     }
 
+
+
     public function getNationalAddressForCitizenAttribute()
     {
-        $image = isset($this->attributes['identity_number_image_for_citizen']) && $this->attributes['identity_number_image_for_citizen'] ? 'storage/images/contract/'.$this->attributes['identity_number_image_for_citizen'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+       
+        $image = $this->media()->where(['option' => 'national_address_for_citizen'])->exists() ? 'storage/images/contract/'.$this->media()->where(['option' => 'national_address_for_citizen'])->first()->media : 'dashboardAssets/images/backgrounds/avatar.jpg';
         return asset($image);
     }
 

@@ -42,8 +42,8 @@ class AdResource extends JsonResource
             'last_updated_at'=>now()->diffInDays($this->last_updated_at),
             'advertiser'=>new UserDataResource($this->advertiser),
              'city'=> new CityResource($this->city),
-             'district'=>new DistrictResource($this->district)
-
+             'district'=>new DistrictResource($this->district),
+            'watching_number'=>$this->watching_number
         ];
     }
 }
