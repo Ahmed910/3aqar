@@ -13,6 +13,7 @@
                     <tr class="text-center">
                         <th>#</th>
                         <th>{!! trans('dashboard.feature.name') !!}</th>
+                        <th>{!! trans('dashboard.en.name') !!}</th>
                         <th>{!! trans('dashboard.feature.data_type') !!}</th>
                         <th>{!! trans('dashboard.general.added_date') !!}</th>
                         <th>{!! trans('dashboard.general.control') !!}</th>
@@ -23,7 +24,8 @@
                     <tr class="{{ $feature->id }} text-center">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $feature->name_ar }}</td>
-                        <td>{{ $feature->data_type }}</td>
+                        <td>{{ $feature->name }}</td>
+                        <td>{{ trans('dashboard.feature.'.$feature->data_type) }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $feature->created_at }}</div>
                         </td>

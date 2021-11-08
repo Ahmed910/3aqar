@@ -8,7 +8,7 @@
     <div class="col-md-6 col-12">
         <div class="form-group">
             <label for="phone-column">{{ trans('dashboard.feature.name_en') }} <span class="text-danger">*</span></label>
-            {!! Form::text('name', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.general.name_en')]) !!}
+            {!! Form::text('name', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.name_en')]) !!}
         </div>
     </div>
 </div>

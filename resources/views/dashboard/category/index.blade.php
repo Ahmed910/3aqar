@@ -25,7 +25,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $category->name_ar }}</td>
                         <td>{{ $category->name }}</td>
-                        <td>{{ trans('dashboard.category.data_type.').$category->type}}</td>
+                        <td>{{ trans('dashboard.category.data_type.'.$category->type)}}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $category->created_at->format("Y-m-d") }}</div>
                         </td>
