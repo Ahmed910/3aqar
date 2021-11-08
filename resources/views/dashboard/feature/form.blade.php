@@ -41,14 +41,14 @@
         <div class="col-md-6 col-12">
             <div class="form-group">
                 <label for="phone-column">{{ trans('dashboard.feature.start_value') }} <span class="text-danger">*</span></label>
-                {!! Form::number('start_value', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.start_value')]) !!}
+                {!! Form::text('start_value', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.start_value')]) !!}
             </div>
         </div>
 
         <div class="col-md-6 col-12">
             <div class="form-group">
                 <label for="phone-column">{{ trans('dashboard.feature.end_value') }} <span class="text-danger">*</span></label>
-                {!! Form::number('end_value', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.end_value')]) !!}
+                {!! Form::text('end_value', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.end_value')]) !!}
             </div>
         </div>
     </div>
