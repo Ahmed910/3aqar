@@ -14,10 +14,10 @@ class CategoriesNameResource extends JsonResource
      */
     public function toArray($request)
     {
-
+        $name = app()->getLocale() == 'ar' ? $this->name_ar : $this->name;
         return [
             'id'=>$this->id,
-            'name'=>$this->name,
+            'name'=>$name,
             'type'=>$this->type
         ];
     }

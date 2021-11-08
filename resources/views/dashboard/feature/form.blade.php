@@ -67,8 +67,15 @@
                 {!! Form::number('max', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.max')]) !!}
             </div>
         </div>
+        <div class="col-12">
+            <div class="form-group">
+                <label for="ordering-column">{{ trans('dashboard.feature.ordering') }} <span class="text-danger">*</span></label>
+                {!! Form::number('ordering', null , ['class' => 'form-control','id' => "ordering-column" , 'placeholder' => trans('dashboard.feature.ordering')]) !!}
+            </div>
+        </div>
+
     </div>
-        
+
 
     <div class="col-12 d-flex justify-content-end">
         <button type="submit" class="btn btn-primary">{{ $btnSubmit }}</button>

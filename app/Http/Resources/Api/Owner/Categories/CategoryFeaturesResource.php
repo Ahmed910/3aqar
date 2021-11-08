@@ -14,9 +14,10 @@ class CategoryFeaturesResource extends JsonResource
      */
     public function toArray($request)
     {
+        $name = app()->getLocale() == 'ar' ? $this->name_ar : $this->name;
         return [
             'id'=>$this->id,
-            'name'=>$this->name,
+            'name'=>$name,
             'data_type'=>$this->data_type,
             'min'=>$this->min ? $this->min:1,
             'max' => $this->max ? $this->max:6,

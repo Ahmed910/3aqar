@@ -141,7 +141,37 @@ class Contract extends Model
         });
     }
 
+    public function getIdentityNumberImageForOwnerAttribute()
+    {
+        $image = isset($this->attributes['identity_number_image_for_owner']) && $this->attributes['identity_number_image_for_owner'] ? 'storage/images/contract/'.$this->attributes['identity_number_image_for_owner'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+        return asset($image);
+    }
 
+    public function getPropertyDocumentAttribute()
+    {
+        $image = isset($this->attributes['property_document']) && $this->attributes['property_document'] ? 'storage/images/contract/'.$this->attributes['property_document'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+        return asset($image);
+    }
+
+    public function getAddressImageAttribute()
+    {
+        $image = isset($this->attributes['address_image']) && $this->attributes['address_image'] ? 'storage/images/contract/'.$this->attributes['address_image'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+        return asset($image);
+    }
+
+    //identity_number_image_for_citizen
+
+    public function getIdentityNumberImageForCitizenAttribute()
+    {
+        $image = isset($this->attributes['identity_number_image_for_citizen']) && $this->attributes['identity_number_image_for_citizen'] ? 'storage/images/contract/'.$this->attributes['identity_number_image_for_citizen'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+        return asset($image);
+    }
+
+    public function getNationalAddressForCitizenAttribute()
+    {
+        $image = isset($this->attributes['identity_number_image_for_citizen']) && $this->attributes['identity_number_image_for_citizen'] ? 'storage/images/contract/'.$this->attributes['identity_number_image_for_citizen'] : 'dashboardAssets/images/backgrounds/avatar.jpg';
+        return asset($image);
+    }
 
     // Relations
     public function media()

@@ -31,7 +31,8 @@ class FeaureRequest extends FormRequest
             'min' => 'nullable',
             'max' => 'nullable',
             'start_value' => 'nullable',
-            'end_value' => 'nullable'
+            'end_value' => 'nullable',
+            'ordering'=>'required|numeric',
         ];
     }
 }
