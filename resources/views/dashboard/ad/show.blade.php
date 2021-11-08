@@ -228,7 +228,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @if($ad->ad_type == 'sale')
                                         <div class="row">
                                             <div class="col-md-6">
@@ -271,6 +270,7 @@
                                             </div>
                                         </div>
                                     @endif
+                                    </div>
                                 </div>
                         </div>
                         </div>
