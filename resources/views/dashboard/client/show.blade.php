@@ -1,146 +1,142 @@
 @extends('dashboard.layout.layout')
 
 @section('content')
-<div id="user-profile">
-    <div class="row">
-        <div class="col-12">
-            <div class="profile-header mb-2 border-info rounded">
-                <div class="relative">
-                    <div class="cover-container">
-                        <img class="img-fluid bg-cover rounded-top w-100" src="{{ asset('dashboardAssets') }}/images/banner/banner-9.jpg" alt="{{ $client->fullname }}" style="height:345px;">
-                    </div>
-                    <div class="profile-img-container d-flex align-items-center justify-content-between">
-                        <img src="{{ $client->avatar }}" class="rounded-circle img-border box-shadow-1" alt="Card image">
-                        <div class="float-right">
-                            <a href="{{ route('dashboard.client.edit',$client->id) }}" class="btn btn-icon btn-icon rounded-circle btn-primary mr-1">
-                                <i class="feather icon-edit-2"></i>
-                            </a>
-                            {{-- <button type="button" class="btn btn-icon btn-icon rounded-circle btn-primary">
-                                <i class="feather icon-settings"></i>
-                            </button> --}}
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-end align-items-center profile-header-nav rounded-bottom">
-                    <nav class="navbar navbar-expand-sm w-100 pr-0">
-                        <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"><i class="feather icon-align-justify"></i></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav d-flex justify-content-start w-75 ml-sm-auto" role="tablist">
-                                <li class="nav-item px-sm-0">
-                                    <a href="#profile" data-toggle="tab" id="profile-tab" aria-controls="profile" class="nav-link font-small-3" aria-selected="true">
-                                        <i class="feather icon-user mr-50 font-medium-3"></i>
-                                        {!! trans('dashboard.user.profile') !!}
-                                    </a>
+<style>
+.features{
+    text-align: center;
+    position: relative;
+}
 
-                                </li>
-                                <li class="nav-item px-sm-0">
-                                    <a href="#social" data-toggle="tab" id="social-tab" aria-controls="social" class="nav-link font-small-3" aria-selected="false">
-                                        <i class="feather icon-globe mr-50 font-medium-3"></i>
-                                        {!! trans('dashboard.user.orders') !!}
+.features::after{
+    position: absolute;
+    content: "";
+    background-color: #00cfe8;
+    left:0;
+    width:46%;
+    height: 1px;
+        top:12px
+}
+
+.features::before{
+    position: absolute;
+    content: "";
+    background-color: #00cfe8;
+    right:0;
+    width:46%;
+    height: 1px;
+    top:12px
+}
+</style>
+
+<div class="content-body">
+    <div id="user-profile">
+        <div class="row">
+            <div class="col-12">
+                <div class="card profile-header mb-2 border-info">
+                    <img class="card-img-top" src="{{ asset('dashboardAssets') }}/images/profile/user-uploads/timeline.jpg" alt="" />
+
+                    <div class="position-relative">
+                        <div class="profile-img-container d-flex align-items-center">
+                            <div class="avatar">
+                                <div class="profile-img">
+                                    <a href="{{ @$client->avatar }}" data-fancybox="gallery">
+                                        <img src="{{ @$client->avatar }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
                                     </a>
-                                </li>
-                                <li class="nav-item px-sm-0">
-                                    <a href="#orders" data-toggle="tab" id="orders-tab" aria-controls="orders" class="nav-link font-small-3" aria-selected="false">
-                                        <i class="feather icon-briefcase mr-50 font-medium-3"></i>
-                                        {!! trans('dashboard.user.sub_order') !!}
-                                    </a>
-                                </li>
-                            </ul>
+                                </div>
+                                <span class="avatar-status-busy avatar-status-md" id="online_1"></span>
+                            </div>
+                            <div class="profile-title ml-3">
+                             <h2 class="text-white">{{ @$client->fullname }}</h2>
+                                <p class="text-white">{{ @$client->phone }}</p>
+                            </div>
                         </div>
-                    </nav>
+                    </div>
+
+                    <div class="profile-header-nav">
+                        <nav class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100">
+                            <button class="btn btn-icon navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <i data-feather="align-justify" class="font-medium-5"></i>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div class="profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0">
+
+                                    <ul class="nav nav-pills nav-fill mb-0">
+                                        {{-- <li class="nav-item">
+                                            <a class="nav-link active" id="profile-tab-fill" data-toggle="pill" href="#profile-fill" aria-expanded="true">
+                                                {!! trans('dashboard.user.profile') !!}
+                                            </a>
+                                        </li> --}}
+                                        {{-- <li class="nav-item">
+                                            <a class="nav-link" id="order-tab-fill" data-toggle="pill" href="#order-fill" aria-expanded="false">
+                                                {!! trans('dashboard.order.orders') !!}
+                                            </a>
+                                        </li> --}}
+                                        {{-- <li class="nav-item">
+                                            <a class="nav-link" id="transfer-tab-fill" data-toggle="pill"
+                                                href="#transfer-fill" aria-expanded="false">
+                                                {!! trans('dashboard.transfer_request.transfer_requests') !!}
+                                            </a>
+                                        </li> --}}
+                                        {{-- <li class="nav-item">
+                                            <a class="nav-link" id="wallet-tab-fill" data-toggle="pill"
+                                                href="#wallet-fill" aria-expanded="false">
+                                                {!! trans('dashboard.user.wallet') !!}
+                                            </a>
+                                        </li> --}}
+                                        {{-- <li class="nav-item">
+                                            <a class="nav-link" id="packages-tab-fill" data-toggle="pill"
+                                                href="#packages-fill" aria-expanded="false">
+                                                {!! trans('dashboard.driver.driver_packages') !!}
+                                            </a>
+                                        </li> --}}
+                                    </ul>
+                                    <div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <section id="profile-info" class="row">
-        <!-- Basic datatable -->
-        <div class="col-md-9">
-            <div class="card border-info">
-
-                <div class="card-body">
+        <section id="profile-info">
+            <div class="row">
+                <div class="col-lg-9 col-12 order-1 order-lg-2">
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade show active" id="profile" aria-labelledby="profile-tab">
-                            <div class="card">
+                        <div role="tabpanel" class="tab-pane active" id="profile-fill" aria-labelledby="profile-tab-fill" aria-expanded="true">
+                            <div class="card  border-info">
                                 <div class="card-body">
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.user.fullname') }}</label>
-                                        <div class="col-md-10 position-relative has-icon-left">
-                                            <input type="text" value="{{ $client->fullname }}" class="form-control" readonly>
-                                            <div class="form-control-position">
-                                                <i class="feather icon-user"></i>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                            <label class="col-form-label col-md-4">{{ trans('dashboard.general.name') }}</label>
+                                            <div class="input-group mb-2 col-md-8">
+                                                <input type="text" class="form-control" value="{{ $client->fullname}}" aria-describedby="basic-addon-fullname" />
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <label class="col-form-label col-md-4">{{ trans('dashboard.general.phone') }}</label>
+                                                <div class="input-group mb-2 col-md-8">
+                                                    <input type="text" class="form-control" value="{{ @$client->phone }}" aria-describedby="basic-addon-phone" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.general.phone') }}</label>
-                                        <div class="col-md-10 position-relative has-icon-left">
-                                        @if($client->phone != null)
-                                            <input type="text" value="{{ $client->phone }}" class="form-control" readonly>
-                                        @else
-                                            <input type="text" value="{{trans('dashboard.client.not_have_phone')}}" class="form-control" readonly>
-                                        @endif                                            <div class="form-control-position">
-                                                <i class="feather icon-phone"></i>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                            <label class="col-form-label col-md-4">{{ trans('dashboard.general.whatsapp') }}</label>
+                                            <div class="input-group mb-2 col-md-8">
+                                                <input type="text" class="form-control" value="{{ $client->whatsapp }}" aria-describedby="basic-addon-email" />
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.general.email') }}</label>
-                                        <div class="col-md-10 position-relative has-icon-left">
-                                        @if($client->email != null)
-                                            <input type="text" value="{{ $client->email }}" class="form-control" readonly>
-                                        @else
-                                            <input type="text" value="{{trans('dashboard.client.not_have_email')}}" class="form-control" readonly>
-                                        @endif
-                                            <div class="form-control-position">
-                                                <i class="feather icon-mail"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                               {{--     <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.nationality.nationality') }}</label>
-                                        <div class="col-md-10 position-relative has-icon-left">
-                                            <input type="text" value="{{ optional($client->nationality)->name }}" class="form-control" readonly>
-                                            <div class="form-control-position">
-                                                <i class="feather icon-flag"></i>
-                                        </div>
-                                    </div> 
-                                    </div>--}}
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.country.country') }}</label>
-                                        <div class="col-md-10 position-relative has-icon-left">
-                                            <input type="text" value="{{ optional($client->country)->name }}" class="form-control" readonly>
-                                            <div class="form-control-position">
-                                                <i class="feather icon-flag"></i>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.city.city') }}</label>
-                                        <div class="col-md-10 position-relative has-icon-left">
-                                            <input type="text" value="{{ optional($client->city)->name }}" class="form-control" readonly>
-                                            <div class="form-control-position">
-                                                <i class="feather icon-flag"></i>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.general.identity_number') }}</label>
-                                        <div class="col-md-4 position-relative has-icon-left">
-                                            <input type="text" value="{{ $client->identity_number }}" class="form-control" readonly>
-                                            <div class="form-control-position">
-                                                <i class="feather icon-flag"></i>
-                                            </div>
-                                        </div>
-                                        <label class="col-form-label col-lg-2">{{ trans('dashboard.general.date_of_birth') }}</label>
-                                        <div class="col-md-4 position-relative has-icon-left">
-                                            <input type="text" value="{{ $client->date_of_birth }}" class="form-control" readonly>
-                                            <div class="form-control-position">
-                                                <i class="feather icon-flag"></i>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="form-group row">
                                         <label class="col-form-label col-lg-2">{!! trans('dashboard.user.active_state') !!}</label>
                                         <div class="col-md-4 position-relative has-icon-left">
@@ -157,145 +153,82 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-form-label col-lg-2">{!! trans('dashboard.user.ban_reason') !!}</label>
-                                        <div class="col-md-10">
-                                            {!! Form::textarea("", $client->is_ban ? $client->ban_reason : null, ['class' => 'form-control','readonly']) !!}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                    <div class="tab-pane fade " id="social" aria-labelledby="social-tab">
-                            <div class="card border-info">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">               
-                                            </div>
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered dataex-html5-selectors">
-                                    <thead>
-                                            <tr class="text-center">
-                                                <th>#</th>
-                                                <th>{!! trans('dashboard.reservation.patient_name') !!}</th>
-                                                <th>{!! trans('dashboard.reservation.clinic_name') !!}</th>
-                                                <th>{!! trans('dashboard.reservation.doctor_name') !!}</th>
-                                                <th>{!! trans('dashboard.reservation.specialization') !!}</th>
-                                                <th>{!! trans('dashboard.reservation.price') !!}</th>
-                                                <th>{!! trans('dashboard.reservation.date') !!}</th>
-                                                <th>{!! trans('dashboard.general.added_date') !!}</th>
-                                                <th>{!! trans('dashboard.general.control') !!}</th>
-                                            </tr>
-                                        </thead>
-                                    <tbody>
-    
-                                    </tbody>
-                                                        
-                                    </table>
+                     
+
+                               
+
+                         
                             </div>
-                    <div class="d-flex justify-content-center">
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade " id="orders" aria-labelledby="orders-tab">
-                <div class="card border-info">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center">
-                            
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered dataex-html5-selectors">
-                            <thead>
-                    <tr class="text-center">
-                        <th>#</th>
-                        <th>{!! trans('dashboard.consultation.patient_name') !!}</th>
-                        <th>{!! trans('dashboard.consultation.clinic_name') !!}</th>
-                        <th>{!! trans('dashboard.consultation.doctor_name') !!}</th>
-                        <th>{!! trans('dashboard.consultation.specialization') !!}</th>
-                        <th>{!! trans('dashboard.consultation.price') !!}</th>
-                        <th>{!! trans('dashboard.consultation.date') !!}</th>
-                        <th>{!! trans('dashboard.general.added_date') !!}</th>
-                        <th>{!! trans('dashboard.general.control') !!}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   
-                </tbody>
-                            </table>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
-            </div>
-        </div>
+        </section>
+        <!--/ profile info section -->
     </div>
-</div>
-        <div class="col-md-3">
-            <div class="card border-info">
-                    <div class="card-header">
-                        <h4 class="card-title">{!! trans('dashboard.notification.notification') !!}</h4>
-                    </div>
-                    <div class="card-content">
-                    <div class="card-body">
-                            <form action="{!! route('dashboard.notification.store') !!}" method="post" class="form">
-                                @csrf
-                                <input type="hidden" name="user_id" value="{{ $client->id }}">
-                                <input type="hidden" name="user_type" value="client">
-                            {{-- <div class="form-body"> --}}
-                                <div class="form-group">
-                                    <div class="col-12">
-                                        {!! Form::text("title", null, ['class'=>"form-control",'placeholder'=>trans('dashboard.chat.type_title')]) !!}
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <div class="col-12">
-                                      {!! Form::textarea("body", null, ['class'=>"form-control",'rows' => 4,'placeholder'=>trans('dashboard.chat.type_message')]) !!}
-                                    </div>
-                                </div>
-                            {{-- </div> --}}
-
-                            <div class=" d-flex justify-content-end">
-                                <button type="submit" class="btn btn-success waves-effect waves-light"><b><i class="feather icon-send mr-1"></i></b> {{ trans('dashboard.general.send') }}</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /basic datatable -->
-    </section>
 </div>
 @endsection
+
 @section('vendor_styles')
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/tables/datatable/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/tables/datatable/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/tables/datatable/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/tables/datatable/rowGroup.bootstrap4.min.css">
 
-<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/tables/datatable/datatables.min.css">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/pickers/pickadate/pickadate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/vendors/css/pickers/flatpickr/flatpickr.min.css">
 @endsection
 @section('page_styles')
-<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/{{ LaravelLocalization::getCurrentLocaleDirection() }}/css/pages/users.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/{{ LaravelLocalization::getCurrentLocaleDirection() }}/css/pages/data-list-view.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/css/{{ LaravelLocalization::getCurrentLocaleDirection() }}/pages/page-profile.css">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/css/{{ LaravelLocalization::getCurrentLocaleDirection() }}/pages/card-analytics.css">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/css/{{ LaravelLocalization::getCurrentLocaleDirection() }}/pages/data-list-view.css">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 
-@endsection
-@section('vendor_scripts')
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/pdfmake.min.js"></script>
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/vfs_fonts.js"></script>
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/datatables.min.js"></script>
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/buttons.html5.min.js"></script>
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/buttons.print.min.js"></script>
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
-<script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/css/{{ LaravelLocalization::getCurrentLocaleDirection() }}/plugins/forms/pickers/form-flat-pickr.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboardAssets') }}/css/{{ LaravelLocalization::getCurrentLocaleDirection() }}/plugins/forms/pickers/form-pickadate.css">
 
+<link rel="stylesheet" href="{{ asset('dashboardAssets') }}/css/custom/custom_rate.css">
+<style media="screen">
+    div.dt-buttons {
+        float: left;
+
+    }
+</style>
 @endsection
+
+@section('vendor_scripts')
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/datatables.min.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/buttons.bootstrap.min.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/tables/datatable/datatables.bootstrap4.min.js"></script>
+
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/pickers/pickadate/picker.date.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/pickers/pickadate/picker.time.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/pickers/pickadate/legacy.js"></script>
+    <script src="{{ asset('dashboardAssets') }}/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+@endsection
+
 @section('page_scripts')
-<script src="{{ asset('dashboardAssets') }}/js/scripts/pages/user-profile.js"></script>
-<script src="{{ asset('dashboardAssets') }}/js/scripts/datatables/datatable.js"></script>
-<script src="{{ asset('dashboardAssets') }}/js/scripts/navs/navs.js"></script>
+<!-- BEGIN: Page JS-->
+<script src="{{ asset('dashboardAssets') }}/js/scripts/pages/page-profile.js"></script>
+<!-- END: Page JS-->
+
+{{-- <script src="{{ asset('dashboardAssets') }}/js/scripts/forms/select/form-select2.js"></script> --}}
+<script src="{{ asset('dashboardAssets') }}/js/scripts/tables/table-datatables-basic.js"></script>
+
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
 @endsection

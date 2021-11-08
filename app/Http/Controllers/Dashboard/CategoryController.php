@@ -18,8 +18,8 @@ class CategoryController extends Controller
     public function create()
     {
       if (!request()->ajax()) {
-        $features = Feature::latest()->get()->pluck('name_ar','id');
-        $frontages = Frontage::latest()->get()->pluck('name_ar','id');
+        $features = Feature::get()->pluck('name_ar','id');
+        $frontages = Frontage::get()->pluck('name_ar','id');
         $periods = Period::latest()->get()->pluck('name_ar','id');
         $populations      = PopulationType::latest()->get()->pluck('name_ar','id');
         $residences    = ResidenceType::latest()->get()->pluck('name_ar','id');

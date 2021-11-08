@@ -103,9 +103,8 @@ class ClientController extends Controller
      public function show(Request $request , $id)
      {
          if (!request()->ajax()) {
-             $client = User::where('user_type','client')->findOrFail($id);
+             $client = User::findOrFail($id);
              $data['client'] = $client;
-
              return view('dashboard.client.show',$data);
          }
      }
