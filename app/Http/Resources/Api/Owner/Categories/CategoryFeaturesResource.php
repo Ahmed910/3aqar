@@ -20,6 +20,9 @@ class CategoryFeaturesResource extends JsonResource
             'data_type'=>$this->data_type,
             'min'=>$this->min ? $this->min:1,
             'max' => $this->max ? $this->max:6,
+            'start_value' => $this->start_value,
+            'end_value' => $this->end_value,
+
         ];
     }
 }
