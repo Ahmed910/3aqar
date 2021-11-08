@@ -208,71 +208,70 @@
                                             </div>
                                         </div>
                                     </div>
-                                <div class="row">
-                                    @foreach (@$ad->ad_features as $feature)
-                                         <div class="col-md-6">
-                                            <div class="row">
-                                            <label class="col-form-label col-md-4">{{ $feature->feature->name_ar }}</label>
-                                            <div class="input-group mb-2 col-md-8">
-                                                <input type="text" class="form-control" value="{{ $feature->value }} " aria-describedby="basic-addon-email" />
-                                            </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="features">
-                                                <p>معلومات اضافيه</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if($ad->ad_type == 'sale')
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <label class="col-form-label col-md-4">{{ trans('dashboard.ad.north') }}</label>
+                                        @foreach (@$ad->ad_features as $feature)
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                <label class="col-form-label col-md-4">{{ $feature->feature->name_ar }}</label>
                                                 <div class="input-group mb-2 col-md-8">
-                                                    <input type="text" class="form-control" value="{{ @$ad->sale->north }} " aria-describedby="basic-addon-email" />
+                                                    <input type="text" class="form-control" value="{{ $feature->value }} " aria-describedby="basic-addon-email" />
+                                                </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="features">
+                                                    <p>معلومات اضافيه</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                       <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <label class="col-form-label col-md-4">{{ trans('dashboard.ad.south') }}</label>
-                                                <div class="input-group mb-2 col-md-8">
-                                                    <input type="text" class="form-control" value="{{ @$ad->sale->south}} " aria-describedby="basic-addon-email" />
+                                    @if($ad->ad_type == 'sale')
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-form-label col-md-4">{{ trans('dashboard.ad.north') }}</label>
+                                                    <div class="input-group mb-2 col-md-8">
+                                                        <input type="text" class="form-control" value="{{ @$ad->sale->north }} " aria-describedby="basic-addon-email" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                       <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <label class="col-form-label col-md-4">{{ trans('dashboard.ad.east') }}</label>
-                                                <div class="input-group mb-2 col-md-8">
-                                                    <input type="text" class="form-control" value="{{ @$ad->sale->east }} " aria-describedby="basic-addon-email" />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-form-label col-md-4">{{ trans('dashboard.ad.south') }}</label>
+                                                    <div class="input-group mb-2 col-md-8">
+                                                        <input type="text" class="form-control" value="{{ @$ad->sale->south}} " aria-describedby="basic-addon-email" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                       <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <label class="col-form-label col-md-4">{{ trans('dashboard.ad.west') }}</label>
-                                                <div class="input-group mb-2 col-md-8">
-                                                    <input type="text" class="form-control" value="{{ @$ad->sale->west }} " aria-describedby="basic-addon-email" />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-form-label col-md-4">{{ trans('dashboard.ad.east') }}</label>
+                                                    <div class="input-group mb-2 col-md-8">
+                                                        <input type="text" class="form-control" value="{{ @$ad->sale->east }} " aria-describedby="basic-addon-email" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endif
-                            </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <label class="col-form-label col-md-4">{{ trans('dashboard.ad.west') }}</label>
+                                                    <div class="input-group mb-2 col-md-8">
+                                                        <input type="text" class="form-control" value="{{ @$ad->sale->west }} " aria-describedby="basic-addon-email" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                         </div>
                         </div>
                     </div>
