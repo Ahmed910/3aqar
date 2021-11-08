@@ -968,6 +968,7 @@ return [
     'iban_num' => 'رقم الاى بان',
     'aqar_number' => 'رقم العقار',
     'aqar_address' => 'عنوان العقار',
+    'building_date' => 'تاريخ العقار',
  
 
   ],
