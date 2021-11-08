@@ -44,6 +44,9 @@ class AdsController extends Controller
     public function getDetailsForAdAndSimilars($id)
     {
         $ad = Ad::findOrFail($id);
+        $watchs = $ad->watching_number;
+        $watchs++;
+        $ad->update(['watching_number'=>$watchs]);
         $data['current_ad'] = new AdResource($ad);
         $ads =Ad::where('id','!=',$id)->where('ad_type',$ad->ad_type)->inRandomOrder()->take(2)->get();
         $data['ads']=AdDataResource::collection($ads);
