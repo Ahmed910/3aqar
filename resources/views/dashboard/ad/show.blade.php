@@ -113,7 +113,6 @@
                                     @foreach($ad->media as $media)
                                         <div class="col-md-6">
                                             <div class="row">
-                                            <label class="col-form-label col-md-4">{{ trans('dashboard.ad.image') }}</label>
                                                 <div class="input-group mb-2 col-md-8">
                                                     <a href="{{ @$media->image_url }}" data-fancybox="gallery">
                                                         <img src="{{ @$media->image_url}}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
