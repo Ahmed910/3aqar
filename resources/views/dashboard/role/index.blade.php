@@ -34,10 +34,10 @@
                             </td>
                             <td class="justify-content-center">
                                 <a onclick="deleteItem('{{ $role->id }}' , '{{ route('dashboard.role.destroy',$role->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
-                                    <i data-feather='trash-2' class="font-medium-3"></i>
+                                    <i class="icofont-ui-delete"></i>
                                 </a>
                                 <a href="{!! route('dashboard.role.edit',$role->id) !!}" class="text-primary mr-2">
-                                    <i data-feather='edit' title="{!! trans('dashboard.general.edit') !!}" class="font-medium-3"></i>
+                                    <i title="{!! trans('dashboard.general.edit') !!}" class="icofont-ui-edit"></i>
                                 </a>
                             </td>
                         </tr>

@@ -32,10 +32,12 @@
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $ad->created_at->format("Y-m-d") }}</div>
                         </td>
                         <td class="justify-content-center">
-                            <a onclick="deleteItem('{{ $ad->id }}' , '{{ route('dashboard.ad.destroy',$ad->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
-                                <i data-feather='trash-2' class="font-medium-3"></i>
-                            </a>
-                            
+                                <a onclick="deleteItem('{{ $ad->id }}' , '{{ route('dashboard.ad.destroy',$ad->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
+                                    <i class="icofont-ui-delete" class="font-medium-3"></i>
+                                </a>
+                                <a href="{!! route('dashboard.ad.show',$ad->id) !!}" class="text-info mr-1">
+                                    <i class="icofont-monitor" title="{!! trans('dashboard.general.show') !!}"></i>
+                                </a>                            
                         </td>
                     </tr>
                     @endforeach

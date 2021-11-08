@@ -29,6 +29,7 @@ class AdDataResource extends JsonResource
             'price'=>(float)$this->price,
             'images'=>ImageResource::collection($this->media),
             'time'=>now()->diffInDays(Carbon::parse($this->created_at)),
+            'price_setting' => $this->ad_type == 'sale' ? (int)setting('sale_price') : (int)setting('sale_price'),
         ];
     }
 }

@@ -68,7 +68,9 @@ class SearchController extends Controller
 
                 $q->whereHas('features', function ($q) use ($feature) {
 
-                    $q->where('feature_id', $feature['feature_id'])->where('value', $feature['value']);
+                    $q->where('feature_id', $feature['feature_id'])->whene($request->min,function($q)use($request){
+                        $q->where('value','>=',$request->min)->where('value','<=',$request->max);
+                    });
                 });
             }
 

@@ -74,6 +74,25 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.setting.rent_price') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::number('rent_price', setting('rent_price') ? setting('rent_price'):old('rent_price'), ['class'=>'form-control','placeholder'=>trans('dashboard.setting.rent_price')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.setting.sale_price') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::number('sale_price', setting('sale_price') ? setting('sale_price'):old('sale_price'), ['class'=>'form-control','placeholder'=>trans('dashboard.setting.sale_price')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
                                 <div class="row">
                                     <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.logo') !!}</label>

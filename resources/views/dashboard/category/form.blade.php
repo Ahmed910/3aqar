@@ -80,7 +80,7 @@
             <label class="font-medium-1 col-md-2">{{ trans('dashboard.category.residences') }} <span
                     class="text-danger">*</span></label>
             <div class="col-md-10">
-                {!! Form::select("residence_types[]", $populations, isset($category) ? $category->residence_types : null, ['class' => 'select2 form-control', 'multiple' => 'multiple']) !!}
+                {!! Form::select("residence_types[]", $residences, isset($category) ? $category->residence_types : null, ['class' => 'select2 form-control', 'multiple' => 'multiple']) !!}
             </div>
         </div>
     </div>

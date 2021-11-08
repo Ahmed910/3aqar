@@ -18,7 +18,7 @@ class SingleClientResource extends JsonResource
             'id' => $this->id,
             'avatar' => $this->avatar,
             'fullname' => $this->fullname,
-            'email' => $this->email,
+            'whatsapp' => $this->whatsapp,
             'phone' => $this->phone,
             // 'finished_order_count' => $this->clientOrders()->whereIn('order_status',['client_finish','driver_finish','admin_finish'])->count(),
             'finished_order_count' => 0,

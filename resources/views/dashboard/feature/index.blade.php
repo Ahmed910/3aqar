@@ -13,6 +13,7 @@
                     <tr class="text-center">
                         <th>#</th>
                         <th>{!! trans('dashboard.feature.name') !!}</th>
+                        <th>{!! trans('dashboard.en.name') !!}</th>
                         <th>{!! trans('dashboard.feature.data_type') !!}</th>
                         <th>{!! trans('dashboard.general.added_date') !!}</th>
                         <th>{!! trans('dashboard.general.control') !!}</th>
@@ -23,16 +24,17 @@
                     <tr class="{{ $feature->id }} text-center">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $feature->name_ar }}</td>
-                        <td>{{ $feature->data_type }}</td>
+                        <td>{{ $feature->name }}</td>
+                        <td>{{ trans('dashboard.feature.'.$feature->data_type) }}</td>
                         <td>
                             <div class="badge badge-primary badge-md mr-1 mb-1">{{ $feature->created_at }}</div>
                         </td>
                         <td class="justify-content-center">
                             <a onclick="deleteItem('{{ $feature->id }}' , '{{ route('dashboard.feature.destroy',$feature->id) }}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
-                                <i data-feather='trash-2' class="font-medium-3"></i>
+                                <i class="icofont-ui-delete"></i>
                             </a>
                             <a href="{!! route('dashboard.feature.edit',$feature->id) !!}" class="text-primary mr-2" title="{!! trans('dashboard.general.edit') !!}">
-                                <i data-feather='edit' class="font-medium-3"></i>
+                                <i class="icofont-ui-edit" title="{!! trans('dashboard.general.edit') !!}"></i>
                             </a>
                         </td>
                     </tr>

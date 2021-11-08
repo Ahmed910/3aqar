@@ -51,24 +51,14 @@
                         </span></div>`;
                     }
                 },
-                {
-                    class : "product-img sorting_1",
-                    data: function(info) {
-                        return `<a href="${ info.avatar }" data-fancybox="gallery">
-                        <div class="avatar">
-                        <img src="${ info.avatar }" alt="" style="width:60px; height:60px;" class="img-thumbnail rounded">
-                        <span class="avatar-status-busy avatar-status-md" id="online_${ info.id }"></span>
-                        </div>
-                        </a>`;
-                    }
-                },
+             
                 {
                     class: 'text-center',
                     data: "fullname"
                 },
                 {
                     class: 'text-center',
-                    data: "email"
+                    data: "whatsapp"
                 },
                 {
                     class: 'text-center',

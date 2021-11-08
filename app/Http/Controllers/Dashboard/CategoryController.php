@@ -20,9 +20,9 @@ class CategoryController extends Controller
       if (!request()->ajax()) {
         $features = Feature::latest()->get()->pluck('name_ar','id');
         $frontages = Frontage::latest()->get()->pluck('name_ar','id');
-        $periods = Period::latest()->get()->pluck('name','id');
-        $populations      = PopulationType::latest()->get()->pluck('name','id');
-        $residences    = ResidenceType::latest()->get()->pluck('name','id');
+        $periods = Period::latest()->get()->pluck('name_ar','id');
+        $populations      = PopulationType::latest()->get()->pluck('name_ar','id');
+        $residences    = ResidenceType::latest()->get()->pluck('name_ar','id');
           return view('dashboard.category.create',compact('features','frontages','periods','populations','residences'));
       }
     }
