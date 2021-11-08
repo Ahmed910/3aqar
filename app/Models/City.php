@@ -20,6 +20,11 @@ class City extends Model implements TranslatableContract
     	return $this->belongsTo(District::class);
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
     public function users()
     {
     	return $this->hasManyThrough(User::class,Profile::class,'city_id','id','id','user_id');

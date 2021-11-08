@@ -20,6 +20,12 @@ class Category extends Model
         return $this->belongsToMany(Frontage::class,'category_frontage','category_id','frontage_id')->withTimestamps();
     }
 
+    
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
 
     public function periods()
     {

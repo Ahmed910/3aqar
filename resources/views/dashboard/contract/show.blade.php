@@ -87,12 +87,32 @@
         </div>
         <section id="profile-info">
             <div class="row">
-                <div class="col-lg-9 col-12 order-1 order-lg-2">
+                <div class="col-lg-12 col-12 order-1 order-lg-2">
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="profile-fill" aria-labelledby="profile-tab-fill" aria-expanded="true">
                             <div class="card  border-info">
                                 <div class="card-body">
                                     <div class="row">
+                                     <div class="col-md-6">
+                                            <div class="row">
+                                            <label class="col-form-label col-md-4">صوره الهويه للمالك</label>
+                                                <div class="input-group mb-2 col-md-8">
+                                                    <a href="{{ @$contract->identity_number_image_for_owner }}" data-fancybox="gallery">
+                                                        <img src="{{ @$contract->identity_number_image_for_owner }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                            <label class="col-form-label col-md-4">صوره وثيقه الملكيه</label>
+                                                <div class="input-group mb-2 col-md-8">
+                                                    <a href="{{ @$contract->property_document}}" data-fancybox="gallery">
+                                                        <img src="{{ @$contract->property_document }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="row">
                                             <label class="col-form-label col-md-4">{{ trans('dashboard.contract.building_date') }}</label>
@@ -118,6 +138,16 @@
                                             <div class="input-group mb-2 col-md-8">
                                                 <input type="text" class="form-control" value="{{ $contract->aqar_address }}" aria-describedby="basic-addon-email" />
                                             </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <label class="col-form-label col-md-4">صوره العنوان</label>
+                                                <div class="input-group mb-2 col-md-8">
+                                                    <a href="{{ @$contract->address_image}}" data-fancybox="gallery">
+                                                        <img src="{{ @$contract->address_image }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -150,8 +180,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                    </div>                         
+
+                                    </div> 
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <label class="col-form-label col-md-4"> صوره هويه المواطن </label>
+                                                <div class="input-group mb-2 col-md-8">
+                                                    <a href="{{ @$contract->identity_number_image_for_citizen}}" data-fancybox="gallery">
+                                                        <img src="{{ @$contract->identity_number_image_for_citizen }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       <div class="col-md-6">
+                                        <div class="row">
+                                            <label class="col-form-label col-md-4">صوره العنوان الوطنى</label>
+                                                <div class="input-group mb-2 col-md-8">
+                                                    <a href="{{ @$contract->national_address_for_citizen}}" data-fancybox="gallery">
+                                                        <img src="{{ @$contract->national_address_for_citizen }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div> 
+
                             </div>
                         </div>
                     </div>
