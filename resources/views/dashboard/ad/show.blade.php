@@ -201,14 +201,13 @@
                                             {!! Form::textarea("", $ad->desc, ['class' => 'form-control','readonly']) !!}
                                         </div>
                                     </div>
-                                  <div class="row">
+                                    <div class="row">
                                         <div class="col-sm-12">
                                             <div class="features">
                                                 <p>{{ trans('dashboard.feature.feature') }}</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <div class="row">
                                     @foreach (@$ad->ad_features as $feature)
                                          <div class="col-md-6">
@@ -223,7 +222,7 @@
                                     </div>
                                 </div>
 
-                                  <div class="row">
+                                <div class="row">
                                         <div class="col-sm-12">
                                             <div class="features">
                                                 <p>معلومات اضافيه</p>
@@ -273,19 +272,8 @@
                                         </div>
                                     </div>
                                 @endif
-                                @if($ad->ad_type == 'rent')
-                                    {{-- <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <label class="col-form-label col-md-4">{{ $feature->feature->name_ar }}</label>
-                                                <div class="input-group mb-2 col-md-8">
-                                                    <input type="text" class="form-control" value="{{ $feature->value }} " aria-describedby="basic-addon-email" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                @endif
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div> 
