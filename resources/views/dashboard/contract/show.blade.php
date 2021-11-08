@@ -35,7 +35,7 @@
                 <div class="card profile-header mb-2 border-info">
                     <img class="card-img-top" src="{{ asset('dashboardAssets') }}/images/profile/user-uploads/timeline.jpg" alt="" />
 
-                
+
 
                     <div class="profile-header-nav">
                         <nav class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100">
@@ -76,7 +76,7 @@
                                         </li> --}}
                                     </ul>
                                     <div>
-                                     
+
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
                                             </div>
                                         </div>
 
-                                    </div> 
+                                    </div>
                                  <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
@@ -196,6 +196,7 @@
                                        <div class="col-md-6">
                                         <div class="row">
                                             <label class="col-form-label col-md-4">صوره العنوان الوطنى</label>
+                                            
                                                 <div class="input-group mb-2 col-md-8">
                                                     <a href="{{ @$contract->national_address_for_citizen}}" data-fancybox="gallery">
                                                         <img src="{{ @$contract->national_address_for_citizen }}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
@@ -203,12 +204,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                </div> 
+                                </div>
 
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </section>
         <!--/ profile info section -->
