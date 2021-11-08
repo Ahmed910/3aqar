@@ -48,6 +48,13 @@ class SettingController extends Controller
                       $inputs['phones'] = json_encode($request->phones);
                   }
 
+                  if ($request->phones_tawkeel && count($request->phones_tawkeel)) {
+                    $inputs['phones_tawkeel'] = json_encode($request->phones_tawkeel);
+                }
+                if ($request->whatsapps_tawkeel && count($request->whatsapps_tawkeel)) {
+                    $inputs['whatsapps_tawkeel'] = json_encode($request->whatsapps_tawkeel);
+                }
+
                   if ($request->whatsapps && count($request->whatsapps)) {
                     $inputs['whatsapps'] = json_encode($request->whatsapps);
                 }

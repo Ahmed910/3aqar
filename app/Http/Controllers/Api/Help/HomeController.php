@@ -67,6 +67,19 @@ class HomeController extends Controller
         return response()->json(['data' => $data , 'status' => 'success' , 'message' => '']);
     }
 
+
+    public function getContactTawkeel()
+    {
+
+        $data = [
+            'phone_tawkeel' =>(string) setting('phones_tawkeel'),
+
+            'whatsapp_tawkeel' => (string)setting('whatsapps_tawkeel'),
+
+        ];
+        return response()->json(['data' => $data , 'status' => 'success' , 'message' => '']);
+    }
+
     public function getPolicy()
     {
         $policy = app()->getLocale() == 'ar' ? 'policy_ar' : 'policy_en';

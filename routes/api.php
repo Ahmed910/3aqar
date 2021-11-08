@@ -133,6 +133,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         Route::get('tax','HomeController@getTax')->middleware('auth:api');
         // Contact
         Route::get('contact', 'HomeController@getContact');
+        Route::get('get_contacts_for_tawkeel','HomeController@getContactTawkeel');
         // Contact Us & Complaints
         Route::post('contact', 'HomeController@contact')->middleware('auth:api');
 
