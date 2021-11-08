@@ -100,6 +100,7 @@
                 </div>
             </div>
         </div>
+          
         <section id="profile-info">
             <div class="row">
                 <div class="col-lg-9 col-12 order-1 order-lg-2">
@@ -107,6 +108,22 @@
                         <div role="tabpanel" class="tab-pane active" id="profile-fill" aria-labelledby="profile-tab-fill" aria-expanded="true">
                             <div class="card  border-info">
                                 <div class="card-body">
+
+                                    <div class="row">
+                                    @foreach($ad->media as $media)
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="input-group mb-2 col-md-8">
+                                                    <a href="{{ @$media->image_url }}" data-fancybox="gallery">
+                                                        <img src="{{ @$media->image_url}}" class="rounded h-100 w-100 img-preview img-fluid" alt="" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                    </div>
+
+
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
