@@ -23,6 +23,7 @@ class CategoryFeaturesResource extends JsonResource
             'max' => $this->max ? $this->max:6,
             'start_value' => $this->start_value,
             'end_value' => $this->end_value,
+            'ordering' => (int)$this->ordering,
 
         ];
     }
