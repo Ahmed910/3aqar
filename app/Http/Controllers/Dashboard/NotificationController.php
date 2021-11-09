@@ -73,7 +73,7 @@ class NotificationController extends Controller
         $data['key_type'] = 'management';
         // dd($users);
         \Notification::send($users, new GeneralNotification($request->validated() + $data, ['database','fcm']));
-        $users->notify(new ApiNotification($data));
+        $users->notify(new ApiNotification($data,['fcm','database']));
 //        $pushFcmNotes = [
 //            'type' => 'management',
 //            'title' => $request->title ?? trans('api.management.management'),
