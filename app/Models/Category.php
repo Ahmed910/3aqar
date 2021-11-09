@@ -14,6 +14,11 @@ class Category extends Model
         return $this->belongsToMany(Feature::class,'category_feature','category_id','feature_id')->withTimestamps();
     }
 
+    public function featuresPivot()
+    {
+        return $this->hasMany(CategoryFeature::class);
+    }
+
 
     public function frontages()
     {

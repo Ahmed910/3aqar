@@ -28,12 +28,16 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
-
         if (!request()->ajax()) {
           $category = Category::create(array_except($request->all(),['features','frontages','periods','populations','residences']));
           if($request->features){
-            $category->features()->sync($request->features);
+            $features_map = array_map(function($array_map){
+                return array_only($array_map, ['ordering']);
+            }, $request->features);
+            $features_map = array_combine(array_column($request->features, 'feature_id'), $features_map);
+            $category->features()->sync($features_map);
           }
+
           // dd($request->features);
           // if($request->features){
           //     // $features = Feature::whereIn('id',$request->features)->get()->pluck('id');
@@ -82,7 +86,13 @@ class CategoryController extends Controller
         if (!request()->ajax()) {
            $category->update(array_except($request->all(),['features','frontages','periods','populations','residences']));
 
-           $category->features()->sync($request->features);
+           if($request->features){
+            $features_map = array_map(function($array_map){
+                return array_only($array_map, ['ordering']);
+            }, $request->features);
+            $features_map = array_combine(array_column($request->features, 'feature_id'), $features_map);
+            $category->features()->sync($features_map);
+          }
 
             $category->frontages()->sync($request->frontages);
 

@@ -43,16 +43,42 @@
             </div>
         </div>
     </div>
-
+    
     <div class="form-group">
-        <div class="row">
-            <label class="font-medium-1 col-md-2">{{ trans('dashboard.feature.feature') }} <span
-                    class="text-danger">*</span></label>
-            <div class="col-md-10">
-                {!! Form::select("features[]", $features, isset($category) ? $category->features : null, ['class' => 'select2 form-control', 'multiple' => 'multiple']) !!}
+        @if(isset($category))
+            @foreach ($category->featuresPivot as $featurePivot)
+                <div class="row col-12">
+                    <label class="font-medium-1 col-md-2">{{ trans('dashboard.feature.feature') }} <span class="text-danger">*</span></label>
+                    <div class="col-md-4">
+                        {!! Form::select("features[$loop->iteration][feature_id]", $features, $featurePivot->feature_id, ['class' => 'select2 form-control']) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Form::number("features[$loop->iteration][ordering]", $featurePivot->ordering, ['class' => 'form-control', 'id' => 'ordering-column', 'placeholder' => trans('dashboard.frontage.ordering')]) !!}
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-icon btn-success mr-1 mb-1 waves-effect waves-light add"><i class="icofont-plus"></i></button>
+                        <button type="button" class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light minus"><i class="icofont-bin"></i></button>
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <div class="row col-12">
+                <label class="font-medium-1 col-md-2">{{ trans('dashboard.feature.feature') }} <span class="text-danger">*</span></label>
+                <div class="col-md-4">
+                    {!! Form::select("features[0][feature_id]", $features, isset($category) ? $category->features : null, ['class' => 'select2 form-control']) !!}
+                </div>
+                <div class="col-md-4">
+                    {!! Form::number('features[0][ordering]', null, ['class' => 'form-control', 'id' => 'ordering-column', 'placeholder' => trans('dashboard.frontage.ordering')]) !!}
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-icon btn-success mr-1 mb-1 waves-effect waves-light add"><i class="icofont-plus"></i></button>
+                    <button type="button" class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light minus"><i class="icofont-bin"></i></button>
+                </div>
             </div>
-        </div>
+        @endif
     </div>
+
+
 
     <div class="form-group">
         <div class="row">
@@ -129,5 +155,68 @@
 			});
 		}
 	})
+</script>
+<script>
+    $(document).ready(function () {
+        var counter = 0,
+            myid = 1;
+            counter =  @isset($category) {!! $category->features->count() !!} @else 1 @endisset;
+        $(document).on("click", '.add', function () {
+            counter++;
+            myid++;
+            $(this).parent().parent().parent().append([
+                `<div class="row col-12">
+                    <label class="font-medium-1 col-md-2">{{ trans('dashboard.feature.feature') }} <span class="text-danger">*</span></label>
+                    <div class="col-md-4">
+                        {!! Form::select("features[` + myid + `][feature_id]", $features, isset($category) ? $category->features : null, ['class' => 'select2 form-control']) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! Form::number('features[` + myid + `][ordering]', null, ['class' => 'form-control', 'id' => 'ordering-column', 'placeholder' => trans('dashboard.frontage.ordering')]) !!}
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-icon btn-success mr-1 mb-1 waves-effect waves-light add"><i class="icofont-plus"></i></button>
+                        <button type="button" class="btn btn-icon btn-danger mr-1 mb-1 waves-effect waves-light minus"><i class="icofont-bin"></i></button>
+                    </div>
+                </div>`
+            ].join(''));
+            $('.add').show();
+            // $('.dod').children().last().find('.add').hide();
+            // $(".minus").hide();
+
+            $('.dod').children().last().find('.minus').show();
+            // $(".dod").children().find(".minus").show();
+
+            // if (counter > 1) {
+            //     $('.dod').find('.flex-div').addClass('bbb');
+            // } else {
+            //     $('.dod').find('.flex-div').removeClass('bbb');
+            // }
+            if(counter > 1){
+                $(".kkk").find('.minus').show();
+            }
+
+            console.log(counter);
+        })
+
+        $(document).on("click", '.minus', function () {
+            counter--;
+            if (counter === 1) {
+                $('.dod').find('.flex-div').addClass('kkk');
+            } else {
+                $('.dod').find('.flex-div').removeClass('kkk');
+            }
+            $(this).parent().parent().remove();
+            $('.dod').children().last().find('.minus').show();
+            // $('.dod').children().last().find('.add').hide();
+            $(".kkk").find('.minus').hide();
+            $(".kkk").find('.add').show();
+            console.log(counter);
+        });
+        console.log(counter);
+        $('.dod').children().find('.minus').show();
+        if(counter > 1){
+            $(".kkk").find('.minus').show();
+        }
+    });
 </script>
 @endsection
