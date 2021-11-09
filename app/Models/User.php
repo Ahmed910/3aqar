@@ -400,7 +400,7 @@ class User extends Authenticatable implements JWTSubject
 
    public function routeNotificationForFcm($notification)
    {
-       if ($this->attributes['user_type'] == 'driver') {
+       if ($this->attributes['user_type'] == 'owner') {
            return @$this->devices->last()->device_token;
        }
        return $this->devices->pluck('device_token')->toArray();
