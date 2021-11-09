@@ -112,6 +112,12 @@ class Ad extends Model
         return $this->belongsTo(District::class);
     }
 
+   // Scopes
+   public function scopeClosed($query)
+   {
+       $query->where('is_closed',false);
+   }
+
     public function city()
     {
         return $this->belongsTo(City::class);

@@ -32,7 +32,7 @@ class HomeAdsController extends Controller
     {
 
         $categories = Category::where('type',$request->type)->orderBy('ordering','asc')->get();
-      
+
         return CategoriesNameResource::collection($categories)->additional(['status'=>'success','message'=>'']);
     }
 
@@ -40,7 +40,7 @@ class HomeAdsController extends Controller
     {
 
         // dd(gettype(boolval($request->time)));
-        $ads = Ad::when($request->type, function ($q) use ($request) {
+        $ads = Ad::closed()->when($request->type, function ($q) use ($request) {
             $q->where('ad_type', $request->type);
         })->when($request->category_id, function ($q) use ($request) {
 
@@ -98,7 +98,7 @@ class HomeAdsController extends Controller
 
     public function getAdsByTypeAndCategory(CategoriesAndAdsByTypeRequest $request)
     {
-        $ads = Ad::when($request->type, function ($q) use ($request) {
+        $ads = Ad::closed()->when($request->type, function ($q) use ($request) {
             $q->where('ad_type', $request->type);
         })->when($request->category_id, function ($q) use ($request) {
             $q->where('category_id', $request->category_id);
