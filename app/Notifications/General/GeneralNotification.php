@@ -8,6 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Notifications\Messages\BroadcastMessage;
+use Benwilkins\FCM\FcmMessage;
 
 class GeneralNotification extends Notification implements ShouldBroadcast
 {
@@ -74,6 +75,23 @@ class GeneralNotification extends Notification implements ShouldBroadcast
             'user_type' => $notifiable->user_type,
             'message_type' => isset($this->data['message_type']) ? $this->data['message_type'] : '',
         ]);
+    }
+
+     public function toFcm($notifiable)
+    {
+        $message = new FcmMessage();
+        $message->setHeaders([
+            'project_id'    =>  "1090331882948"   // FCM sender_id
+        ])->content([
+            'title'=> $this->data['title'],
+            'body' => $this->data['body'],
+            'sound'=> '', // Optional
+            'icon' => '', // Optional
+            'click_action' => '' // Optional
+        ])->data($this->data); // Optional - Default is 'normal'.
+        // ->priority(FcmMessage::PRIORITY_HIGH)
+
+        return $message;
     }
     /**
      * Get the array representation of the notification.
