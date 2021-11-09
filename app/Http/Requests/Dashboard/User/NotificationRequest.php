@@ -31,7 +31,7 @@ class NotificationRequest extends FormRequest
         return [
             'user_id' => $user,
             // 'send_type' => 'required|in:fcm,sms',
-            'user_type' => 'nullable|in:driver,client',
+            'user_type' => 'nullable|in:owner',
             'user_list' => 'nullable|array',
             'user_list.*' => 'nullable|exists:users,id',
             'status' => 'nullable|in:deactive,ban,accepted,paid,wait_accept_drivers,refused_drivers,available,not_available,drivers_subscribed_this_week,with_special_needs,both_type,delivery,ride,monthly_drivers,on_order_drivers,has_balance_in_wallet',
