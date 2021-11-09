@@ -15,10 +15,11 @@ class AdFeatureResource extends JsonResource
      */
     public function toArray($request)
     {
+        $name = app()->getLocale() == 'ar' ? $this->feature->name_ar : $this->feature->name;
         return [
             'id'=>$this->feature->id,
             'data_type'=>$this->feature->data_type,
-            'name'=>$this->feature->name,
+            'name'=>$name,
             'value'=>$this->value,
             'min'=>$this->feature->min ? $this->feature->min:1,
             'max' => $this->feature->max ? $this->feature->max:6,

@@ -41,17 +41,7 @@ class AdsController extends Controller
        return AdDataResource::collection($ads)->additional(['status'=>'success','message'=>'']);
     }
 
-    public function getDetailsForAdAndSimilars($id)
-    {
-        $ad = Ad::findOrFail($id);
-        $watchs = $ad->watching_number;
-        $watchs++;
-        $ad->update(['watching_number'=>$watchs]);
-        $data['current_ad'] = new AdResource($ad);
-        $ads =Ad::where('id','!=',$id)->where('ad_type',$ad->ad_type)->inRandomOrder()->take(2)->get();
-        $data['ads']=AdDataResource::collection($ads);
-        return response()->json(['data'=>$data,'status'=>'success','message'=>'']);
-    }
+ 
 
     public function closeAd($id)
     {
@@ -107,9 +97,9 @@ class AdsController extends Controller
         }
     }
 
-    public function getAdByCity($city_id)
+    public function getAdByCity($district_id)
     {
-      $ads = Ad::where('city_id',$city_id)->get();
+      $ads = Ad::where('district_id',$district_id)->get();
       return AdResource::collection($ads)->additional(['status'=>'success','message'=>'']);
     }
 
