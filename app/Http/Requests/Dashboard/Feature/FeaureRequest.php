@@ -33,6 +33,7 @@ class FeaureRequest extends FormRequest
             'start_value' => 'nullable',
             'end_value' => 'nullable',
             'ordering'=>'required|numeric',
+            'is_area' => 'nullable'
         ];
     }
 }
