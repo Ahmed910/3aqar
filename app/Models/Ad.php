@@ -112,11 +112,7 @@ class Ad extends Model
         return $this->belongsTo(District::class);
     }
 
-   // Scopes
-   public function scopeClosed($query)
-   {
-       $query->where('is_closed',false);
-   }
+
 
     public function city()
     {
@@ -129,6 +125,11 @@ class Ad extends Model
     {
 
         $query->where('user_id', auth('api')->id());
+    }
+
+    public function scopeClosed($query)
+    {
+        $query->where('is_closed',false);
     }
 
 }

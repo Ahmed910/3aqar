@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class mowthq extends Model
 {
     protected $guarded = ['created_at','updated_at'];
-    
+
     protected static function boot()
     {
         parent::boot();
@@ -52,6 +52,6 @@ class mowthq extends Model
     }
     public function city()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(District::class,'district_id');
     }
 }
