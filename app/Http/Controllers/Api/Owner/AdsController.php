@@ -22,7 +22,7 @@ class AdsController extends Controller
      */
     public function index(AdRequest $request)
     {
-        $ads = Ad::when($request->search == 'price',function($q) use($request){
+        $ads = Ad::closed()->when($request->search == 'price',function($q) use($request){
                  $q->orderBy('price','DESC')->take(5);
         })->when($request->search == 'area',function($q) use($request){
             $q->whereHas('features',function($q)use($request){
@@ -40,8 +40,6 @@ class AdsController extends Controller
        $ads = Ad::owner()->latest()->paginate(50);
        return AdDataResource::collection($ads)->additional(['status'=>'success','message'=>'']);
     }
-
- 
 
     public function closeAd($id)
     {
