@@ -14,6 +14,24 @@
 </div>
 
 
+    <div class="form-group col-12">
+        <label class="form-label" for="modern-ban_state">
+            {{ trans('dashboard.feature.have_area') }}
+        </label>
+        <div class="demo-inline-spacing">
+            <div class="custom-control custom-control-success custom-radio col-md-6">
+                {!! Form::radio('is_area', 1, !isset($feature) || (isset($feature) && $feature->is_area) ? 'checked' : null , ['class' => 'custom-control-input' , 'id' => 'is_area']) !!}
+                <label class="custom-control-label" for="is_area">{!! trans('dashboard.feature.is_area') !!}</label>
+            </div>
+
+            <div class="custom-control custom-control-danger custom-radio">
+                {!! Form::radio('is_area', 0, isset($feature) && !$feature->is_area ? 'checked' : null , ['class' => 'custom-control-input' , 'id' => 'is_not_area']) !!}
+                <label class="custom-control-label" for="is_not_area">{!! trans('dashboard.feature.not_area') !!}</label>
+            </div>
+        </div>
+    </div>
+
+
     @if(! isset($feature))
         <div class="row">
 	        <div class="form-group col-md-12">
