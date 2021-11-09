@@ -73,12 +73,12 @@
                 {
                     class : "text-center font-weight-bolder",
                     data: function(data) {
-                        return `<a href="${data.edit_link}" class="text-success" title="{!! trans('dashboard.general.edit') !!}"><i data-feather='edit' class="font-medium-3"></i></a>
-                        <a href="${data.show_link}" class="text-info" title="{!! trans('dashboard.general.show') !!}"><i data-feather='monitor' class="font-medium-3"></i></a>
+                        return `<a href="${data.edit_link}" class="text-success" title="{!! trans('dashboard.general.edit') !!}"><i class="icofont-ui-edit" title="{!! trans('dashboard.general.edit') !!}"></i></a>
+                        <a href="${data.show_link}" class="text-info" title="{!! trans('dashboard.general.show') !!}"><i class="icofont-monitor"></i></a>
                         <a onclick="deleteItem('${data.id}' , '${data.destroy_link}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
-                        <i data-feather='trash-2' class="font-medium-3"></i>
+                        <i class="icofont-ui-delete"></i>
                         </a><a class="text-success" onclick="notify('${data.id}','${data.notify_link}','owner')" title="{!! trans('dashboard.general.notify') !!}">
-                        <i data-feather='bell' class="font-medium-3"></i>
+                        <i class="icofont-alarm"></i>
                         </a>`;
                     }
                 }
