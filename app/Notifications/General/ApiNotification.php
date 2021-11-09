@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications\Api;
+namespace App\Notifications\General;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;

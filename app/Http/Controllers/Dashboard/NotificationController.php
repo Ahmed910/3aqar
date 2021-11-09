@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\General\ApiNotification;
 use App\Http\Requests\Dashboard\User\{NotificationRequest};
 use App\Notifications\General\{GeneralNotification,FCMNotification};
 use Illuminate\Notifications\DatabaseNotification;
@@ -72,7 +73,7 @@ class NotificationController extends Controller
         $data['key_type'] = 'management';
         // dd($users);
         \Notification::send($users, new GeneralNotification($request->validated() + $data, ['database','fcm']));
-        $users->notify(new App\Notifications\Api\ApiNotification($data));
+        $users->notify(new ApiNotification($data));
 //        $pushFcmNotes = [
 //            'type' => 'management',
 //            'title' => $request->title ?? trans('api.management.management'),
@@ -86,7 +87,7 @@ class NotificationController extends Controller
             return response()->json(['value' => 1, 'body' => trans('dashboard.messages.success_send')]);
         }
     }
-    
+
 
 
 }
