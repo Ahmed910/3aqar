@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Api\User\Mowthq;
 
 use App\Http\Resources\Api\Help\CityResource;
+use App\Http\Resources\Api\Help\DistrictResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MowthqResource extends JsonResource
@@ -21,7 +22,7 @@ class MowthqResource extends JsonResource
             'phone'=>$this->phone,
             'lat'=>$this->lat,
             'lng'=>$this->lng,
-            'city'=>new CityResource($this->city)
+            'city'=>new DistrictResource($this->city)
         ];
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\{Ad,Category};
 use App\Http\Requests\Api\Owner\Categories\CategoryTypeRequest;
 use App\Http\Requests\Api\Ads\FilterAdsUsingFeaturesRequest;
+use App\Http\Requests\Api\Owner\AdRequest;
 use App\Http\Requests\Api\Owner\Categories\CategoriesAndAdsByTypeRequest;
 use Carbon\Carbon;
 use App\Http\Resources\Api\Owner\Categories\CategoriesNameResource;
@@ -120,6 +121,20 @@ class HomeAdsController extends Controller
         $data['categories'] = CategoriesNameResource::collection($categories);
         $data['ads'] = AdSearchResource::collection($ads);
         return response()->json(['data' => $data, 'status' => 'success', 'message' => '']);
+    }
+
+    public function getAds(AdRequest $request)
+    {
+        $ads = Ad::closed()->when($request->search == 'price',function($q) use($request){
+                 $q->orderBy('price','DESC')->take(5);
+        })->when($request->search == 'area',function($q) use($request){
+            $q->whereHas('features',function($q)use($request){
+                $q->where('name','Area')->orderBy('value','DESC')->take(5);
+                // $q->orderBy('value','DESC')->take(5);
+            });
+        })->latest()->take(5)->get();
+
+        return AdDataResource::collection($ads)->additional(['status'=>'success','message'=>'']);
     }
 
 }

@@ -20,19 +20,7 @@ class AdsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(AdRequest $request)
-    {
-        $ads = Ad::closed()->when($request->search == 'price',function($q) use($request){
-                 $q->orderBy('price','DESC')->take(5);
-        })->when($request->search == 'area',function($q) use($request){
-            $q->whereHas('features',function($q)use($request){
-                $q->where('name','Area')->orderBy('value','DESC')->take(5);
-                // $q->orderBy('value','DESC')->take(5);
-            });
-        })->latest()->take(5)->get();
 
-        return AdDataResource::collection($ads)->additional(['status'=>'success','message'=>'']);
-    }
 
 
     public function getAllAds()

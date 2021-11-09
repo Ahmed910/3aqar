@@ -26,7 +26,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         Route::post('send_code','AuthController@sendCode');
         Route::get('get_mowthqs/{id?}','MowthqController@getmowthqs');
         Route::post('check_code', "AuthController@checkCode");
-      
+
         Route::prefix('contract')->group(function () {
             Route::post('add_contract','ContractController@createContract');
         });
@@ -45,8 +45,8 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::get('profile', 'UserController@index');
             Route::post('profile', 'UserController@store');
             Route::post('edit_password', 'UserController@editPassword');
-           
-           
+
+
             // Chat
             Route::get('chats/{order_id}/{receiver_id}','ChatController@show');
             Route::apiResource('chats','ChatController')->only('index','store');
@@ -65,14 +65,14 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
     // Owner
     Route::namespace('Owner')->prefix('owner')->group(function(){
         Route::middleware(['auth:api','owner_middleware'])->group(function(){
-           
+
             Route::get('get_features_by_category/{category_id}','CategoryController@getFeaturesByCategory');
             Route::apiResource('ad', AdsController::class);
             Route::get('get_ad_by_city/{city_id}','AdsController@getAdByCity');
            Route::get('delete_image_for_ad/{ad_id}/{image_id}','AdsController@deleteImageForAd');
            Route::get('get_all_ads','AdsController@getAllAds');
            Route::get('close_ad/{id}','AdsController@closeAd');
-           
+
         });
         // Route::apiResource('store_categories','StoreCategoryController')->only('index','show');
         // Route::apiResource('product_categories','ProductCategoryController')->only('index','show');
@@ -126,6 +126,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::get('filter_ads','HomeAdsController@filterAds');
             Route::get('search_by_type_and_cat', 'HomeAdsController@getAdsByTypeAndCategory');
             Route::get('search_by_type', 'HomeAdsController@getCategoriesAndAdsByType');
+            Route::get('ad','HomeAdsController@getAds');
         });
         // About
         Route::get('about', 'HomeController@getAbout');
