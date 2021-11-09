@@ -70,6 +70,7 @@ class NotificationController extends Controller
         ];
         $data['key'] = 'management';
         $data['key_type'] = 'management';
+        // dd($users);
         \Notification::send($users, new GeneralNotification($request->validated() + $data, ['database']));
 //        $pushFcmNotes = [
 //            'type' => 'management',
