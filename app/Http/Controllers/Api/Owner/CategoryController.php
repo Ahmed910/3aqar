@@ -11,11 +11,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-   
+
 
     public function getFeaturesByCategory($category_id)
     {
+
          $category = Category::findOrFail($category_id);
-         return (new CategoriesResource($category))->additional(['status'=>'success','message'=>'']);
+
+        return (new CategoriesResource($category))->additional(['status'=>'success','message'=>'']);
     }
 }

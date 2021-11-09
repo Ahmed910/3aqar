@@ -11,4 +11,10 @@ class CategoryFeature extends Model
     protected $table = 'category_feature';
     protected $guarded = ['created_at','updated_at'];
 
+
+    public function feature()
+    {
+        return $this->belongsTo(Feature::class,'feature_id');
+    }
+
 }

@@ -11,12 +11,19 @@ class Category extends Model
 
     public function features()
     {
-        return $this->belongsToMany(Feature::class,'category_feature','category_id','feature_id')->withTimestamps();
+        return $this->belongsToMany(Feature::class,'category_feature','category_id','feature_id')->withPivot('ordering')->withTimestamps();
     }
 
     public function featuresPivot()
     {
         return $this->hasMany(CategoryFeature::class);
+    }
+
+    public function scopeKarim($q)
+    {
+        $q->whereHas('features',function($q){
+          $q->orderBy('category_feature.ordering','asc');
+        });
     }
 
 
@@ -25,7 +32,7 @@ class Category extends Model
         return $this->belongsToMany(Frontage::class,'category_frontage','category_id','frontage_id')->withTimestamps();
     }
 
-    
+
     public function country()
     {
         return $this->belongsTo(Country::class);
