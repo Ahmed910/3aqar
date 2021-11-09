@@ -35,6 +35,7 @@ function deleteItem(itemId,route) {
     }
 
 function notify(itemId,route,user_type) {
+  console.log(itemId);
   $("#modal_notify").modal('show');
   $('#modal_notify #item').attr('item-id',itemId);
   $('#modal_notify #item').attr('route',route);

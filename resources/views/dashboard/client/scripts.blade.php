@@ -77,7 +77,7 @@
                         <a href="${data.show_link}" class="text-info" title="{!! trans('dashboard.general.show') !!}"><i data-feather='monitor' class="font-medium-3"></i></a>
                         <a onclick="deleteItem('${data.id}' , '${data.destroy_link}')" class="text-danger" title="{!! trans('dashboard.general.delete') !!}">
                         <i data-feather='trash-2' class="font-medium-3"></i>
-                        </a><a class="text-success" onclick="notify('${data.id}','${data.notify_link}','client')" title="{!! trans('dashboard.general.notify') !!}">
+                        </a><a class="text-success" onclick="notify('${data.id}','${data.notify_link}','owner')" title="{!! trans('dashboard.general.notify') !!}">
                         <i data-feather='bell' class="font-medium-3"></i>
                         </a>`;
                     }

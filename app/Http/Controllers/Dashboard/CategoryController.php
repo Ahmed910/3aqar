@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Category,Feature,Frontage,Period,PopulationType,ResidenceType};
+use App\Models\{Category,Feature,Frontage,Period,PopulationType,ResidenceType , CategoryFeature};
 use App\Http\Requests\Dashboard\Category\CategoryRequest;
 
 class CategoryController extends Controller
@@ -34,6 +34,17 @@ class CategoryController extends Controller
           if($request->features){
             $category->features()->sync($request->features);
           }
+          // dd($request->features);
+          // if($request->features){
+          //     // $features = Feature::whereIn('id',$request->features)->get()->pluck('id');
+          //   foreach($request->features as $feature){
+          //       CategoryFeature::create([
+          //         'category_id' => $category->id,
+          //         'feature_id' => $feature->id,
+          //         'ordering' => +1,
+          //       ]);
+          //   }
+          // }
           if($request->frontages){
             $category->frontages()->sync($request->frontages);
           }
