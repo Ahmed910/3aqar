@@ -66,7 +66,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
     Route::namespace('Owner')->prefix('owner')->group(function(){
         Route::middleware(['auth:api','owner_middleware'])->group(function(){
 
-            Route::get('get_features_by_category/{category_id}','CategoryController@getFeaturesByCategory');
+
             Route::apiResource('ad', AdsController::class);
             Route::get('get_ad_by_city/{city_id}','AdsController@getAdByCity');
            Route::get('delete_image_for_ad/{ad_id}/{image_id}','AdsController@deleteImageForAd');
@@ -127,6 +127,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
             Route::get('search_by_type_and_cat', 'HomeAdsController@getAdsByTypeAndCategory');
             Route::get('search_by_type', 'HomeAdsController@getCategoriesAndAdsByType');
             Route::get('ad','HomeAdsController@getAds');
+            Route::get('get_features_by_category/{category_id}','HomeAdsController@getFeaturesByCategory');
         });
         // About
         Route::get('about', 'HomeController@getAbout');

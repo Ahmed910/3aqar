@@ -14,6 +14,7 @@ use App\Http\Resources\Api\Owner\Categories\CategoriesNameResource;
 use App\Http\Resources\Api\Ads\AdDataResource;
 use App\Http\Resources\Api\Owner\Ads\AdResource;
 use App\Http\Resources\Api\Owner\Ads\AdSearchResource;
+use App\Http\Resources\Api\Owner\Categories\CategoriesResource;
 
 class HomeAdsController extends Controller
 {
@@ -135,6 +136,14 @@ class HomeAdsController extends Controller
         })->latest()->take(5)->get();
 
         return AdDataResource::collection($ads)->additional(['status'=>'success','message'=>'']);
+    }
+
+    public function getFeaturesByCategory($category_id)
+    {
+
+         $category = Category::findOrFail($category_id);
+
+        return (new CategoriesResource($category))->additional(['status'=>'success','message'=>'']);
     }
 
 }
