@@ -73,7 +73,7 @@ class HomeAdsController extends Controller
         })->when(($request->lowest_area && $request->highest_area), function ($q) use ($request) {
             $q->whereHas('features', function ($q) use ($request) {
 
-                $q->where('name','Area')->whereBetween('value', [$request->lowest_area, $request->highest_area]);
+                $q->where('is_area',true)->whereBetween('value', [$request->lowest_area, $request->highest_area]);
             });
         })->when(($request->lowest_price && $request->highest_price), function ($q) use ($request) {
             $q->whereBetween('price', [$request->lowest_price, $request->highest_price]);
@@ -130,7 +130,7 @@ class HomeAdsController extends Controller
                  $q->orderBy('price','DESC')->take(5);
         })->when($request->search == 'area',function($q) use($request){
             $q->whereHas('features',function($q)use($request){
-                $q->where('name','Area')->orderBy('value','DESC')->take(5);
+                $q->where('is_area',true)->orderBy('value','DESC')->take(5);
                 // $q->orderBy('value','DESC')->take(5);
             });
         })->latest()->take(5)->get();
