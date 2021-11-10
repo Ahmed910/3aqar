@@ -21,6 +21,9 @@ class AdFeatureResource extends JsonResource
             'data_type'=>$this->feature->data_type,
             'name'=>$name,
             'value'=>$this->value,
+            'is_area'=>(bool)$this->feature->is_area,
+            'start_value'=>$this->feature->start_value,
+            'end_value'=>$this->feature->end_value,
             'min'=>$this->feature->min ? $this->feature->min:1,
             'max' => $this->feature->max ? $this->feature->max:6,
         ];
