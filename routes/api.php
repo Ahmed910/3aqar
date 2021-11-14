@@ -143,6 +143,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
         // Contact
         Route::get('contact', 'HomeController@getContact');
         Route::get('get_contacts_for_tawkeel','HomeController@getContactTawkeel');
+        Route::get('get_contacts_for_contract','HomeController@getContactContract');
         // Contact Us & Complaints
         Route::post('contact', 'HomeController@contact')->middleware('auth:api');
 

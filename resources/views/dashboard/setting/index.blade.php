@@ -87,6 +87,25 @@
 
                             <div class="form-group">
                                 <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.phones_contract') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::text('phones_contract', setting('phones_contract') ? setting('phones_contract'):old('phones_contract'), ['class'=>'form-control tagsinput-custom-tag-class','placeholder'=>trans('dashboard.setting.phones')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.whatsapps_contract') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::text('whatsapps_contract', setting('whatsapps_contract') ? setting('whatsapps_contract'):old('whatsapps_tawkeel'), ['class'=>'form-control tagsinput-custom-tag-class','placeholder'=>trans('dashboard.setting.whatsapps')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="row">
                                     <label class="font-medium-1 col-md-2">{!! trans('dashboard.setting.map_api') !!}</label>
                                     <div class="col-md-10">
                                         {!! Form::text('map_api', setting('map_api') ? setting('map_api'):old('map_api'), ['class'=>'form-control','placeholder'=>trans('dashboard.setting.map_api')]) !!}

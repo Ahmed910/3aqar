@@ -80,6 +80,17 @@ class HomeController extends Controller
         return response()->json(['data' => $data , 'status' => 'success' , 'message' => '']);
     }
 
+    public function getContactContract()
+    {
+        $data = [
+            'phone_contract' =>(string) setting('phones_contract'),
+
+            'whatsapp_contract' => (string)setting('whatsapps_contract'),
+
+        ];
+        return response()->json(['data' => $data , 'status' => 'success' , 'message' => '']);
+    }
+
     public function getPolicy()
     {
         $policy = app()->getLocale() == 'ar' ? 'policy_ar' : 'policy_en';

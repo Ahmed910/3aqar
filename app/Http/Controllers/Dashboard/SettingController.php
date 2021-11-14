@@ -55,6 +55,13 @@ class SettingController extends Controller
                     $inputs['whatsapps_tawkeel'] = json_encode($request->whatsapps_tawkeel);
                 }
 
+                if ($request->phones_contract && count($request->phones_contract)) {
+                    $inputs['phones_contract'] = json_encode($request->phones_contract);
+                }
+                if ($request->whatsapps_contract && count($request->whatsapps_contract)) {
+                    $inputs['whatsapps_contract'] = json_encode($request->whatsapps_contract);
+                }
+
                   if ($request->whatsapps && count($request->whatsapps)) {
                     $inputs['whatsapps'] = json_encode($request->whatsapps);
                 }

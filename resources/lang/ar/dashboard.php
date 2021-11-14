@@ -783,6 +783,8 @@ return [
 
     'whatsapps_tawkeel' => 'ارقام الواتس لتوكيل التطبيق',
     'phones_tawkeel' => 'أرقام الجوال لتوكيل التطبيق',
+    'whatsapps_contract' => 'ارقام الواتس الخاصة بالعقود',
+    'phones_contract' => 'أرقام الجوال الخاصة بالعقود',
     'home' => 'الرئيسية',
     'cpanel' => 'لوحة التحكم :title',
     'public_data' => 'بيانات عامة',

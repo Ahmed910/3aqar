@@ -22,6 +22,8 @@ function setting($attr)
         $whatsapp = $attr;
         $phone_tawkeel = $attr;
         $whatsapp_tawkeel = $attr;
+        $phone_contract = $attr;
+        $whatsapp_contract = $attr;
         if ($attr == 'phone') {
             $attr = 'phones';
         }
@@ -33,6 +35,12 @@ function setting($attr)
         }
         if ($attr == 'whatsapp_tawkeel') {
             $attr = 'whatsapps_tawkeel';
+        }
+        if ($attr == 'phone_contract') {
+            $attr = 'phones_contract';
+        }
+        if ($attr == 'whatsapp_contract') {
+            $attr = 'whatsapps_contract';
         }
         $setting = Setting::where('key', $attr)->first() ?? [];
         if ($attr == 'project_name') {
@@ -66,6 +74,18 @@ function setting($attr)
         } elseif ($whatsapp == 'whatsapps_tawkeel') {
             return !empty($setting) && $setting->value ? implode(",", json_decode($setting->value)) : null;
         }
+
+        if ($phone_contract == 'phone_contract') {
+            return !empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
+        } elseif ($phone_contract == 'phones_contract') {
+            return !empty($setting) && $setting->value ? implode(",", json_decode($setting->value)) : null;
+        }
+        if ($whatsapp_contract == 'whatsapp_contract') {
+            return !empty($setting) && $setting->value ? json_decode($setting->value)[0] : null;
+        } elseif ($whatsapp_contract == 'whatsapps_contract') {
+            return !empty($setting) && $setting->value ? implode(",", json_decode($setting->value)) : null;
+        }
+
         if (!empty($setting)) {
             return $setting->value;
         }
