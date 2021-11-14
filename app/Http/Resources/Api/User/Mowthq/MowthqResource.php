@@ -20,8 +20,8 @@ class MowthqResource extends JsonResource
             'id'=>$this->id,
             'fullname'=>$this->fullname,
             'phone'=>$this->phone,
-            'lat'=>$this->lat,
-            'lng'=>$this->lng,
+            'lat'=>@$this->city->lat,
+            'lng'=>@$this->city->lng,
             'city'=>new DistrictResource($this->city)
         ];
     }

@@ -42,9 +42,18 @@
         <div class="form-group col-md-12">
             <label class="form-label" for="modern-country">{{ trans('dashboard.city.city') }} <span class="text-danger">*</span></label>
 
-            {!! Form::select('city_id', $cities, null , ['class' => 'select2 w-100' , 'placeholder' => trans('dashboard.city.city') , 'id' => 'modern-country']) !!}
+            {!! Form::select('district_id', $districts, null , ['class' => 'select2 w-100' , 'placeholder' => trans('dashboard.city.city') , 'id' => 'modern-country']) !!}
         </div>
 	</div>
+
+
+    {{-- <div class="row">
+        <div class="form-group col-md-12">
+            <label class="form-label" for="modern-country">{{ trans('dashboard.district.district') }} <span class="text-danger">*</span></label>
+
+            {!! Form::select('district_id', $districts, null , ['class' => 'select2 w-100' , 'placeholder' => trans('dashboard.district.district') , 'id' => 'modern-country']) !!}
+        </div>
+	</div> --}}
 
 
   

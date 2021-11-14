@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{mowthq,City};
+use App\Models\{mowthq,City,District};
 use App\Http\Requests\Dashboard\Mowthq\MowthqRequest;
 
 class MowthqController extends Controller
@@ -19,7 +19,8 @@ class MowthqController extends Controller
     {
       if (!request()->ajax()) {
           $cities = City::latest()->get()->pluck('name','id');
-          return view('dashboard.mowthq.create',compact('cities'));
+          $districts = District::latest()->get()->pluck('name','id');
+          return view('dashboard.mowthq.create',compact('cities' , 'districts'));
       }
     }
     public function store(MowthqRequest $request)
@@ -40,7 +41,8 @@ class MowthqController extends Controller
         if (!request()->ajax()) {
             $mowthqs = mowthq::get()->pluck('fullname','id');
             $cities = City::latest()->get()->pluck('name','id');
-            return view('dashboard.mowthq.edit',compact('mowthqs','mowthq','cities'));
+            $districts = District::latest()->get()->pluck('name','id');
+            return view('dashboard.mowthq.edit',compact('mowthqs','mowthq','cities','districts'));
         }
     }
     public function update(MowthqRequest $request, Mowthq $mowthq)
