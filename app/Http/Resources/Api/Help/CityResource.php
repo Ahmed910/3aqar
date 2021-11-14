@@ -19,7 +19,7 @@ class CityResource extends JsonResource
             'name' => $this->name,
             'lat'=>$this->lat,
             'lng'=>$this->lng,
-            'district'=>new DistrictResource($this->district)
+          
         ];
     }
 }

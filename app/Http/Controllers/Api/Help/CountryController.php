@@ -27,9 +27,9 @@ class CountryController extends Controller
         return DistrictResource::collection($districts)->additional(['status' => 'success','message'=>'']);
     }
 
-    public function getCities($id)
+    public function getCities()
     {
-        $cities = City::where('district_id',$id)->latest()->get();
+        $cities = City::latest()->get();
         return CityResource::collection($cities)->additional(['status' => 'success','message'=>'']);
     }
 

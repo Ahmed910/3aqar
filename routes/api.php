@@ -118,7 +118,7 @@ Route::namespace('Api')->middleware('setLocale')->group(function(){
        // Route::get('app_ads', "HelpController@getAppAd")->middleware('auth:api');
         // District
         Route::get('districts', "CountryController@show");
-       // Route::get('cities/{id}', "CountryController@getCities");
+        Route::get('cities', "CountryController@getCities");
 
         Route::prefix('owner')->group(function(){
             Route::get('get_details_for_ad/{id}','HomeAdsController@getDetailsForAdAndSimilars');
