@@ -39,9 +39,10 @@ class AdResource extends JsonResource
             'ad_rent'=> $this->when($this->ad_type=='rent',new AdRentResource($this->rent)),
             'desc'=>$this->desc,
             'status'=>$this->status,
+            'price_setting' => $this->ad_type == 'sale' ? (int)setting('sale_price') : (int)setting('sale_price'),
             'last_updated_at'=>now()->diffInDays($this->last_updated_at),
             'advertiser'=>new UserDataResource($this->advertiser),
-           
+
              'city'=>new DistrictResource($this->district),
             'watching_number'=>$this->watching_number
         ];
