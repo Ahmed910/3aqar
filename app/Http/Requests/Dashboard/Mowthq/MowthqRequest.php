@@ -25,8 +25,8 @@ class MowthqRequest extends FormRequest
     {
         return [
             'fullname' => 'required',
-            'city_id' => 'nullable|exists:cities,id',
-            'district_id' => 'required|exists:districts,id',
+            'city_id' => 'required|exists:cities,id',
+            'district_id' => 'nullable|exists:districts,id',
             'phone' => 'required',
         ];
     }
