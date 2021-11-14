@@ -85,7 +85,9 @@ class AdsController extends Controller
 
     public function getAdByCity($district_id)
     {
+
       $ads = Ad::where('district_id',$district_id)->get();
+      
       return AdResource::collection($ads)->additional(['status'=>'success','message'=>'']);
     }
 

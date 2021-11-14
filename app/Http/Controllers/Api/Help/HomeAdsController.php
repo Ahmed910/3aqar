@@ -79,7 +79,10 @@ class HomeAdsController extends Controller
             $q->whereBetween('price', [$request->lowest_price, $request->highest_price]);
         })->when($request->frontage_id, function ($q) use ($request) {
             $q->where('frontage_id', $request->frontage_id);
-        })->when($request->residence_type_id, function ($q) use ($request) {
+        })->when($request->district_id, function ($q) use ($request) {
+            $q->where('district_id', $request->district_id);
+        })
+        ->when($request->residence_type_id, function ($q) use ($request) {
             $q->where('residence_type_id', $request->residence_type_id);
         })->when($request->population_type_id, function ($q) use ($request) {
             $q->whereHas('rent', function ($q) use ($request) {
