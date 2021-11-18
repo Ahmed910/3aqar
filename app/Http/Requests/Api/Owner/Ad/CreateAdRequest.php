@@ -28,11 +28,11 @@ class CreateAdRequest extends ApiMasterRequest
         if(isset($this->ad) && $this->ad)
         {
             $image_validation = 'nullable|array';
-            $value ='nullable';
+            // $value ='nullable';
 
         }else{
             $image_validation = 'required|array';
-            $value ='required';
+            // $value ='required';
         }
 
         return [
@@ -51,7 +51,7 @@ class CreateAdRequest extends ApiMasterRequest
             'district_id'=>'required|exists:districts,id',
             'images.*'         => 'image|mimes:png,jpg,jpeg,gif',
             'feature.*.feature_id' => 'integer|exists:features,id',
-            'feature.*.value' => $value,
+            'feature.*.value' => 'required_with:feature.*.feature_id',
             'period_id'=>'nullable|exists:periods,id',
             'population_type_id'=>'nullable|exists:population_types,id',
             'round_type'=>'nullable|in:ground,upstairs',
