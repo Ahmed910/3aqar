@@ -161,7 +161,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        $client = User::where('user_type','client')->findOrFail($id);
+            // return response()->json(['id'=>User::where('user_type','owner')->findOrFail($id)]);
+        $client = User::where('user_type','owner')->findOrFail($id);
+
         if ($client->delete()) {
           return response()->json(['value' => 1]);
         }
