@@ -56,7 +56,7 @@ class SMSService
             'body' => json_encode($data),
         ]);
         $response = json_decode($response->getBody()->getContents(),true);
-        dd($response);
+       
         $result = self::validate_SMS_response($response['ErrorCode']);
         return  $msg = ['response' => $response, 'result' => $result];
     }
