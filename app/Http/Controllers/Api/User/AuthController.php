@@ -14,7 +14,7 @@ use DB;
 
 class AuthController extends Controller
 {
-    use WaslElmService;
+    // use WaslElmService;
       /**
       * Create a new AuthController instance.
       *
@@ -22,26 +22,26 @@ class AuthController extends Controller
       */
      public function __construct()
      {
-         $this->middleware('auth:api', ['except' => ['login','signup','driverRegisterSecondStep','confirm','sendCode','checkCode','resetPassword']]);
+         $this->middleware('auth:api', ['except' => ['login','signup','confirm','sendCode','checkCode','resetPassword']]);
      }
      // SignUp
-    public function driverRegisterSecondStep(DriverRegisterSecondStepRequest $request)
-    {
-        $driver = User::where(['user_type' => 'driver','register_complete_step' => 1])->findOrFail($request->user_id);
+    // public function driverRegisterSecondStep(DriverRegisterSecondStepRequest $request)
+    // {
+    //     $driver = User::where(['user_type' => 'driver','register_complete_step' => 1])->findOrFail($request->user_id);
 
-        $car_date = ['brand_id','car_model_id' ,'car_type_id' ,'car_licence_image','car_form_image','car_front_image' ,'car_back_image','car_insurance_image' , 'license_serial_number','plate_number','plate_letter_right','plate_letter_middle' , 'plate_letter_left' ,'plate_numbers_only', 'manufacture_year', 'plate_type', 'car_color'];
+    //     $car_date = ['brand_id','car_model_id' ,'car_type_id' ,'car_licence_image','car_form_image','car_front_image' ,'car_back_image','car_insurance_image' , 'license_serial_number','plate_number','plate_letter_right','plate_letter_middle' , 'plate_letter_left' ,'plate_numbers_only', 'manufacture_year', 'plate_type', 'car_color'];
 
-        $driver_type = @$driver->country->is_for_goods_only ? 'delivery' : 'all';
+    //     $driver_type = @$driver->country->is_for_goods_only ? 'delivery' : 'all';
 
-        $driver->car()->create(array_only($request->validated(),$car_date));
+    //     $driver->car()->create(array_only($request->validated(),$car_date));
 
-        $driver->driver()->create(['is_available' => 1 , 'driver_type' => $driver_type]);
-        $driver->update(['register_complete_step' => 2]);
+    //     $driver->driver()->create(['is_available' => 1 , 'driver_type' => $driver_type]);
+    //     $driver->update(['register_complete_step' => 2]);
 
-        $this->sendVerifyCode($driver);
+    //     $this->sendVerifyCode($driver);
 
-        return response()->json(['status' => 'success','data'=> null ,'message'=> trans('api.messages.success_sign_up'),'dev_message' => $driver->code]);
-    }
+    //     return response()->json(['status' => 'success','data'=> null ,'message'=> trans('api.messages.success_sign_up'),'dev_message' => $driver->code]);
+    // }
 
     public function signup(SignUpRequest $request)
     {
@@ -51,7 +51,9 @@ class AuthController extends Controller
             $profile_date = ['country_id','city_id'];
             $code = 1111;
             if (setting('use_sms_service') == 'enable') {
+
                 $code = mt_rand(1111,9999);//generate_unique_code(4,'\\App\\Models\\User','verified_code');
+                $message = trans('api.auth.verified_code_is',['code' => $code]);
             }
             $user_data = [
                 'verified_code' => $code ,
@@ -64,7 +66,7 @@ class AuthController extends Controller
 
             $user->profile()->create(array_only($request->validated(),$profile_date)+['added_by_id' => auth('api')->id()]);
 
-
+             send_sms($user->phone, $message);
             return response()->json(['status' => 'success','data'=> null ,'message'=> trans('api.messages.success_sign_up'),'dev_message' => $code ]);
 
 
@@ -161,7 +163,7 @@ class AuthController extends Controller
           if ($device) {
               $device->delete();
           }
-        
+
           $user->profile()->update(['last_login_at' => null]);
           auth('api')->logout();
           return response()->json(['status' => 'success','data'=> null ,'message'=> "تم تسجيل الخروج بنجاح"]);
@@ -234,7 +236,7 @@ class AuthController extends Controller
           return response()->json(['status' => 'success','data'=> null ,'message'=> trans('api.auth.success_change_password')]);
       }
 
-    protected function sendVerifyCode($user)
+    protected function sendVerifyCode($user,$code)
     {
         if (setting('use_sms_service') == 'enable') {
             $message = trans('api.auth.verified_code_is',['code' => $code]);
@@ -244,18 +246,6 @@ class AuthController extends Controller
                 $user->forceDelete();
                 $sms_response = $response['result'];
                 return response()->json(['status' => 'fail','data'=> null ,'message'=> "لم يتم حفظ رجاء التحقق من البيانات ( ".$sms_response." )" ], 422);
-            }else{
-                if ($user->user_type == 'driver') {
-                    $admin_data = [
-                        'title' => ['dashboard.messages.new_register_driver_title'],
-                        'body' => ['dashboard.messages.new_register_driver_body',['driver' => $user->fullname]],
-                        'route' => route('dashboard.driver.show',$user->id),
-                        'driver_id' => $user->id,
-                        'notify_type' => 'new_register',
-                    ];
-                    $admins = User::whereIn('user_type',['admin' , 'superadmin'])->get();
-                    \Notification::send($admins,new GeneralNotification($admin_data));
-                }
             }
         }
     }

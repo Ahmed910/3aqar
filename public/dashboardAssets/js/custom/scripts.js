@@ -43,6 +43,7 @@ function notify(itemId,route,user_type) {
 }
 
 function editModal() {
+
     var userId=$('#modal_notify #item').attr('item-id');
     var route=$('#modal_notify #item').attr('route');
     var user_type=$('#modal_notify #item').attr('user-type');
@@ -51,6 +52,7 @@ function editModal() {
     for (var i = 0; i < checkboxes.length; i++) {
       clients.push(checkboxes[i].value)
     }
+
 
     var title =$('#modal_notify input[name=title]').val();
     var body =$('#modal_notify textarea[name=body]').val();
@@ -63,6 +65,7 @@ function editModal() {
       dataType:"json",
       data:{user_id:userId,body:body,title:title,user_type:user_type,_token:token ,user_list: clients},
       success:function(data){
+
          if (data['value'] == 1) {
              if (clients.length > 0) {
                  console.log(clients);

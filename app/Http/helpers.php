@@ -443,8 +443,11 @@ function send_sms($mobile, $msg)
         'sender_name' => setting('sms_sender_name') ?? $sender_name,
     ];
     $send_data = [
-        'message' => $msg,
-        'numbers' => $mobile
+        'numbers' => $mobile,
+        "userName" => setting('sms_username'), // settings('sms_username')
+        "userSender" => setting('sms_sender_name') ?? $sender_name, // settings('sms_sender')
+        "apiKey" => '13246ab6dc26dc8520795ecd9b859d7e',
+        "msg" => $msg,
     ];
     $date_time = [
         'date' => date('Y-m-d'),

@@ -473,6 +473,7 @@ return [
     'whatsapps'=>"you can add more whatsapp numbers using ( , )",
     'sms_service_hisms' => 'HISMS',
     'sms_service_net_powers' => 'Net Powers',
+    'sms_service_masagat' => 'Masagat',
     'sms_service_sms_gateway' => 'SMS Gateway',
     'sms_username' => 'sms username',
     'sms_password' => 'sms password',

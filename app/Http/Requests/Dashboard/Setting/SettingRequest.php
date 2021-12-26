@@ -64,7 +64,7 @@ class SettingRequest extends FormRequest
           'number_of_repeat_order_offer' => "nullable|required_if:enable_make_order_and_take_order,1|integer|gt:0",
           // SMS
           'use_sms_service' => "nullable|in:enable,disable",
-          'sms_provider' => "nullable|required_if:use_sms_service,enable|in:hisms,net_powers,sms_gateway",
+          'sms_provider' => "nullable|required_if:use_sms_service,enable|in:hisms,net_powers,sms_gateway,masagat",
           'sms_username' => "nullable|required_if:use_sms_service,enable|string|between:3,250",
           'sms_password' => "nullable|required_with:sms_username",
           'sms_sender_name' => "nullable|string|between:3,250",

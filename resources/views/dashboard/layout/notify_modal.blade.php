@@ -1,4 +1,5 @@
 <!-- Basic modal -->
+
 <div class="modal fade text-left" id="modal_notify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel120" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
     <div class="modal-content">
@@ -29,7 +30,7 @@
                   <span class="">{{ trans('dashboard.setting.SMS') }}</span>
               </div>
           </div> --}}
-          
+
           {!! Form::hidden('status', request('status')) !!}
 
           <div class="form-group row">
@@ -37,6 +38,7 @@
             <div class="col-lg-10">
               {!! Form::text("title", null, ['class'=>"form-control",'placeholder'=>trans('dashboard.chat.type_title')]) !!}
             </div>
+
           </div>
           <div class="form-group row">
             <label class="control-label col-lg-2">@lang('dashboard.chat.type_message')</label>

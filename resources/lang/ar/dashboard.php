@@ -692,6 +692,7 @@ return [
     'sms_provider' => 'مزود الخدمة',
     'sms_service_hisms' => 'HISMS',
     'sms_service_net_powers' => 'Net Powers',
+    'sms_service_masagat' => 'Masagat',
     'sms_service_sms_gateway' => 'SMS Gateway',
     'sms_username' => 'اسم المستخدم',
     'sms_password' => 'كلمة المرور',
@@ -931,7 +932,7 @@ return [
     'name' => 'الاسم باللغه العربيه',
     'start_value' => 'القيمه الابتدائيه',
     'end_value' => 'القيمه النهائيه',
-    
+
 
       'text' => 'نص',
       'number' => 'رقم',

@@ -238,21 +238,28 @@
                                 <label class="col-form-label col-lg-2">{{ trans('dashboard.setting.sms_provider') }}</label>
                                 <div class="col-md-10">
                                     <div class="row">
-                                        <div class="custom-control custom-control-success custom-radio col-md-4">
+                                        <div class="custom-control custom-control-success custom-radio col-md-3">
                                             {!! Form::radio('sms_provider', "hisms" , setting('sms_provider') == 'hisms' || ! setting('sms_provider') ? 'checked' : null,['class' => 'custom-control-input', 'id' => 'sms_service_hisms']) !!}
 
                                             <label class="custom-control-label" for="sms_service_hisms">{!! trans('dashboard.setting.sms_service_hisms') !!}</label>
 
                                         </div>
-                                        <div class="custom-control custom-control-success custom-radio col-md-4">
+                                        <div class="custom-control custom-control-success custom-radio col-md-3">
                                             {!! Form::radio('sms_provider', "net_powers" , setting('sms_provider') == 'net_powers' ? 'checked' : null,['class' => 'custom-control-input', 'id' => 'sms_service_net_powers']) !!}
 
                                             <label class="custom-control-label" for="sms_service_net_powers">{!! trans('dashboard.setting.sms_service_net_powers') !!}</label>
                                         </div>
-                                        <div class="custom-control custom-control-success custom-radio">
+
+                                        <div class="custom-control custom-control-success custom-radio col-md-3">
                                             {!! Form::radio('sms_provider', "sms_gateway" , setting('sms_provider') == 'sms_gateway' ? 'checked' : null,['class' => 'custom-control-input', 'id' => 'sms_service_sms_gateway']) !!}
 
                                             <label class="custom-control-label" for="sms_service_sms_gateway">{!! trans('dashboard.setting.sms_service_sms_gateway') !!}</label>
+                                        </div>
+
+                                        <div class="custom-control custom-control-success custom-radio col-md-3">
+                                            {!! Form::radio('sms_provider', "masagat" , setting('sms_provider') == 'masagat' ? 'checked' : null,['class' => 'custom-control-input', 'id' => 'sms_service_masagat']) !!}
+
+                                            <label class="custom-control-label" for="sms_service_masagat">{!! trans('dashboard.setting.sms_service_masagat') !!}</label>
                                         </div>
                                     </div>
                                 </div>

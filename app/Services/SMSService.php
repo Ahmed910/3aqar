@@ -5,7 +5,7 @@ namespace App\Services;
 class SMSService
 {
 
-    public static function send(array $sender, array $data,array $date_time , $service_provider = 'hisms')
+    public static function send(array $sender, array $data,array $date_time , $service_provider = 'masagat')
     {
         switch ($service_provider) {
             case 'hisms':
@@ -17,7 +17,9 @@ class SMSService
             case 'net_powers':
                 $validate_msg = self::sendNetPowers($sender , $data , $date_time );
                 break;
-
+            case 'masagat':
+                $validate_msg = self::sendOverMesagat($sender , $data , $date_time );
+                break;
             default:
                 $validate_msg = self::sendHisms($sender , $data , $date_time );
                 break;
@@ -34,6 +36,29 @@ class SMSService
         $result = self::validate_response($response);
         return  $msg = ['response' => $response, 'result' => $result];
     }
+
+   public static function sendOverMesagat($sender , $data , $date_time){
+        // $data = [
+        //     "userName" => 'Mohamed kv7', // settings('sms_username')
+        //     "userSender" => 'contract', // settings('sms_sender')
+        //     "numbers" => $numbers,
+        //     "apiKey" => 'db53d78a246b87a8bdb452c5526fbe90',
+        //     "msg" => $msg,
+        // ];
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', 'https://www.msegat.com/gw/sendsms.php', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+                'Accept-Language' => app()->getLocale() == 'ar' ? 'ar-Sa' : 'en-Uk'
+            ],
+            'body' => json_encode($data),
+        ]);
+        $response = json_decode($response->getBody()->getContents(),true);
+        $result = self::validate_SMS_response($response['ErrorCode']);
+        return  $msg = ['response' => $response, 'result' => $result];
+    }
+
 
     public static function sendSMSGateway($sender , $data , $date_time)
     {
