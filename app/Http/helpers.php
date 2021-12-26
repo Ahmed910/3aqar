@@ -434,8 +434,8 @@ function pushFcmNotes($fcmData, $userIds, $model = '\\App\\Models\\Device')
 
 function send_sms($numbers, $msg){
     $data = [
-        "userName" => 'Mohamed kv7', // settings('sms_username')
-        "userSender" => 'contract', // settings('sms_sender')
+        "userName" => setting('sms_username'), // settings('sms_username')
+        "userSender" => setting('sms_sender_name'), // settings('sms_sender')
         "numbers" => $numbers,
         "apiKey" => '13246ab6dc26dc8520795ecd9b859d7e',
         "msg" => $msg,
@@ -449,11 +449,13 @@ function send_sms($numbers, $msg){
         ],
         'body' => json_encode($data),
     ]);
+    // dd($res);
 }
 
 // HISMS
 // function send_sms($mobile, $msg)
 // {
+//     // dd(setting('sms_sender'));
 //     $sender_name = str_replace(' ', '%20', setting('project_name'));
 //     $msg = str_replace(' ', '%20', $msg);
 //     $sender_data = [

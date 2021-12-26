@@ -44,7 +44,7 @@ class AdResource extends JsonResource
             'advertiser'=>new UserDataResource($this->advertiser),
 
              'city'=>new DistrictResource($this->district),
-            'watching_number'=>$this->watching_number
+             'watching_number'=>$this->watching_number
         ];
     }
 }

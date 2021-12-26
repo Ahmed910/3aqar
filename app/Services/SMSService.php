@@ -5,7 +5,7 @@ namespace App\Services;
 class SMSService
 {
 
-    public static function send(array $sender, array $data,array $date_time , $service_provider = 'masagat')
+    public static function send(array $sender = [], array $data,array $date_time=[] , $service_provider = 'masagat')
     {
         switch ($service_provider) {
             case 'hisms':
@@ -19,7 +19,7 @@ class SMSService
                 break;
             case 'masagat':
 
-                $validate_msg = self::sendOverMesagat($sender , $data , $date_time );
+                $validate_msg = self::sendOverMesagat($data);
                 break;
             default:
                 $validate_msg = self::sendHisms($sender , $data , $date_time );
@@ -38,14 +38,9 @@ class SMSService
         return  $msg = ['response' => $response, 'result' => $result];
     }
 
-   public static function sendOverMesagat($sender , $data , $date_time){
-        // $data = [
-        //     "userName" => 'Mohamed kv7', // settings('sms_username')
-        //     "userSender" => 'contract', // settings('sms_sender')
-        //     "numbers" => $numbers,
-        //     "apiKey" => 'db53d78a246b87a8bdb452c5526fbe90',
-        //     "msg" => $msg,
-        // ];
+   public static function sendOverMesagat($data){
+
+        // dd($data);
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', 'https://www.msegat.com/gw/sendsms.php', [
             'headers' => [
@@ -56,9 +51,10 @@ class SMSService
             'body' => json_encode($data),
         ]);
         $response = json_decode($response->getBody()->getContents(),true);
-       
-        $result = self::validate_SMS_response($response['ErrorCode']);
-        return  $msg = ['response' => $response, 'result' => $result];
+        // dd($response);
+
+        // $result = self::validate_SMS_response($response['ErrorCode']);
+        return  $msg = ['response' => $response];
     }
 
 
