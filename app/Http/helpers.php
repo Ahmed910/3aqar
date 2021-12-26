@@ -432,29 +432,48 @@ function pushFcmNotes($fcmData, $userIds, $model = '\\App\\Models\\Device')
     return "No Users";
 }
 
-// HISMS
-function send_sms($mobile, $msg)
-{
-    $sender_name = str_replace(' ', '%20', setting('project_name'));
-    $msg = str_replace(' ', '%20', $msg);
-    $sender_data = [
-        'username' => setting('sms_username'),
-        'password' => setting('sms_password'),
-        'sender_name' => setting('sms_sender_name') ?? $sender_name,
-    ];
-    $send_data = [
-        'numbers' => $mobile,
-        "userName" => setting('sms_username'), // settings('sms_username')
-        "userSender" => setting('sms_sender_name') ?? $sender_name, // settings('sms_sender')
+function send_sms($numbers, $msg){
+    $data = [
+        "userName" => 'Mohamed kv7', // settings('sms_username')
+        "userSender" => 'contract', // settings('sms_sender')
+        "numbers" => $numbers,
         "apiKey" => '13246ab6dc26dc8520795ecd9b859d7e',
         "msg" => $msg,
     ];
-    $date_time = [
-        'date' => date('Y-m-d'),
-        'time' => date("H:i")
-    ];
-    return SMSService::send($sender_data, $send_data, $date_time, setting('sms_provider'));
+    $client = new Client();
+    $res = $client->request('POST', 'https://www.msegat.com/gw/sendsms.php', [
+        'headers' => [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Accept-Language' => app()->getLocale() == 'ar' ? 'ar-Sa' : 'en-Uk'
+        ],
+        'body' => json_encode($data),
+    ]);
 }
+
+// HISMS
+// function send_sms($mobile, $msg)
+// {
+//     $sender_name = str_replace(' ', '%20', setting('project_name'));
+//     $msg = str_replace(' ', '%20', $msg);
+//     $sender_data = [
+//         'username' => setting('sms_username'),
+//         'password' => setting('sms_password'),
+//         'sender_name' => setting('sms_sender_name') ?? $sender_name,
+//     ];
+//     $send_data = [
+//         'numbers' => $mobile,
+//         "userName" => setting('sms_username'), // settings('sms_username')
+//         "userSender" => setting('sms_sender_name') ?? $sender_name, // settings('sms_sender')
+//         "apiKey" => '13246ab6dc26dc8520795ecd9b859d7e',
+//         "msg" => $msg,
+//     ];
+//     $date_time = [
+//         'date' => date('Y-m-d'),
+//         'time' => date("H:i")
+//     ];
+//     return SMSService::send($sender_data, $send_data, $date_time, setting('sms_provider'));
+// }
 
 
 function online_users()

@@ -18,6 +18,7 @@ class SMSService
                 $validate_msg = self::sendNetPowers($sender , $data , $date_time );
                 break;
             case 'masagat':
+
                 $validate_msg = self::sendOverMesagat($sender , $data , $date_time );
                 break;
             default:
@@ -55,6 +56,7 @@ class SMSService
             'body' => json_encode($data),
         ]);
         $response = json_decode($response->getBody()->getContents(),true);
+        dd($response);
         $result = self::validate_SMS_response($response['ErrorCode']);
         return  $msg = ['response' => $response, 'result' => $result];
     }
