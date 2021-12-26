@@ -30,7 +30,8 @@ class CategoriesResource extends JsonResource
             'category_periods' => CategoryPeriodsResource::collection($this->periods),
             'category_population_types'=> CategoryPopulationTypesResource::collection($this->population_types),
             'category_residence_types' => CategoryResidenceTypeResource::collection($this->residence_types),
-            'has_round_type'=> isset($this->round_type) ? true :false
+            //'has_round_type'=> isset($this->round_type) ? true :false,
+            'has_round_type'=>(bool) $this->is_ground_floor
         ];
     }
 }

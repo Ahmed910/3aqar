@@ -923,6 +923,9 @@ return [
     'name_ar' => 'الاسم باللغه العربيه',
     'data_type' => 'توع الخاصيه',
     'have_area' => 'هل يملك مساحه',
+    'has_floor' => 'هل له دور',
+    'is_ground_floor'=>'له دور',
+    'hasnt_floor'=>'ليس له دور',
     'is_area' => 'يملك مساحه',
     'not_area' => 'لا يملك مساحه',
 

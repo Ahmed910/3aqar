@@ -34,6 +34,7 @@
 	    </div>
     @endisset
 
+
     <div class="row">
         <div class="col-12">
             <div class="form-group">
@@ -43,7 +44,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="form-group">
         @if(isset($category))
             @foreach ($category->featuresPivot as $featurePivot)
@@ -120,6 +121,24 @@
             </div>
         </div>
     </div>
+
+    <div class="form-group col-12">
+        <label class="form-label" for="modern-ban_state">
+            {{ trans('dashboard.feature.has_floor') }}
+        </label>
+        <div class="demo-inline-spacing">
+            <div class="custom-control custom-control-success custom-radio col-md-6">
+                {!! Form::radio('is_ground_floor', 1, !isset($feature) || (isset($feature) && $feature->is_ground_floor) ? 'checked' : null , ['class' => 'custom-control-input' , 'id' => 'is_ground_floor']) !!}
+                <label class="custom-control-label" for="is_ground_floor">{!! trans('dashboard.feature.is_ground_floor') !!}</label>
+            </div>
+
+            <div class="custom-control custom-control-danger custom-radio">
+                {!! Form::radio('is_ground_floor', 0, isset($feature) && !$feature->is_ground_floor ? 'checked' : null , ['class' => 'custom-control-input' , 'id' => 'hasnt_floor']) !!}
+                <label class="custom-control-label" for="hasnt_floor">{!! trans('dashboard.feature.hasnt_floor') !!}</label>
+            </div>
+        </div>
+    </div>
+
 
     <div class="col-12 d-flex justify-content-end">
         <button type="submit" class="btn btn-primary">{{ $btnSubmit }}</button>
