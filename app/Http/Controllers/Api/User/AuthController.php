@@ -47,7 +47,7 @@ class AuthController extends Controller
     {
 
         // DB::beginTransaction();
-        // try{
+        try{
             $profile_date = ['country_id','city_id'];
             $code = 1111;
             if (setting('use_sms_service') == 'enable') {
@@ -70,11 +70,11 @@ class AuthController extends Controller
             return response()->json(['status' => 'success','data'=> null ,'message'=> trans('api.messages.success_sign_up'),'dev_message' => $code ]);
 
 
-        // } catch(\Exception $e){
-        //     DB::rollback();
-        //     \Log::info($e->getMessage());
-        //     return response()->json(['status' => 'fail','data'=> null ,'message'=> "لم يتم التسجيل حاول مرة أخرى"] ,422);
-        // }
+        } catch(\Exception $e){
+            // DB::rollback();
+            \Log::info($e->getMessage());
+            return response()->json(['status' => 'fail','data'=> null ,'message'=> "لم يتم التسجيل حاول مرة أخرى"] ,422);
+        }
     }
 
 
