@@ -17,6 +17,10 @@ class District extends Model implements TranslatableContract
     public $translatedAttributes = ['name'];
 
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class,'country_id');
+    }
     public function cities()
     {
     	return $this->hasMany(City::class);
