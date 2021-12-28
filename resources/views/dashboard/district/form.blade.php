@@ -63,13 +63,13 @@
 			<h5 class="mb-0">{{ trans('dashboard.general.public_data') }}</h5>
 		</div>
 
-		<div class="row">
+		{{--  <div class="row">
 	        <div class="form-group col-md-12">
-	            <label class="form-label" for="modern-country">{{ trans('dashboard.country.country') }} <span class="text-danger">*</span></label>
+	            <label class="form-label" for="modern-country">{{ trans('dashboard.country.country') }} </label>
 
 				{!! Form::select('country_id', $countries, null , ['class' => 'select2 w-100' , 'placeholder' => trans('dashboard.country.country') , 'id' => 'modern-country']) !!}
 	        </div>
-	    </div>
+	    </div>  --}}
 
 		<div class="col-12">
 			<div class="form-group">
@@ -106,7 +106,7 @@
 			</div>
 		</div>
 
-	
+
 
 		<div class="d-flex justify-content-between">
 			<a class="btn btn-primary btn-prev">

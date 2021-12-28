@@ -24,7 +24,7 @@ class DistrictRequest extends FormRequest
     public function rules()
     {
         $rules=[
-            'country_id' => 'required|exists:countries,id',
+           // 'country_id' => 'nullable|exists:countries,id',
             'lat' => 'required',
             'lng' => 'required',
             'location' => 'required',

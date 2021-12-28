@@ -30,8 +30,12 @@ class DistrictController extends Controller
     public function store(DistrictRequest $request)
     {
         if (!request()->ajax()) {
-           District::create(array_except($request->validated(),['image']));
-           return redirect(route('dashboard.district.index'))->withTrue(trans('dashboard.messages.success_add'));
+            $country =Country::first();
+            if(isset($country) && $country){
+                District::create(array_except($request->validated(),['image'])+['country_id'=>$country->id]);
+                return redirect(route('dashboard.district.index'))->withTrue(trans('dashboard.messages.success_add'));
+            }
+
         }
     }
     public function show(District $district)
