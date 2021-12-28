@@ -70,7 +70,7 @@
                 </ul>
             </li>
             @endif
-       
+
             {{-- Admins --}}
             @if (auth()->user()->hasPermissions('manager'))
             <li class=" nav-item">
@@ -137,7 +137,7 @@
 
 
             {{-- Country --}}
-            @if (auth()->user()->hasPermissions('country'))
+            {{--  @if (auth()->user()->hasPermissions('country'))
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
                     <i data-feather='flag'></i>
@@ -166,7 +166,7 @@
                     @endif
                 </ul>
             </li>
-            @endif
+            @endif  --}}
             {{-- district --}}
            @if (auth()->user()->hasPermissions('district'))
             <li class=" nav-item">
@@ -344,7 +344,7 @@
                             </span>
                         </a>
                     </li>
-           
+
                 </ul>
             </li>
             @endif
@@ -399,7 +399,7 @@
                             </span>
                         </a>
                     </li>
-           
+
                 </ul>
             </li>
         @endif
@@ -422,7 +422,7 @@
                             </span>
                         </a>
                     </li>
-           
+
                 </ul>
             </li>
         @endif

@@ -26,7 +26,7 @@ Route::group(
             Route::resource('client','ClientController');
             // =====================Location====================================
             // Country
-            Route::resource('country','CountryController');
+            // Route::resource('country','CountryController');
             // district
             Route::resource('district','DistrictController');
             // City
