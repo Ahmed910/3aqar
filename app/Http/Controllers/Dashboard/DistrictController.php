@@ -35,6 +35,7 @@ class DistrictController extends Controller
                 District::create(array_except($request->validated(),['image'])+['country_id'=>$country->id]);
                 return redirect(route('dashboard.district.index'))->withTrue(trans('dashboard.messages.success_add'));
             }
+            return redirect()->back()->withFalse(trans('api.messages.countries_not_found'));
 
         }
     }
