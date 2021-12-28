@@ -131,6 +131,25 @@
                                 </div>
                             </div>
 
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.setting.commericial_aqar_price') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::number('commericial_aqar_price', setting('commericial_aqar_price') ? setting('commericial_aqar_price'):old('commericial_aqar_price'), ['class'=>'form-control','placeholder'=>trans('dashboard.setting.commericial_aqar_price')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="form-group">
+                                <div class="row">
+                                    <label class="font-medium-1 col-md-2">{!! trans('dashboard.setting.residential_aqar_price') !!}</label>
+                                    <div class="col-md-10">
+                                        {!! Form::number('residential_aqar_price', setting('residential_aqar_price') ? setting('residential_aqar_price'):old('residential_aqar_price'), ['class'=>'form-control','placeholder'=>trans('dashboard.setting.residential_aqar_price')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="font-medium-1 col-md-2">{!! trans('dashboard.general.logo') !!}</label>

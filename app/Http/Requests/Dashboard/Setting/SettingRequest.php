@@ -97,6 +97,8 @@ class SettingRequest extends FormRequest
             'meta_en' => 'nullable',
             'rent_price' => 'nullable',
             'sale_price' => 'nullable',
+            'commericial_aqar_price' => 'nullable|numeric',
+            'residential_aqar_price' => 'nullable|numeric',
           'sms_message' => "nullable||string|max:250",
           'address' => "nullable|string|max:250",
           'g_play_app' => "nullable|url",

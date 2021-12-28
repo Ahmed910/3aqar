@@ -496,6 +496,8 @@ return [
 	'phones' => "you can add more phone using ( , )",
 	'phone_numbers' => "phone_numbers",
 	'username' => "username",
+    'commericial_aqar_price'=>'paid price for rent commericial aqar',
+    'residential_aqar_price'=>'paid price for sale residential aqar',
 	'port' => " port (2525-587)",
 	'encry' => "encry",
 
