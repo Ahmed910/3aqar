@@ -46,7 +46,7 @@ class AuthController extends Controller
     public function signup(SignUpRequest $request)
     {
 
-        // DB::beginTransaction();
+        DB::beginTransaction();
         try{
             $profile_date = ['country_id','city_id'];
             $code = 1111;
@@ -65,13 +65,15 @@ class AuthController extends Controller
             $user = User::create(array_except($request->validated(),$profile_date)+$user_data);
 
             $user->profile()->create(array_only($request->validated(),$profile_date)+['added_by_id' => auth('api')->id()]);
-            //  DB::commit();
+            
+             
+             DB::commit();
              send_sms($user->phone, $message);
             return response()->json(['status' => 'success','data'=> null ,'message'=> trans('api.messages.success_sign_up'),'dev_message' => $code ]);
 
 
         } catch(\Exception $e){
-            // DB::rollback();
+            DB::rollback();
             \Log::info($e->getMessage());
             return response()->json(['status' => 'fail','data'=> null ,'message'=> "لم يتم التسجيل حاول مرة أخرى"] ,422);
         }
