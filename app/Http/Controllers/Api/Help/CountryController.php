@@ -23,8 +23,15 @@ class CountryController extends Controller
     public function show()
     {
         $country = Country::first();
-        $districts = District::where('country_id',$country->id)->latest()->get();
-        return DistrictResource::collection($districts)->additional(['status' => 'success','message'=>'']);
+       
+        if(isset($country) && $country)
+        {
+             $districts = District::where('country_id',$country->id)->latest()->get();
+             return DistrictResource::collection($districts)->additional(['status' => 'success','message'=>'']);
+        }
+        return response()->json(['data'=>null,'status'=>'fail','message'=>trans('api.messages.countries_not_found')],400);
+        
+       
     }
 
     public function getCities()

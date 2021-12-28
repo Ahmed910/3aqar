@@ -16,6 +16,7 @@ return[
         'success_change_password' => "success change password",
     ],
     'messages' => [
+        'countries_not_found'=>'countries not found',
         'success_sign_up' => "Successfully registered, please activate your account ",
 
         'certificates_has_been_updated'=>'certificates has been updated',
