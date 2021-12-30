@@ -22,6 +22,7 @@ class AdFeatureResource extends JsonResource
             'name'=>$name,
             'value'=>$this->value,
             'is_area'=>(bool)optional($this->feature)->is_area,
+            'is_required'=>(bool)optional($this->feature)->is_required,
             'has_floor'=>(bool) optional($this->feature)->is_ground_floor,
             'start_value'=>optional($this->feature)->start_value,
             'end_value'=>optional($this->feature)->end_value,

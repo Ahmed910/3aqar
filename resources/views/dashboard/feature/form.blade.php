@@ -31,7 +31,24 @@
         </div>
     </div>
 
-  
+    <div class="form-group col-12">
+        <label class="form-label" for="modern-ban_state">
+            {{ trans('dashboard.feature.required') }}
+        </label>
+        <div class="demo-inline-spacing">
+            <div class="custom-control custom-control-success custom-radio col-md-6">
+                {!! Form::radio('is_required', 1, !isset($feature) || (isset($feature) && $feature->is_required) ? 'checked' : null , ['class' => 'custom-control-input' , 'id' => 'is_required']) !!}
+                <label class="custom-control-label" for="is_required">{!! trans('dashboard.feature.is_required') !!}</label>
+            </div>
+
+            <div class="custom-control custom-control-danger custom-radio">
+                {!! Form::radio('is_required', 0, isset($feature) && !$feature->is_required ? 'checked' : null , ['class' => 'custom-control-input' , 'id' => 'is_not_required']) !!}
+                <label class="custom-control-label" for="is_not_required">{!! trans('dashboard.feature.not_required') !!}</label>
+            </div>
+        </div>
+    </div>
+
+
 
     @if(! isset($feature))
         <div class="row">
@@ -47,7 +64,7 @@
     @else
           <div class="row">
 	        <div class="form-group col-md-12">
-	            <label class="form-label" for="modern-feature">{{ trans('dashboard.feature.dtat_type') }} <span class="text-danger">*</span></label>
+	            <label class="form-label" for="modern-feature">{{ trans('dashboard.feature.data_type') }} <span class="text-danger">*</span></label>
                 	<select name="data_type" class="select2" data-placeholder="day">
                         <option value="text" @if($feature->data_type=='text')selected @endif>{{ trans('dashboard.feature.text') }}</option>
                         <option value="number" @if($feature->data_type=='number')selected @endif>{{ trans('dashboard.feature.number') }}</option>
