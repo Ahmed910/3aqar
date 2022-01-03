@@ -14,7 +14,7 @@ class PopulationTypeSeeder extends Seeder
      */
     public function run()
     {
-        PopulationType::create(['name' => 'families']);
-        PopulationType::create(['name' => 'singles']);
+        PopulationType::create(['name' => 'families','name_ar'=>'عوائل']);
+        PopulationType::create(['name' => 'singles','name_ar'=>'عزاب']);
     }
 }

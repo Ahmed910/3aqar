@@ -14,8 +14,8 @@ class PeriodSeeder extends Seeder
      */
     public function run()
     {
-        Period::create(['name'=>'daily']);
-        Period::create(['name'=>'monthly']);
-        Period::create(['name'=>'yearly']);
+        Period::create(['name'=>'daily','name_ar'=>'يومي']);
+        Period::create(['name'=>'monthly','name_ar'=>'شهري']);
+        Period::create(['name'=>'yearly','name_ar'=>'سنوي']);
     }
 }

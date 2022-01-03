@@ -14,8 +14,8 @@ class ResidenceTypeSeeder extends Seeder
      */
     public function run()
     {
-        ResidenceType::create(['name' => 'residence']);
-        ResidenceType::create(['name' => 'commericial']);
-        ResidenceType::create(['name' => 'commericial residence']);
+        ResidenceType::create(['name' => 'residence','name_ar'=>'سكني']);
+        ResidenceType::create(['name' => 'commericial','name_ar'=>'تجاري']);
+        ResidenceType::create(['name' => 'commericial residence','name_ar'=>'سكني تجاري']);
     }
 }
