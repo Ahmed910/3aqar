@@ -92,14 +92,14 @@
     <div class="row">
         <div class="col-md-6 col-12">
             <div class="form-group">
-                <label for="phone-column">{{ trans('dashboard.feature.min') }} <span class="text-danger">*</span></label>
+                <label for="phone-column">{{ trans('dashboard.feature.min') }}</label>
                 {!! Form::number('min', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.min')]) !!}
             </div>
         </div>
 
         <div class="col-md-6 col-12">
             <div class="form-group">
-                <label for="phone-column">{{ trans('dashboard.feature.max') }} <span class="text-danger">*</span></label>
+                <label for="phone-column">{{ trans('dashboard.feature.max') }}</label>
                 {!! Form::number('max', null , ['class' => 'form-control','id' => "phone-column" , 'placeholder' => trans('dashboard.feature.max')]) !!}
             </div>
         </div>
