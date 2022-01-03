@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Models\BankAccount;
 use App\Http\Requests\Dashboard\BankAccount\BankRequest;
 
@@ -13,7 +13,7 @@ class BankController extends Controller
     {
           $banks = BankAccount::latest()->paginate(100);
           return view('dashboard.bank.index',compact('banks'));
-        
+
     }
     public function create()
     {
