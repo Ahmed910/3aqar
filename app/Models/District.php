@@ -16,8 +16,6 @@ class District extends Model implements TranslatableContract
     protected $guarded = ['created_at','updated_at'];
     public $translatedAttributes = ['name','image'];
 
-
-
     public function country()
     {
         return $this->belongsTo(Country::class,'country_id');

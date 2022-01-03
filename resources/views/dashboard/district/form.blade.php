@@ -46,6 +46,24 @@
 					<label class="form-label" for="modern-{{ $locale }}">{{ trans('dashboard.'.$locale.'.slug') }} </label>
 					{!! Form::text($locale."[slug]", isset($district) ? $district->translate($locale)->slug : null, ['class' => 'form-control' , 'placeholder' => trans('dashboard.'.$locale.'.slug'),'id' => "modern-{{ $locale }}"]) !!}
 				</div>
+                <div class="form-group col-md-12">
+                <label class="form-label" for="modern-image">
+                    {{ trans('dashboard.'.$locale.'.image') }}
+                </label>
+                <div class="col-md-12">
+                    <div class="custom-file">
+                        <input type="file" name={{ $locale."[image]"}} class="custom-file-input" id={{ $locale."[image]"}} onchange="readUrl(this,'{{ $locale }}-image-preview')">
+                        <label class="custom-file-label" for={{ $locale."[image]"}}>Choose file</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @if (isset($district))
+                    <img src="{{ isset($district) ? $district->translate($locale)->image : null }}" class="img-thumbnail {{ $locale }}-image-preview" style="width: 100%; height: 100px;">
+                    @else
+                    <img src="{{ asset('dashboardAssets/images/backgrounds/placeholder_image.png') }}" class="img-thumbnail {{ $locale }}-image-preview" style="width: 100%; height: 100px;">
+                    @endif
+                </div>
+                </div>
 				@endforeach
 			</div>
 			@endforeach
@@ -71,7 +89,8 @@
 	        </div>
 	    </div>  --}}
 
-        <div class="row form-group col-12">
+
+        {{--  <div class="row form-group col-12">
 			<label class="form-label" for="modern-image">
 				{{ trans('dashboard.general.image_ar') }}
 			</label>
@@ -88,7 +107,7 @@
 				<img src="{{ asset('dashboardAssets/images/backgrounds/placeholder_image.png') }}" class="img-thumbnail image-preview" style="width: 100%; height: 100px;">
 				@endif
 			</div>
-		</div>
+		</div>  --}}
 
 		<div class="col-12">
 			<div class="form-group">

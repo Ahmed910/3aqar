@@ -35,6 +35,7 @@ class DistrictRequest extends FormRequest
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.name'] = 'required|string|between:2,250';
             $rules[$locale.'.slug'] = 'nullable|string|between:3,100000';
+            $rules[$locale.'.image'] = 'required|image|mimes:jpg,jpeg,png';
         }
         return $rules;
     }
