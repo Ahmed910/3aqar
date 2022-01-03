@@ -4,7 +4,7 @@ namespace App\Http\Requests\Dashboard\BankAccount;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Bankrequest extends FormRequest
+class BankRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
