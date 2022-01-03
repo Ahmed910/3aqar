@@ -22,6 +22,7 @@ class CategoryFeaturesResource extends JsonResource
             'name'=>$name,
             'data_type'=>$feature->data_type,
             'is_area'=>$feature->is_area == true ? true : false,
+            'is_required'=>(bool)$feature->is_required,
             'min'=>$feature->min ? $feature->min:1,
             'max' => $feature->max ? $feature->max:6,
             'start_value' => $feature->start_value,
