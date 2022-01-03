@@ -23,6 +23,7 @@ class DistrictRequest extends FormRequest
      */
     public function rules()
     {
+
         $rules=[
            // 'country_id' => 'nullable|exists:countries,id',
             'lat' => 'required',
@@ -31,12 +32,13 @@ class DistrictRequest extends FormRequest
             'postal_code' => 'nullable',
             'short_cut' => 'nullable'
         ];
-        $district = $this->district ? $this->district->id : null;
+        $district = isset($this->district) ? 'nullable|image|mimes:jpg,jpeg,png':'required|image|mimes:jpg,jpeg,png';
         foreach (config('translatable.locales') as $locale) {
             $rules[$locale.'.name'] = 'required|string|between:2,250';
             $rules[$locale.'.slug'] = 'nullable|string|between:3,100000';
-            $rules[$locale.'.image'] = 'required|image|mimes:jpg,jpeg,png';
+            $rules[$locale.'.image'] = $district;
         }
+
         return $rules;
     }
 }

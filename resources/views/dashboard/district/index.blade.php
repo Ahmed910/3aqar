@@ -8,11 +8,11 @@
             {!! $districts->links() !!}
         </div>
         <div class="card-datatable table-responsive">
-            <table class="datatables-custom table table-hover-animation" data-title="{{ trans('dashboard.district.countries') }}" data-create_title="{{ trans('dashboard.district.add_district') }}" data-create_link="{{ route('dashboard.district.create') }}">
+            <table class="datatables-custom table table-hover-animation" data-title="{{ trans('dashboard.district.districts') }}" data-create_title="{{ trans('dashboard.district.add_district') }}" data-create_link="{{ route('dashboard.district.create') }}">
                 <thead>
                     <tr class="text-center">
                         <th>#</th>
-                        <th>{!! trans('dashboard.general.name') !!}</th>
+                        <th>{!! trans('dashboard.district.district_name') !!}</th>
                         <th>{!! trans('dashboard.country.country') !!}</th>
                         <th>{!! trans('dashboard.district.location') !!}</th>
                         <th>{!! trans('dashboard.general.added_date') !!}</th>

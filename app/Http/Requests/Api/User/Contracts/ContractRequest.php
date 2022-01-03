@@ -34,7 +34,7 @@ class ContractRequest extends ApiMasterRequest
             'aqar_number'=>'nullable|integer',
             'aqar_address'=>'required|string|between:2,200',
             'iban_num'=>'nullable',
-           'phone_for_owner'=>'required|numeric|digits_between:5,20|starts_with:9665,05|unique:contracts,phone_for_owner',
+            'phone_for_owner'=>'required|numeric|digits_between:5,20|starts_with:9665,05|unique:contracts,phone_for_owner',
             'phone_for_citizen'=>'required|numeric|digits_between:5,20|starts_with:9665,05|unique:contracts,phone_for_citizen',
         ];
     }

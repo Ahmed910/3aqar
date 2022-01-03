@@ -527,13 +527,14 @@ return [
   'district' => [
     'district' => 'المناطق',
     'districts' => 'المناطق',
+    'district_name'=>'اسم المنطقة',
     'add_district' => 'إضافة منطقه',
     'edit_district' => 'تعديل بيانات المنطقه',
     'country_count' => 'عدد ',
     'key' => 'مفتاح الدولة',
     'postal_code' => 'رمز البريد',
     'short_cut' => 'اختصار المنطقه',
-    'location' => 'المنطقه',
+    'location' => 'الموقع',
     'image_ar'=>'الصورة بالعربية',
  ],
 
