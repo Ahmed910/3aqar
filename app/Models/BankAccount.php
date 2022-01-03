@@ -48,7 +48,7 @@ class BankAccount extends Model
     public function getBankImageAttribute()
     {
         if($this->media()->where(['option' => 'bank_image'])->exists()){
-            return $this->media()->where(['option' => 'bank_image'])->first()->media;
+            return asset('storage/images/bank_account/'.$this->media()->where(['option' => 'bank_image'])->first()->media);
         }
 
        else{
