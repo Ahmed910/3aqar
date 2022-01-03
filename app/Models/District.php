@@ -14,7 +14,8 @@ class District extends Model implements TranslatableContract
     use Translatable ,Uuid;
 
     protected $guarded = ['created_at','updated_at'];
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name','image'];
+
 
 
     public function country()
@@ -24,6 +25,12 @@ class District extends Model implements TranslatableContract
     public function cities()
     {
     	return $this->hasMany(City::class);
+    }
+
+
+    public function media()
+    {
+    	return $this->morphOne(AppMedia::class,'app_mediaable');
     }
 
 }

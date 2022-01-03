@@ -71,6 +71,25 @@
 	        </div>
 	    </div>  --}}
 
+        <div class="row form-group col-12">
+			<label class="form-label" for="modern-image">
+				{{ trans('dashboard.general.image_ar') }}
+			</label>
+			<div class="col-md-10">
+				<div class="custom-file">
+					<input type="file" name="image" class="custom-file-input" id="package_image" onchange="readUrl(this)">
+					<label class="custom-file-label" for="package_image">Choose file</label>
+				</div>
+			</div>
+			<div class="col-md-1">
+				@if (isset($district))
+				<img src="{{ $district->image_ar }}" class="img-thumbnail image-preview" style="width: 100%; height: 100px;">
+				@else
+				<img src="{{ asset('dashboardAssets/images/backgrounds/placeholder_image.png') }}" class="img-thumbnail image-preview" style="width: 100%; height: 100px;">
+				@endif
+			</div>
+		</div>
+
 		<div class="col-12">
 			<div class="form-group">
 				<label>{{ trans('dashboard.district.postal_code') }}

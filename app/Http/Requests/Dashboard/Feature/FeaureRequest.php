@@ -28,7 +28,7 @@ class FeaureRequest extends FormRequest
             'name_ar' => 'required',
             'images' => 'nullable',
             'data_type' => 'required',
-            'min' => 'nullable|min:1',
+            'min' => 'nullable|min:1|lt:max',
             'max' => 'nullable|max:50',
             'start_value' => 'nullable',
             'end_value' => 'nullable',

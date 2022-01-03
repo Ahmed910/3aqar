@@ -534,6 +534,7 @@ return [
     'postal_code' => 'رمز البريد',
     'short_cut' => 'اختصار المنطقه',
     'location' => 'المنطقه',
+    'image_ar'=>'الصورة بالعربية',
  ],
 
   'city' => [
