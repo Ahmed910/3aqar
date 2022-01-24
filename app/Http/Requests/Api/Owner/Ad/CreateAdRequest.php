@@ -44,7 +44,7 @@ class CreateAdRequest extends ApiMasterRequest
             'frontage_id'=>'nullable|exists:frontages,id',
             'residence_type_id'=>'nullable|exists:residence_types,id',
             'price' => 'required|numeric|gt:0',
-            'desc'=>'nullable|between:3,150',
+            'desc'=>'nullable',
             'advertiser_relationship_with_aqar'=>'required|string',
             'feature'=>$image_validation,
             'images'=>$image_validation,
