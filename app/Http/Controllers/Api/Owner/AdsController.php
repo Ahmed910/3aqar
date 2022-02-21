@@ -62,7 +62,7 @@ class AdsController extends Controller
 
         try {
 
-           $ad = Ad::create($ad_data+['user_id'=>auth('api')->id()]);
+           $ad = Ad::create($ad_data+['user_id'=>auth('api')->id(),'last_updated_at'=>now()]);
            $ad->features()->sync($arr);
            switch($request->ad_type)
            {
@@ -87,7 +87,7 @@ class AdsController extends Controller
     {
 
       $ads = Ad::where('district_id',$district_id)->get();
-      
+
       return AdResource::collection($ads)->additional(['status'=>'success','message'=>'']);
     }
 
